@@ -6,14 +6,14 @@ import gsap from "gsap";
 import PhotoFrame from "./PhotoFrame";
 
 const photos = [
-  // Rangée haute — 3 cadres alignés avec légers décalages
-  { src: "/photos/IMG_2053.webp", rotation: -1.5, width: 160, height: 200, frameColor: "#C2AE4C", variant: "baroque" as const, top: "4%", left: "2%" },
-  { src: "/photos/IMG_2056.webp", rotation: 1, width: 150, height: 175, frameColor: "#7A5C3E", variant: "ornate" as const, top: "0%", left: "35%" },
-  { src: "/photos/IMG_2060.webp", rotation: -0.8, width: 155, height: 185, frameColor: "#9A7558", variant: "classic" as const, top: "6%", left: "68%" },
-  // Rangée basse — 3 cadres décalés par rapport au-dessus
-  { src: "/photos/IMG_2064.webp", rotation: 2, width: 170, height: 145, frameColor: "#9A7558", variant: "classic" as const, top: "62%", left: "10%" },
-  { src: "/photos/IMG_2066.webp", rotation: -1.2, width: 165, height: 210, frameColor: "#C2AE4C", variant: "baroque" as const, top: "58%", left: "42%" },
-  { src: "/photos/IMG_2070.webp", rotation: 0.8, width: 150, height: 170, frameColor: "#7A5C3E", variant: "ornate" as const, top: "65%", left: "74%" },
+  // Rangée haute — 3 cadres
+  { src: "/photos/IMG_2053.webp", rotation: -1.5, width: 200, height: 250, frameColor: "#C2AE4C", variant: "baroque" as const, top: "4%", left: "2%" },
+  { src: "/photos/IMG_2056.webp", rotation: 1, width: 190, height: 220, frameColor: "#7A5C3E", variant: "ornate" as const, top: "0%", left: "35%" },
+  { src: "/photos/IMG_2060.webp", rotation: -0.8, width: 195, height: 230, frameColor: "#9A7558", variant: "classic" as const, top: "6%", left: "68%" },
+  // Rangée basse — 3 cadres
+  { src: "/photos/IMG_2064.webp", rotation: 2, width: 210, height: 180, frameColor: "#9A7558", variant: "classic" as const, top: "58%", left: "8%" },
+  { src: "/photos/IMG_2066.webp", rotation: -1.2, width: 200, height: 260, frameColor: "#C2AE4C", variant: "baroque" as const, top: "54%", left: "40%" },
+  { src: "/photos/IMG_2070.webp", rotation: 0.8, width: 185, height: 215, frameColor: "#7A5C3E", variant: "ornate" as const, top: "60%", left: "72%" },
 ];
 
 export default function PhotoWall() {

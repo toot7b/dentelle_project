@@ -43,7 +43,18 @@ export default function Hero() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="min-h-screen flex items-center pt-24 px-8 lg:px-16">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-24 px-8 lg:px-16 overflow-hidden">
+      {/* Wallpaper — full right side, full height */}
+      <div
+        className="absolute top-0 right-0 bottom-0 w-[60%] pointer-events-none"
+        style={{
+          backgroundColor: "#B2C5A8",
+          backgroundImage: "url('/patterns/flower.svg'), url('/patterns/flower.svg')",
+          backgroundSize: "170px 170px",
+          backgroundPosition: "0 0, 85px 85px",
+          borderLeft: "1px solid rgba(194, 174, 76, 0.85)",
+        }}
+      />
       <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left — Text */}
         <div className="w-full lg:w-[40%] flex flex-col gap-6">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type FrameVariant = "baroque" | "classic" | "ornate";
 
@@ -12,34 +13,39 @@ interface PhotoFrameProps {
   variant?: FrameVariant;
 }
 
-function HangingWire({ frameWidth }: { frameWidth: number }) {
+function Nail({ frameWidth }: { frameWidth: number }) {
   const cx = frameWidth / 2;
-  const wireHeight = 20;
+  return (
+    <svg
+      className="absolute pointer-events-none left-0 z-10"
+      style={{ top: -32 }}
+      width={frameWidth}
+      height={20}
+      viewBox={`0 0 ${frameWidth} 20`}
+      fill="none"
+    >
+      <circle cx={cx} cy="10" r="8" fill="#FEF5EB" stroke="#5C3D26" strokeWidth="2" />
+      <circle cx={cx} cy="10" r="5" fill="#5C3D26" />
+      <circle cx={cx} cy="10" r="2.5" fill="#C2AE4C" />
+      <circle cx={cx - 2} cy="8" r="1" fill="#FEF5EB" opacity="0.6" />
+    </svg>
+  );
+}
+
+function Wire({ frameWidth }: { frameWidth: number }) {
+  const cx = frameWidth / 2;
+  const wireHeight = 34;
   return (
     <svg
       className="absolute pointer-events-none left-0"
-      style={{ top: -wireHeight }}
+      style={{ top: -32 }}
       width={frameWidth}
       height={wireHeight}
       viewBox={`0 0 ${frameWidth} ${wireHeight}`}
       fill="none"
     >
-      {/* Nail */}
-      <circle cx={cx} cy="3" r="3" fill="#9A7558" />
-      <circle cx={cx} cy="3" r="1.5" fill="#7A5C3E" />
-      {/* Wire from nail down to frame top edge */}
-      <path
-        d={`M ${cx},6 L ${cx - 25},${wireHeight}`}
-        stroke="#9A7558"
-        strokeWidth="1"
-        opacity="0.6"
-      />
-      <path
-        d={`M ${cx},6 L ${cx + 25},${wireHeight}`}
-        stroke="#9A7558"
-        strokeWidth="1"
-        opacity="0.6"
-      />
+      <path d={`M ${cx},17 L ${cx - 28},${wireHeight}`} stroke="#5C3D26" strokeWidth="1.5" />
+      <path d={`M ${cx},17 L ${cx + 28},${wireHeight}`} stroke="#5C3D26" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -57,6 +63,7 @@ function BaroqueFrame({ width, height, color }: { width: number; height: number;
       viewBox={`0 0 ${w} ${h}`}
       fill="none"
     >
+      <rect x="2" y="2" width={w - 4} height={h - 4} rx="3" fill="#FEF5EB" />
       <rect x="2" y="2" width={w - 4} height={h - 4} rx="3" stroke={color} strokeWidth="3" />
       <rect x="10" y="10" width={w - 20} height={h - 20} rx="2" stroke={color} strokeWidth="1.5" opacity="0.6" />
       {/* Corner ornaments */}
@@ -92,6 +99,7 @@ function ClassicFrame({ width, height, color }: { width: number; height: number;
       viewBox={`0 0 ${w} ${h}`}
       fill="none"
     >
+      <rect x="1" y="1" width={w - 2} height={h - 2} fill="#FEF5EB" />
       <rect x="1" y="1" width={w - 2} height={h - 2} stroke={color} strokeWidth="4" />
       <rect x="8" y="8" width={w - 16} height={h - 16} stroke={color} strokeWidth="1" opacity="0.4" />
       <rect x="5" y="5" width={w - 10} height={h - 10} stroke={color} strokeWidth="0.5" opacity="0.3" strokeDasharray="8 4" />
@@ -121,6 +129,7 @@ function OrnateFrame({ width, height, color }: { width: number; height: number; 
       viewBox={`0 0 ${w} ${h}`}
       fill="none"
     >
+      <rect x="3" y="3" width={w - 6} height={h - 6} rx="4" fill="#FEF5EB" />
       <rect x="3" y="3" width={w - 6} height={h - 6} rx="4" stroke={color} strokeWidth="3" />
       <rect x="12" y="12" width={w - 24} height={h - 24} rx="2" stroke={color} strokeWidth="1" opacity="0.5" />
       {/* Corner rosettes */}
@@ -173,43 +182,42 @@ export default function PhotoFrame({
   return (
     <div
       className="inline-block relative"
-      style={{
-        transform: `rotate(${rotation}deg)`,
-      }}
+      style={{ transform: `rotate(${rotation}deg)` }}
     >
-      {/* Hanging wire + nail — flush with frame top */}
-      <HangingWire frameWidth={totalWidth} />
+      {/* Nail — stays fixed on the wall */}
+      <Nail frameWidth={totalWidth} />
 
-      <div
-        className="relative shadow-xl"
-        style={{
-          width: totalWidth,
-          height: totalHeight,
-        }}
+      {/* Wire + Frame — swings from nail point */}
+      <motion.div
+        style={{ transformOrigin: "top center" }}
+        whileHover={{ rotate: 3 }}
+        transition={{ type: "spring", stiffness: 200, damping: 12 }}
       >
+        <Wire frameWidth={totalWidth} />
+
         <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "#FEF5EB" }}
-        />
-        <FrameComponent width={width} height={height} color={frameColor} />
-        <div
-          className="absolute"
+          className="relative"
           style={{
-            top: pad,
-            left: pad,
-            width,
-            height,
+            width: totalWidth,
+            height: totalHeight,
+            filter: "drop-shadow(0px 4px 10px rgba(44, 26, 14, 0.2)) drop-shadow(0px 1px 3px rgba(44, 26, 14, 0.1))",
           }}
         >
-          <Image
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            className="block object-cover w-full h-full"
-          />
+          <FrameComponent width={width} height={height} color={frameColor} />
+          <div
+            className="absolute"
+            style={{ top: pad, left: pad, width, height }}
+          >
+            <Image
+              src={src}
+              alt={alt}
+              width={width}
+              height={height}
+              className="block object-cover w-full h-full"
+            />
+          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
