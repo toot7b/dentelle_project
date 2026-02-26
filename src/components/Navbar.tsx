@@ -15,18 +15,16 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from(navRef.current, {
-      y: -30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
-    });
+    gsap.fromTo(navRef.current,
+      { y: -30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+    );
   });
 
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-background"
+      className="fixed top-0 left-0 right-0 z-50 bg-background opacity-0"
       style={{ borderBottom: "1px solid rgba(194, 174, 76, 0.5)" }}
     >
       <div className="px-8 py-4 grid grid-cols-3 items-center">

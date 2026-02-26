@@ -35,7 +35,7 @@ export default function PhotoWall() {
         y: 0,
         rotation: finalRotation,
         duration: 0.7,
-        delay: 0.6 + i * 0.15,
+        delay: 1.1 + i * 0.18,
         ease: "back.out(1.4)",
       });
     });

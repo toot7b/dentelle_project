@@ -3,42 +3,58 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import SplitType from "split-type";
 import PhotoWall from "./PhotoWall";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // H1 slides in
-    tl.from("[data-animate='title']", {
-      x: -60,
-      opacity: 0,
-      duration: 0.9,
-      delay: 0.3,
-    });
-
-    // Paragraph fades in
-    tl.from(
-      "[data-animate='paragraph']",
-      {
-        x: -40,
-        opacity: 0,
-        duration: 0.7,
-      },
-      "-=0.4"
+    // 1. Wallpaper fades in gently
+    tl.fromTo(
+      "[data-animate='wallpaper']",
+      { opacity: 0 },
+      { opacity: 1, duration: 1.2, ease: "power2.inOut" },
+      0.3
     );
 
-    // Buttons slide up
-    tl.from(
+    // 2. Title — split into words, each word cascades in
+    if (titleRef.current) {
+      gsap.set(titleRef.current, { opacity: 1 });
+      const split = new SplitType(titleRef.current, { types: "words" });
+      if (split.words) {
+        gsap.set(split.words, { opacity: 0, y: 30 });
+        tl.to(
+          split.words,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+          },
+          0.6
+        );
+      }
+    }
+
+    // 3. Paragraph fades in
+    tl.fromTo(
+      "[data-animate='paragraph']",
+      { x: -30, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6 },
+      1.0
+    );
+
+    // 4. Buttons slide up
+    tl.fromTo(
       "[data-animate='buttons']",
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-      },
-      "-=0.3"
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 },
+      1.2
     );
   }, { scope: sectionRef });
 
@@ -46,7 +62,8 @@ export default function Hero() {
     <section ref={sectionRef} className="relative min-h-screen flex items-center pt-24 px-8 lg:px-16 overflow-hidden">
       {/* Wallpaper — full right side, full height */}
       <div
-        className="absolute top-0 right-0 bottom-0 w-[60%] pointer-events-none"
+        data-animate="wallpaper"
+        className="absolute top-0 right-0 bottom-0 w-[60%] pointer-events-none opacity-0"
         style={{
           backgroundColor: "#B2C5A8",
           backgroundImage: "url('/patterns/flower.svg'), url('/patterns/flower.svg')",
@@ -59,8 +76,8 @@ export default function Hero() {
         {/* Left — Text */}
         <div className="w-full lg:w-[40%] flex flex-col gap-6">
           <h1
-            data-animate="title"
-            className="font-neulis text-5xl lg:text-6xl xl:text-7xl font-semibold text-text-primary leading-tight"
+            ref={titleRef}
+            className="font-neulis text-5xl lg:text-6xl xl:text-7xl font-semibold text-text-primary leading-tight opacity-0"
           >
             L&apos;art du fil,
             <br />
@@ -68,13 +85,13 @@ export default function Hero() {
           </h1>
           <p
             data-animate="paragraph"
-            className="font-satoshi text-lg leading-relaxed text-text-body max-w-md"
+            className="font-satoshi text-lg leading-relaxed text-text-body max-w-md opacity-0"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris.
           </p>
-          <div data-animate="buttons" className="flex items-center gap-4 mt-2">
+          <div data-animate="buttons" className="flex items-center gap-4 mt-2 opacity-0">
             <a
               href="#rejoindre"
               className="font-satoshi text-sm font-medium px-6 py-3 bg-text-primary text-background rounded-full hover:bg-text-body transition-colors duration-200"
