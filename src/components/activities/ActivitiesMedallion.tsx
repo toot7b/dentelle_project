@@ -7,6 +7,7 @@ interface ActivitiesMedallionProps {
   title: string;
   subtitle: string;
   index: number;
+  disableHover?: boolean;
 }
 
 function generatePicots(
@@ -41,6 +42,7 @@ export default function ActivitiesMedallion({
   title,
   subtitle,
   index,
+  disableHover = false,
 }: ActivitiesMedallionProps) {
   const cx = 150;
   const cy = 250;
@@ -61,7 +63,7 @@ export default function ActivitiesMedallion({
     >
       <motion.div
         style={{ transformOrigin: "top center" }}
-        whileHover={{ rotate: 2 }}
+        {...(!disableHover && { whileHover: { rotate: 2 } })}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         <div className="relative" style={{ width: 300, height: 450 }}>

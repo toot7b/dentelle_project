@@ -35,6 +35,8 @@ export default function ActivitiesSection() {
     () => {
       gsap.registerPlugin(ScrollTrigger);
 
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -45,84 +47,112 @@ export default function ActivitiesSection() {
 
       // ── 0. Titre + paragraphe : posent le décor ──────────────────
       tl.from(".activities-title", {
-        y: 40,
+        y: mobile ? 25 : 40,
         opacity: 0,
-        duration: 1,
+        duration: mobile ? 0.6 : 1,
         ease: "power3.out",
       }, 0);
 
       tl.from(".activities-subtitle", {
-        y: 25,
+        y: mobile ? 15 : 25,
         opacity: 0,
-        duration: 1,
+        duration: mobile ? 0.6 : 1,
         ease: "power3.out",
-      }, 0.2);
+      }, mobile ? 0.1 : 0.2);
 
       // ── 0. Sol : monte en même temps ──────────────────────────────
       const hills = sectionRef.current?.querySelector("[data-hills]");
       if (hills) {
-        gsap.set(hills, { y: 60, opacity: 0 });
+        gsap.set(hills, { y: mobile ? 30 : 60, opacity: 0 });
         tl.to(hills, {
           y: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: mobile ? 0.8 : 1.2,
           ease: "power2.out",
         }, 0);
       }
 
-      // ── 1.2. Nuages : apparaissent dans le ciel ───────────────────
+      // ── Nuages : apparaissent dans le ciel ───────────────────
       const clouds = sectionRef.current?.querySelectorAll("[data-cloud]");
       if (clouds) {
         clouds.forEach((el) => {
-          gsap.set(el, { opacity: 0, y: 20 });
+          gsap.set(el, { opacity: 0, y: mobile ? 10 : 20 });
         });
         tl.to(clouds, {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: mobile ? 0.8 : 1.5,
           ease: "power2.out",
-          stagger: 0.12,
-        }, 1.2);
+          stagger: mobile ? 0.08 : 0.12,
+        }, mobile ? 0.3 : 1.2);
       }
 
-      // ── 1.8. Fil de fer : se dessine ──────────────────────────────
-      tl.to(wireRef.current, {
-        strokeDashoffset: 0,
-        duration: 1.8,
-        ease: "power2.inOut",
-      }, 1.8);
+      // ── Fil de fer : se dessine (desktop only) ─────────────────
+      if (!mobile) {
+        tl.to(wireRef.current, {
+          strokeDashoffset: 0,
+          duration: 1.8,
+          ease: "power2.inOut",
+        }, 1.8);
+      }
 
-      // ── 3.0. Médaillons : tombent un par un ───────────────────────
+      // ── Médaillons : tombent un par un ───────────────────────
       const medallions = sectionRef.current?.querySelectorAll("[data-medallion]");
       if (medallions) {
         medallions.forEach((el) => {
-          gsap.set(el, { opacity: 0, y: -50, rotation: -4, transformOrigin: "50% 10px" });
+          gsap.set(el, {
+            opacity: 0,
+            y: mobile ? -30 : -50,
+            rotation: mobile ? -2 : -4,
+            transformOrigin: "50% 10px",
+          });
         });
         medallions.forEach((el, i) => {
           tl.to(el, {
             y: 0,
             opacity: 1,
             rotation: 0,
-            duration: 0.9,
+            duration: mobile ? 0.6 : 0.9,
             ease: "back.out(1.2)",
-          }, 3.0 + i * 0.3);
+          }, mobile ? 0.5 + i * 0.22 : 3.0 + i * 0.3);
         });
       }
 
-      // ── 3.0. Balancement idle des médaillons ──
+      // ── Balancement idle (desktop) / scroll parallax (mobile) ──
       if (medallions) {
-        tl.call(() => {
-          medallions.forEach((el, i) => {
-            gsap.to(el, {
-              rotation: 1.5,
-              duration: 3.5 + i * 0.4,
-              ease: "sine.inOut",
-              transformOrigin: "50% 10px",
-              repeat: -1,
-              yoyo: true,
+        if (mobile) {
+          // Mobile: subtle swing tied to scroll
+          tl.call(() => {
+            medallions.forEach((el, i) => {
+              const direction = i % 2 === 0 ? 1 : -1;
+              gsap.to(el, {
+                rotation: direction * 1,
+                ease: "none",
+                transformOrigin: "50% 10px",
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: 2,
+                },
+              });
             });
           });
-        });
+        } else {
+          // Desktop: continuous idle sway
+          tl.call(() => {
+            medallions.forEach((el, i) => {
+              gsap.to(el, {
+                rotation: 1.5,
+                duration: 3.5 + i * 0.4,
+                ease: "sine.inOut",
+                transformOrigin: "50% 10px",
+                repeat: -1,
+                yoyo: true,
+              });
+            });
+          });
+        }
       }
     },
     { scope: sectionRef }
@@ -145,8 +175,8 @@ export default function ActivitiesSection() {
         </p>
       </div>
 
-      {/* The Clothesline System */}
-      <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14">
+      {/* Desktop: The Clothesline System */}
+      <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14 hidden md:block">
         {/* Green hills */}
         <div data-hills className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
           <svg
@@ -209,11 +239,60 @@ export default function ActivitiesSection() {
                     title={activity.title}
                     subtitle={activity.subtitle}
                     index={i}
+                    disableHover
                   />
                 </div>
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Mobile: Stacked medallions with nail */}
+      <div className="md:hidden flex flex-col items-center pb-0 -mt-4">
+        {activities.map((activity, i) => (
+          <div
+            key={activity.title}
+            data-medallion
+            className="opacity-0 -mb-[120px]"
+          >
+            {/* Nail / vis */}
+            <div className="flex justify-center mb-[-14px] relative z-10">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="8" fill="#FEF5EB" stroke="#5C3D26" strokeWidth="2" />
+                <circle cx="10" cy="10" r="5" fill="#5C3D26" />
+                <circle cx="10" cy="10" r="2.5" fill="#C2AE4C" />
+                <circle cx="8" cy="8" r="1" fill="#FEF5EB" opacity="0.6" />
+              </svg>
+            </div>
+            <div className="w-[240px] transform scale-[0.75] origin-top flex justify-center">
+              <ActivitiesMedallion
+                title={activity.title}
+                subtitle={activity.subtitle}
+                index={i}
+              />
+            </div>
+          </div>
+        ))}
+        {/* Mobile green footer — 4 wider waves */}
+        <div className="w-screen relative mt-[120px]" style={{ marginLeft: "calc(-50vw + 50%)" }}>
+          <svg
+            viewBox="0 0 400 60"
+            className="block w-full h-[40px]"
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path
+              d="M0,59.9 C 25,35 75,35 100,59.9 C 125,35 175,35 200,59.9 C 225,35 275,35 300,59.9 C 325,35 375,35 400,59.9 L400,60 L0,60 Z"
+              fill="#B2C5A8"
+            />
+            <path
+              d="M0,59.9 C 25,35 75,35 100,59.9 C 125,35 175,35 200,59.9 C 225,35 275,35 300,59.9 C 325,35 375,35 400,59.9"
+              stroke="#C2AE4C"
+              strokeWidth="1.5"
+            />
+          </svg>
+          <div className="w-full h-[50px]" style={{ backgroundColor: "#B2C5A8" }} />
         </div>
       </div>
     </section>

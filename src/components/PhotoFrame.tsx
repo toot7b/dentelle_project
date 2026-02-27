@@ -11,6 +11,7 @@ interface PhotoFrameProps {
   rotation?: number;
   frameColor?: string;
   variant?: FrameVariant;
+  disableHover?: boolean;
 }
 
 function Nail({ frameWidth }: { frameWidth: number }) {
@@ -173,6 +174,7 @@ export default function PhotoFrame({
   rotation = 0,
   frameColor = "#C2AE4C",
   variant = "baroque",
+  disableHover = false,
 }: PhotoFrameProps) {
   const FrameComponent = frameComponents[variant];
   const pad = paddings[variant];
@@ -190,7 +192,7 @@ export default function PhotoFrame({
       {/* Wire + Frame — swings from nail point */}
       <motion.div
         style={{ transformOrigin: "top center" }}
-        whileHover={{ rotate: 3 }}
+        {...(!disableHover && { whileHover: { rotate: 3 } })}
         transition={{ type: "spring", stiffness: 200, damping: 12 }}
       >
         <Wire frameWidth={totalWidth} />
