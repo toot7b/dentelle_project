@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AgentationWrapper from "@/components/AgentationWrapper";
 
 export const metadata: Metadata = {
   title: "Club de Dentelle",
@@ -21,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <AgentationWrapper />
       </body>
     </html>
   );

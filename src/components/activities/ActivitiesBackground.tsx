@@ -8,63 +8,52 @@ export default function ActivitiesBackground() {
       variant: "wisp" as const,
       className: "cloud-drift-a",
       style: {
-        top: "15%",
-        left: "4%",
-        transform: "scale(0.6)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-d",
-      style: {
-        top: "12%",
-        left: "30%",
-        transform: "scale(0.7)",
+        top: "6%",
+        left: "6%",
+        opacity: 0.85,
+        transform: "scale(0.55)",
+        filter: "blur(0.9px)",
       },
     },
     {
       variant: "cumulus" as const,
       className: "cloud-drift-b",
       style: {
-        top: "10%",
-        right: "8%",
-        transform: "scale(0.65)",
+        top: "8%",
+        right: "6%",
+        opacity: 0.92,
+        transform: "scale(0.6)",
       },
     },
     {
       variant: "cirrus" as const,
       className: "cloud-drift-c",
       style: {
-        top: "20%",
-        left: "55%",
-        transform: "scale(0.85)",
+        top: "14%",
+        left: "2%",
+        opacity: 0.92,
+        transform: "scale(0.72)",
+      },
+    },
+    {
+      variant: "cirrus" as const,
+      className: "cloud-drift-d",
+      style: {
+        top: "14%",
+        right: "2%",
+        opacity: 0.92,
+        transform: "scale(0.72)",
       },
     },
     {
       variant: "wisp" as const,
       className: "cloud-drift-e",
       style: {
-        top: "22%",
-        right: "22%",
-        transform: "scale(0.75)",
-      },
-    },
-    {
-      variant: "cumulus" as const,
-      className: "cloud-drift-a",
-      style: {
-        top: "26%",
-        left: "14%",
-        transform: "scale(0.9)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-b",
-      style: {
-        top: "28%",
-        right: "4%",
-        transform: "scale(1.0)",
+        top: "18%",
+        left: "10%",
+        opacity: 0.82,
+        transform: "scale(0.45)",
+        filter: "blur(1.1px)",
       },
     },
     {
@@ -72,27 +61,86 @@ export default function ActivitiesBackground() {
       className: "cloud-drift-c",
       style: {
         top: "18%",
-        left: "78%",
-        transform: "scale(0.55)",
+        right: "10%",
+        opacity: 0.82,
+        transform: "scale(0.45)",
+        filter: "blur(1.1px)",
+      },
+    },
+    {
+      variant: "cumulus" as const,
+      className: "cloud-drift-a",
+      style: {
+        top: "34%",
+        left: "6%",
+        opacity: 0.9,
+        transform: "scale(0.9)",
+      },
+    },
+    {
+      variant: "cirrus" as const,
+      className: "cloud-drift-b",
+      style: {
+        top: "36%",
+        right: "6%",
+        opacity: 0.9,
+        transform: "scale(0.92)",
+      },
+    },
+    {
+      variant: "wisp" as const,
+      className: "cloud-drift-d",
+      style: {
+        top: "46%",
+        left: "50%",
+        opacity: 0.85,
+        transform: "scale(0.6)",
+        filter: "blur(0.9px)",
+      },
+    },
+    {
+      variant: "cirrus" as const,
+      className: "cloud-drift-e",
+      style: {
+        top: "54%",
+        left: "10%",
+        opacity: 0.9,
+        transform: "scale(0.95)",
+      },
+    },
+    {
+      variant: "cumulus" as const,
+      className: "cloud-drift-a",
+      style: {
+        top: "56%",
+        right: "10%",
+        opacity: 0.92,
+        transform: "scale(1.05)",
+      },
+    },
+    {
+      variant: "wisp" as const,
+      className: "cloud-drift-b",
+      style: {
+        top: "64%",
+        left: "34%",
+        opacity: 0.85,
+        transform: "scale(0.7)",
+        filter: "blur(0.9px)",
       },
     },
   ];
 
   return (
     <div
-      className="absolute inset-0 overflow-hidden pointer-events-none"
+      className="absolute inset-0 overflow-hidden"
       style={{ backgroundColor: "#FEF5EB" }}
     >
-      <div
-        className="absolute inset-0"
-        style={{ clipPath: "inset(clamp(100px, 12%, 160px) 0 0 0)" }}
-      >
-        {clouds.map((cloud, idx) => (
-          <div key={idx} className={`absolute ${cloud.className}`} style={cloud.style}>
-            <ActivitiesCloud variant={cloud.variant} />
-          </div>
-        ))}
-      </div>
+      {clouds.map((cloud, idx) => (
+        <div key={idx} className={`absolute ${cloud.className}`} style={cloud.style}>
+          <ActivitiesCloud variant={cloud.variant} />
+        </div>
+      ))}
     </div>
   );
 }

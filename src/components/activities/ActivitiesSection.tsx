@@ -29,7 +29,7 @@ export default function ActivitiesSection() {
   // Parabola/Bezier curve parameters for the wire viewBox is 1400x300
   // M 0,20 Q x/2,250 x,20
   const WIRE_START_Y = 10;
-  const WIRE_CTRL_Y = 205;
+  const WIRE_CTRL_Y = 195;
   const WIRE_END_Y = 10;
 
   useGSAP(
@@ -109,7 +109,7 @@ export default function ActivitiesSection() {
       </div>
 
       {/* The Clothesline System */}
-      <div className="relative w-full h-[520px] md:h-[620px] -mt-6 md:-mt-10">
+      <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
           <svg
             viewBox="0 0 1440 120"
@@ -118,11 +118,11 @@ export default function ActivitiesSection() {
             fill="none"
           >
             <path
-              d="M0,60 C 240,25 480,95 720,55 C 960,15 1200,85 1440,40 L1440,120 L0,120 Z"
+              d="M0,119.9 C 40,83.9 80,83.9 120,119.9 C 160,83.9 200,83.9 240,119.9 C 280,83.9 320,83.9 360,119.9 C 400,83.9 440,83.9 480,119.9 C 520,83.9 560,83.9 600,119.9 C 640,83.9 680,83.9 720,119.9 C 760,83.9 800,83.9 840,119.9 C 880,83.9 920,83.9 960,119.9 C 1000,83.9 1040,83.9 1080,119.9 C 1120,83.9 1160,83.9 1200,119.9 C 1240,83.9 1280,83.9 1320,119.9 C 1360,83.9 1400,83.9 1440,119.9 L1440,120 L0,120 Z"
               fill="#B2C5A8"
             />
             <path
-              d="M0,60 C 240,25 480,95 720,55 C 960,15 1200,85 1440,40"
+              d="M0,119.9 C 40,83.9 80,83.9 120,119.9 C 160,83.9 200,83.9 240,119.9 C 280,83.9 320,83.9 360,119.9 C 400,83.9 440,83.9 480,119.9 C 520,83.9 560,83.9 600,119.9 C 640,83.9 680,83.9 720,119.9 C 760,83.9 800,83.9 840,119.9 C 880,83.9 920,83.9 960,119.9 C 1000,83.9 1040,83.9 1080,119.9 C 1120,83.9 1160,83.9 1200,119.9 C 1240,83.9 1280,83.9 1320,119.9 C 1360,83.9 1400,83.9 1440,119.9"
               stroke="#C2AE4C"
               strokeWidth="2"
             />
@@ -133,7 +133,7 @@ export default function ActivitiesSection() {
         {/* Wire SVG (full page width) */}
         <svg
           viewBox="0 0 1400 300"
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[300px] z-10 pointer-events-none"
+          className="absolute -top-[32px] md:-top-[34px] left-1/2 -translate-x-1/2 w-screen h-[300px] z-10 pointer-events-none"
           fill="none"
           preserveAspectRatio="none"
         >
@@ -167,14 +167,12 @@ export default function ActivitiesSection() {
             return (
               <div
                 key={activity.title}
-                className="absolute pointer-events-auto origin-top"
+                className={`absolute pointer-events-auto origin-top ${i === 0 ? '-mt-11' : i === 1 ? '-mt-12' : '-mt-11'}`}
                 style={{
                   left: `${t * 100}%`,
                   // Position top based on the relative height of the SVG
                   top: `${topPercentage}%`,
                   transform: 'translateX(-50%)', // center horizontally
-                  // Pull up slightly to hook directly on the wire
-                  marginTop: '-22px',
                 }}
               >
                 {/* 
@@ -183,7 +181,7 @@ export default function ActivitiesSection() {
                   - sm: scale-[0.95]
                   - md+: scale-110 (10% larger than natural 300x450 size)
                 */}
-                <div className="w-[300px] transform scale-[0.68] sm:scale-[0.78] md:scale-[0.88] origin-top flex justify-center">
+                <div className="w-[300px] transform scale-[0.85] sm:scale-[0.95] md:scale-110 origin-top flex justify-center">
                   <ActivitiesMedallion
                     title={activity.title}
                     subtitle={activity.subtitle}
