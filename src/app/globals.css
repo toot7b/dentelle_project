@@ -16,7 +16,7 @@
 @font-face {
   font-family: "Neulis";
   src: url("/neulis/Neulis-Regular.woff2") format("woff2"),
-       url("/neulis/Neulis-Regular.ttf") format("truetype");
+    url("/neulis/Neulis-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 @font-face {
   font-family: "Neulis";
   src: url("/neulis/Neulis-Medium.woff2") format("woff2"),
-       url("/neulis/Neulis-Medium.ttf") format("truetype");
+    url("/neulis/Neulis-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -34,7 +34,7 @@
 @font-face {
   font-family: "Neulis";
   src: url("/neulis/Neulis-SemiBold.woff2") format("woff2"),
-       url("/neulis/Neulis-SemiBold.ttf") format("truetype");
+    url("/neulis/Neulis-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -43,7 +43,7 @@
 @font-face {
   font-family: "Neulis";
   src: url("/neulis/Neulis-Bold.woff2") format("woff2"),
-       url("/neulis/Neulis-Bold.ttf") format("truetype");
+    url("/neulis/Neulis-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -58,56 +58,26 @@ body {
   font-family: var(--font-satoshi);
 }
 
-@keyframes cloud-drift-a {
-  0%, 100% { transform: translate(0px, 0px); }
-  33% { transform: translate(8px, -4px); }
-  66% { transform: translate(-5px, 3px); }
+@keyframes cloud-drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(14px);
+  }
 }
 
-@keyframes cloud-drift-b {
-  0%, 100% { transform: translate(0px, 0px); }
-  40% { transform: translate(-10px, 5px); }
-  80% { transform: translate(6px, -3px); }
-}
-
-@keyframes cloud-drift-c {
-  0%, 100% { transform: translate(0px, 0px); }
-  50% { transform: translate(12px, -6px); }
-}
-
-@keyframes cloud-drift-d {
-  0%, 100% { transform: translate(0px, 0px); }
-  30% { transform: translate(10px, 2px); }
-  70% { transform: translate(-8px, -5px); }
-}
-
-@keyframes cloud-drift-e {
-  0%, 100% { transform: translate(0px, 0px); }
-  25% { transform: translate(-7px, 4px); }
-  60% { transform: translate(9px, -4px); }
-}
-
-.cloud-drift-a {
-  animation: cloud-drift-a 18s ease-in-out infinite;
-}
-
-.cloud-drift-b {
-  animation: cloud-drift-b 24s ease-in-out infinite;
-}
-
-.cloud-drift-c {
-  animation: cloud-drift-c 14s ease-in-out infinite;
-}
-
-.cloud-drift-d {
-  animation: cloud-drift-d 20s ease-in-out infinite;
-}
-
+.cloud-drift-a,
+.cloud-drift-b,
+.cloud-drift-c,
+.cloud-drift-d,
 .cloud-drift-e {
-  animation: cloud-drift-e 28s ease-in-out infinite;
+  animation: cloud-drift 40s ease-in-out alternate infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .cloud-drift-a,
   .cloud-drift-b,
   .cloud-drift-c,

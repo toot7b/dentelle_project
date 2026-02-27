@@ -27,7 +27,6 @@ export default function ActivitiesSection() {
   const wireRef = useRef<SVGPathElement>(null);
 
   // Parabola/Bezier curve parameters for the wire viewBox is 1400x300
-  // M 0,20 Q x/2,250 x,20
   const WIRE_START_Y = 10;
   const WIRE_CTRL_Y = 195;
   const WIRE_END_Y = 10;
@@ -44,43 +43,81 @@ export default function ActivitiesSection() {
         },
       });
 
-      // 1. Title fade in
-      tl.from(".activities-header", {
-        y: 30,
+      // ── 0. Titre + paragraphe : posent le décor ──────────────────
+      tl.from(".activities-title", {
+        y: 40,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
       }, 0);
 
-      // 2. Wire draws left to right
+      tl.from(".activities-subtitle", {
+        y: 25,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      }, 0.2);
+
+      // ── 0. Sol : monte en même temps ──────────────────────────────
+      const hills = sectionRef.current?.querySelector("[data-hills]");
+      if (hills) {
+        gsap.set(hills, { y: 60, opacity: 0 });
+        tl.to(hills, {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+        }, 0);
+      }
+
+      // ── 1.2. Nuages : apparaissent dans le ciel ───────────────────
+      const clouds = sectionRef.current?.querySelectorAll("[data-cloud]");
+      if (clouds) {
+        clouds.forEach((el) => {
+          gsap.set(el, { opacity: 0, y: 20 });
+        });
+        tl.to(clouds, {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power2.out",
+          stagger: 0.12,
+        }, 1.2);
+      }
+
+      // ── 1.8. Fil de fer : se dessine ──────────────────────────────
       tl.to(wireRef.current, {
         strokeDashoffset: 0,
-        duration: 1.4,
+        duration: 1.8,
         ease: "power2.inOut",
-      }, 0.3);
+      }, 1.8);
 
-      // 3. Medallions drop in
+      // ── 3.0. Médaillons : tombent un par un ───────────────────────
       const medallions = sectionRef.current?.querySelectorAll("[data-medallion]");
       if (medallions) {
-        medallions.forEach((el, i) => {
+        medallions.forEach((el) => {
           gsap.set(el, { opacity: 0, y: -50, rotation: -4, transformOrigin: "50% 10px" });
+        });
+        medallions.forEach((el, i) => {
           tl.to(el, {
             y: 0,
             opacity: 1,
             rotation: 0,
-            duration: 0.8,
+            duration: 0.9,
             ease: "back.out(1.2)",
-          }, 1.4 + i * 0.2);
+          }, 3.0 + i * 0.3);
         });
+      }
 
-        // 4. Idle sway
+      // ── 3.0. Balancement idle des médaillons ──
+      if (medallions) {
         tl.call(() => {
           medallions.forEach((el, i) => {
             gsap.to(el, {
               rotation: 1.5,
               duration: 3.5 + i * 0.4,
               ease: "sine.inOut",
-              transformOrigin: "50% 10px", // Swing from the hook dot
+              transformOrigin: "50% 10px",
               repeat: -1,
               yoyo: true,
             });
@@ -98,19 +135,20 @@ export default function ActivitiesSection() {
     >
       <ActivitiesBackground />
 
-      {/* Section Header Context */}
-      <div className="relative z-20 container mx-auto px-6 md:px-16 mb-10 md:mb-14 max-w-4xl text-center activities-header">
-        <h2 className="font-neulis text-3xl md:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6">
+      {/* Section Header */}
+      <div className="relative z-20 container mx-auto px-6 md:px-16 mb-10 md:mb-14 max-w-4xl text-center">
+        <h2 className="font-neulis text-3xl md:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6 activities-title">
           Nos Ateliers
         </h2>
-        <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto">
+        <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto activities-subtitle">
           Découvrez l&apos;art délicat de la dentelle aux fuseaux. Rejoignez-nous pour apprendre, créer et partager autour de fils entrelacés, du niveau débutant au perfectionnement.
         </p>
       </div>
 
       {/* The Clothesline System */}
       <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
+        {/* Green hills */}
+        <div data-hills className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
           <svg
             viewBox="0 0 1440 120"
             className="block w-full h-[60px] md:h-[80px]"
@@ -130,7 +168,7 @@ export default function ActivitiesSection() {
           <div className="w-full h-[80px] md:h-[100px]" style={{ backgroundColor: "#B2C5A8" }} />
         </div>
 
-        {/* Wire SVG (full page width) */}
+        {/* Wire SVG */}
         <svg
           viewBox="0 0 1400 300"
           className="absolute -top-[32px] md:-top-[34px] left-1/2 -translate-x-1/2 w-screen h-[300px] z-10 pointer-events-none"
@@ -148,20 +186,12 @@ export default function ActivitiesSection() {
           />
         </svg>
 
-        {/* Medallions Container (kept within max width for responsiveness) */}
+        {/* Medallions */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[300px] z-20 pointer-events-none">
           {activities.map((activity, i) => {
-            // Distribute items along the X axis.
-            // Depending on screen size, the items scale visually, so we rely on % positioning
-            // 3 items -> positions at 16%, 50%, 84% to give them breathing room
             const t = 0.18 + (i * 0.32);
-
-            // Calculate relative Y position on the quadratic bezier curve (0 to 1 scale)
             const omitT = 1 - t;
-            // Native Y coordinate strictly in SVG viewBox space (range 20 to 250)
             const svgY = (omitT * omitT * WIRE_START_Y) + (2 * omitT * t * WIRE_CTRL_Y) + (t * t * WIRE_END_Y);
-
-            // Convert SVG viewBox Y to a percentage of the SVG's height (300px)
             const topPercentage = (svgY / 300) * 100;
 
             return (
@@ -170,17 +200,10 @@ export default function ActivitiesSection() {
                 className={`absolute pointer-events-auto origin-top ${i === 0 ? '-mt-11' : i === 1 ? '-mt-12' : '-mt-11'}`}
                 style={{
                   left: `${t * 100}%`,
-                  // Position top based on the relative height of the SVG
                   top: `${topPercentage}%`,
-                  transform: 'translateX(-50%)', // center horizontally
+                  transform: 'translateX(-50%)',
                 }}
               >
-                {/* 
-                  Bumped overall scale:
-                  - Base (mobile): scale-[0.85]
-                  - sm: scale-[0.95]
-                  - md+: scale-110 (10% larger than natural 300x450 size)
-                */}
                 <div className="w-[300px] transform scale-[0.85] sm:scale-[0.95] md:scale-110 origin-top flex justify-center">
                   <ActivitiesMedallion
                     title={activity.title}

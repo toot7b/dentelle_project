@@ -2,125 +2,75 @@
 
 import ActivitiesCloud from "./ActivitiesCloud";
 
-export default function ActivitiesBackground() {
-  const clouds = [
-    {
-      variant: "wisp" as const,
-      className: "cloud-drift-a",
-      style: {
-        top: "6%",
-        left: "6%",
-        transform: "scale(0.55)",
-      },
-    },
-    {
-      variant: "cumulus" as const,
-      className: "cloud-drift-b",
-      style: {
-        top: "8%",
-        right: "6%",
-        transform: "scale(0.6)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-c",
-      style: {
-        top: "14%",
-        left: "2%",
-        transform: "scale(0.72)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-d",
-      style: {
-        top: "14%",
-        right: "2%",
-        transform: "scale(0.72)",
-      },
-    },
-    {
-      variant: "wisp" as const,
-      className: "cloud-drift-e",
-      style: {
-        top: "18%",
-        left: "10%",
-        transform: "scale(0.45)",
-      },
-    },
-    {
-      variant: "wisp" as const,
-      className: "cloud-drift-c",
-      style: {
-        top: "18%",
-        right: "10%",
-        transform: "scale(0.45)",
-      },
-    },
-    {
-      variant: "cumulus" as const,
-      className: "cloud-drift-a",
-      style: {
-        top: "34%",
-        left: "6%",
-        transform: "scale(0.9)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-b",
-      style: {
-        top: "36%",
-        right: "6%",
-        transform: "scale(0.92)",
-      },
-    },
-    {
-      variant: "wisp" as const,
-      className: "cloud-drift-d",
-      style: {
-        top: "46%",
-        left: "50%",
-        transform: "scale(0.6)",
-      },
-    },
-    {
-      variant: "cirrus" as const,
-      className: "cloud-drift-e",
-      style: {
-        top: "54%",
-        left: "10%",
-        transform: "scale(0.95)",
-      },
-    },
-    {
-      variant: "cumulus" as const,
-      className: "cloud-drift-a",
-      style: {
-        top: "56%",
-        right: "10%",
-        transform: "scale(1.05)",
-      },
-    },
-    {
-      variant: "wisp" as const,
-      className: "cloud-drift-b",
-      style: {
-        top: "64%",
-        left: "34%",
-        transform: "scale(0.7)",
-      },
-    },
-  ];
+/**
+ * Ciel naturaliste de la section Activités.
+ *
+ * Principes de composition :
+ * – Asymétrie : jamais deux nuages au même niveau des deux côtés
+ * – Groupements : 2-3 nuages proches créent du volume
+ * – Débordements : certains nuages sont partiellement hors-cadre (left/right négatifs)
+ * – Variété : mélange de tailles pour le réalisme
+ * – Zone texte (0-18% centre) : dégagée
+ */
 
+interface CloudDef {
+  variant: "cirrus" | "cumulus" | "wisp";
+  anim: string;
+  top: string;
+  left?: string;
+  right?: string;
+  scale: number;
+}
+
+const clouds: CloudDef[] = [
+  // Groupe haut-gauche : un gros + un petit à côté → volume
+  { variant: "wisp", anim: "cloud-drift-c", top: "6%", left: "10%", scale: 0.50 },
+
+  // Isolé haut-droite : un seul cirrus allongé, décalé
+  { variant: "cirrus", anim: "cloud-drift-b", top: "3%", right: "2%", scale: 0.60 },
+
+  // Près du titre — sur les côtés, à hauteur du texte
+  { variant: "wisp", anim: "cloud-drift-d", top: "20%", right: "5%", scale: 0.50 },
+  { variant: "cirrus", anim: "cloud-drift-e", top: "16%", left: "15%", scale: 0.55 },
+
+  // Bord gauche sous le texte : un cumulus qui dépasse
+  { variant: "cumulus", anim: "cloud-drift-d", top: "24%", left: "-2%", scale: 0.85 },
+
+  // Groupe centre-droit : entre le fil et le médaillon droit
+  { variant: "wisp", anim: "cloud-drift-e", top: "30%", right: "10%", scale: 0.55 },
+
+  // Isolé centre-gauche bas : un wisp discret
+  { variant: "wisp", anim: "cloud-drift-b", top: "48%", left: "8%", scale: 0.55 },
+
+  // Groupe bas : 2 nuages proches, juste au-dessus de la colline
+  { variant: "cirrus", anim: "cloud-drift-c", top: "55%", left: "25%", scale: 0.65 },
+  { variant: "cumulus", anim: "cloud-drift-d", top: "54%", right: "8%", scale: 0.70 },
+
+  // Petit wisp en bas à droite, presque contre la colline
+  { variant: "wisp", anim: "cloud-drift-e", top: "62%", right: "32%", scale: 0.40 },
+];
+
+export default function ActivitiesBackground() {
   return (
     <div
       className="absolute inset-0 overflow-hidden"
       style={{ backgroundColor: "#FEF5EB" }}
     >
       {clouds.map((cloud, idx) => (
-        <div key={idx} className={`absolute ${cloud.className}`} style={cloud.style}>
+        <div
+          key={idx}
+          data-cloud
+          className={`absolute ${cloud.anim}`}
+          style={{
+            top: cloud.top,
+            ...(cloud.left != null ? { left: cloud.left } : {}),
+            ...(cloud.right != null ? { right: cloud.right } : {}),
+            transform: `scale(${cloud.scale})`,
+            transformOrigin: cloud.right != null && cloud.left == null
+              ? "top right"
+              : "top left",
+          }}
+        >
           <ActivitiesCloud variant={cloud.variant} />
         </div>
       ))}
