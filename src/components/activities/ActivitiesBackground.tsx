@@ -10,9 +10,7 @@ export default function ActivitiesBackground() {
       style: {
         top: "6%",
         left: "6%",
-        opacity: 0.85,
         transform: "scale(0.55)",
-        filter: "blur(0.9px)",
       },
     },
     {
@@ -21,7 +19,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "8%",
         right: "6%",
-        opacity: 0.92,
         transform: "scale(0.6)",
       },
     },
@@ -31,7 +28,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "14%",
         left: "2%",
-        opacity: 0.92,
         transform: "scale(0.72)",
       },
     },
@@ -41,7 +37,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "14%",
         right: "2%",
-        opacity: 0.92,
         transform: "scale(0.72)",
       },
     },
@@ -51,9 +46,7 @@ export default function ActivitiesBackground() {
       style: {
         top: "18%",
         left: "10%",
-        opacity: 0.82,
         transform: "scale(0.45)",
-        filter: "blur(1.1px)",
       },
     },
     {
@@ -62,9 +55,7 @@ export default function ActivitiesBackground() {
       style: {
         top: "18%",
         right: "10%",
-        opacity: 0.82,
         transform: "scale(0.45)",
-        filter: "blur(1.1px)",
       },
     },
     {
@@ -73,7 +64,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "34%",
         left: "6%",
-        opacity: 0.9,
         transform: "scale(0.9)",
       },
     },
@@ -83,7 +73,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "36%",
         right: "6%",
-        opacity: 0.9,
         transform: "scale(0.92)",
       },
     },
@@ -93,9 +82,7 @@ export default function ActivitiesBackground() {
       style: {
         top: "46%",
         left: "50%",
-        opacity: 0.85,
         transform: "scale(0.6)",
-        filter: "blur(0.9px)",
       },
     },
     {
@@ -104,7 +91,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "54%",
         left: "10%",
-        opacity: 0.9,
         transform: "scale(0.95)",
       },
     },
@@ -114,7 +100,6 @@ export default function ActivitiesBackground() {
       style: {
         top: "56%",
         right: "10%",
-        opacity: 0.92,
         transform: "scale(1.05)",
       },
     },
@@ -124,9 +109,7 @@ export default function ActivitiesBackground() {
       style: {
         top: "64%",
         left: "34%",
-        opacity: 0.85,
         transform: "scale(0.7)",
-        filter: "blur(0.9px)",
       },
     },
   ];
