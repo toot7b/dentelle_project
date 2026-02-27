@@ -159,7 +159,7 @@ export default function ActivitiesMedallion({
               </svg>
             </div>
 
-            <h3 className="font-neulis text-2xl font-semibold text-[#4A3B2C] mb-3 uppercase">
+            <h3 className="font-neulis text-2xl font-medium text-[#4A3B2C] mb-3">
               {title}
             </h3>
 
