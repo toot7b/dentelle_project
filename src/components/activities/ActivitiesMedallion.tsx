@@ -145,8 +145,8 @@ export default function ActivitiesMedallion({
             }}
           >
             {/* Fuseau icon */}
-            <div className="mb-4 opacity-80">
-              <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="mb-4 -mt-8 opacity-80">
+              <svg width="42" height="70" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 12,2 Q 15,10 12,15 Q 9,10 12,2 Z" fill="#D4BA7B" />
                 <circle cx="12" cy="1" r="1.5" fill="#8B7355" />
                 <rect x="11" y="15" width="2" height="6" fill="#8B7355" />
