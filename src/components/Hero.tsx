@@ -3,12 +3,16 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import PhotoWall from "./PhotoWall";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<SVGPathElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -56,6 +60,18 @@ export default function Hero() {
       { y: 0, opacity: 1, duration: 0.5 },
       1.2
     );
+
+    // 5. Bottom horizontal line draws in ON SCROLL
+    gsap.to(lineRef.current, {
+      strokeDashoffset: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "bottom 95%", // Start when the bottom of hero is near the bottom of viewport
+        toggleActions: "play none none none",
+      }
+    });
   }, { scope: sectionRef });
 
   return (
@@ -112,6 +128,23 @@ export default function Hero() {
           <PhotoWall />
         </div>
       </div>
+
+      {/* Bottom decorative line */}
+      <svg
+        className="absolute bottom-0 left-0 w-full h-[2px] z-10 pointer-events-none"
+        viewBox="0 0 1440 2"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <path
+          ref={lineRef}
+          d="M 0,1 L 1440,1"
+          stroke="rgba(194, 174, 76, 0.85)"
+          strokeWidth="2"
+          strokeDasharray="1500"
+          strokeDashoffset="1500"
+        />
+      </svg>
     </section>
   );
 }
