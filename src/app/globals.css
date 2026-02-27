@@ -75,6 +75,18 @@ body {
   50% { transform: translate(12px, -6px); }
 }
 
+@keyframes cloud-drift-d {
+  0%, 100% { transform: translate(0px, 0px); }
+  30% { transform: translate(10px, 2px); }
+  70% { transform: translate(-8px, -5px); }
+}
+
+@keyframes cloud-drift-e {
+  0%, 100% { transform: translate(0px, 0px); }
+  25% { transform: translate(-7px, 4px); }
+  60% { transform: translate(9px, -4px); }
+}
+
 .cloud-drift-a {
   animation: cloud-drift-a 18s ease-in-out infinite;
 }
@@ -87,10 +99,20 @@ body {
   animation: cloud-drift-c 14s ease-in-out infinite;
 }
 
+.cloud-drift-d {
+  animation: cloud-drift-d 20s ease-in-out infinite;
+}
+
+.cloud-drift-e {
+  animation: cloud-drift-e 28s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cloud-drift-a,
   .cloud-drift-b,
-  .cloud-drift-c {
+  .cloud-drift-c,
+  .cloud-drift-d,
+  .cloud-drift-e {
     animation: none !important;
   }
 }

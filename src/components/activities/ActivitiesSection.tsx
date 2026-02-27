@@ -28,9 +28,9 @@ export default function ActivitiesSection() {
 
   // Parabola/Bezier curve parameters for the wire viewBox is 1400x300
   // M 0,20 Q x/2,250 x,20
-  const WIRE_START_Y = 20;
-  const WIRE_CTRL_Y = 250;
-  const WIRE_END_Y = 20;
+  const WIRE_START_Y = 10;
+  const WIRE_CTRL_Y = 205;
+  const WIRE_END_Y = 10;
 
   useGSAP(
     () => {
@@ -94,30 +94,49 @@ export default function ActivitiesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative pt-24 md:pt-32 pb-0 overflow-hidden"
     >
       <ActivitiesBackground />
 
       {/* Section Header Context */}
-      <div className="relative z-20 container mx-auto px-6 md:px-16 mb-16 md:mb-24 max-w-4xl text-center activities-header">
+      <div className="relative z-20 container mx-auto px-6 md:px-16 mb-10 md:mb-14 max-w-4xl text-center activities-header">
         <h2 className="font-neulis text-3xl md:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6">
           Nos Ateliers
         </h2>
         <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto">
-          Découvrez l'art délicat de la dentelle aux fuseaux. Rejoignez-nous pour apprendre, créer et partager autour de fils entrelacés, du niveau débutant au perfectionnement.
+          Découvrez l&apos;art délicat de la dentelle aux fuseaux. Rejoignez-nous pour apprendre, créer et partager autour de fils entrelacés, du niveau débutant au perfectionnement.
         </p>
       </div>
 
       {/* The Clothesline System */}
-      <div className="relative w-full max-w-[1400px] mx-auto h-[400px] md:h-[500px]">
-        {/* Wire SVG */}
+      <div className="relative w-full h-[520px] md:h-[620px] -mt-6 md:-mt-10">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
+          <svg
+            viewBox="0 0 1440 120"
+            className="block w-full h-[60px] md:h-[80px]"
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path
+              d="M0,60 C 240,25 480,95 720,55 C 960,15 1200,85 1440,40 L1440,120 L0,120 Z"
+              fill="#B2C5A8"
+            />
+            <path
+              d="M0,60 C 240,25 480,95 720,55 C 960,15 1200,85 1440,40"
+              stroke="#C2AE4C"
+              strokeWidth="2"
+            />
+          </svg>
+          <div className="w-full h-[80px] md:h-[100px]" style={{ backgroundColor: "#B2C5A8" }} />
+        </div>
+
+        {/* Wire SVG (full page width) */}
         <svg
           viewBox="0 0 1400 300"
-          className="absolute inset-x-0 top-0 w-full h-[300px] z-10 pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[300px] z-10 pointer-events-none"
           fill="none"
           preserveAspectRatio="none"
         >
-          {/* Main wire */}
           <path
             ref={wireRef}
             d={`M -50,${WIRE_START_Y} Q 700,${WIRE_CTRL_Y} 1450,${WIRE_END_Y}`}
@@ -129,13 +148,13 @@ export default function ActivitiesSection() {
           />
         </svg>
 
-        {/* Medallions Container */}
-        <div className="absolute inset-x-0 top-0 h-[300px] z-20 pointer-events-none">
+        {/* Medallions Container (kept within max width for responsiveness) */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[300px] z-20 pointer-events-none">
           {activities.map((activity, i) => {
             // Distribute items along the X axis.
             // Depending on screen size, the items scale visually, so we rely on % positioning
             // 3 items -> positions at 16%, 50%, 84% to give them breathing room
-            const t = 0.16 + (i * 0.34);
+            const t = 0.18 + (i * 0.32);
 
             // Calculate relative Y position on the quadratic bezier curve (0 to 1 scale)
             const omitT = 1 - t;
@@ -155,7 +174,7 @@ export default function ActivitiesSection() {
                   top: `${topPercentage}%`,
                   transform: 'translateX(-50%)', // center horizontally
                   // Pull up slightly to hook directly on the wire
-                  marginTop: '-12px',
+                  marginTop: '-22px',
                 }}
               >
                 {/* 
@@ -164,7 +183,7 @@ export default function ActivitiesSection() {
                   - sm: scale-[0.95]
                   - md+: scale-110 (10% larger than natural 300x450 size)
                 */}
-                <div className="w-[300px] transform scale-[0.85] sm:scale-[0.95] md:scale-110 origin-top flex justify-center">
+                <div className="w-[300px] transform scale-[0.68] sm:scale-[0.78] md:scale-[0.88] origin-top flex justify-center">
                   <ActivitiesMedallion
                     title={activity.title}
                     subtitle={activity.subtitle}
