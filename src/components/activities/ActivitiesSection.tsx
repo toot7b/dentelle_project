@@ -6,6 +6,24 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ActivitiesBackground from "./ActivitiesBackground";
 import ActivitiesMedallion from "./ActivitiesMedallion";
+import DandelionHead from "./DandelionHead";
+
+const desktopFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
+  { left: "7%",  bottom: 12, size: 48, rotate: 12 },
+  { left: "11%", bottom: 28, size: 38, rotate: -5 },
+  { left: "34%", bottom: 8,  size: 52, rotate: 7 },
+  { left: "58%", bottom: 22, size: 44, rotate: -14 },
+  { left: "62%", bottom: 6,  size: 36, rotate: 20 },
+  { left: "85%", bottom: 16, size: 50, rotate: -8 },
+];
+
+const mobileFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
+  { left: "8%",  bottom: 24, size: 30, rotate: 10 },
+  { left: "26%", bottom: 8,  size: 26, rotate: -12 },
+  { left: "44%", bottom: 38, size: 28, rotate: -8 },
+  { left: "62%", bottom: 6,  size: 32, rotate: 15 },
+  { left: "78%", bottom: 28, size: 30, rotate: 18 },
+];
 
 const activities = [
   {
@@ -118,6 +136,20 @@ export default function ActivitiesSection() {
         });
       }
 
+      // ── Fleurs desktop : pop une par une en dernier ─────────────
+      if (!mobile) {
+        const flowers = sectionRef.current?.querySelectorAll("[data-flower]");
+        if (flowers) {
+          gsap.set(flowers, { scale: 0, transformOrigin: "50% 100%" });
+          tl.to(flowers, {
+            scale: 1,
+            duration: 0.25,
+            ease: "back.out(2.5)",
+            stagger: 0.07,
+          }, 4.3);
+        }
+      }
+
       // ── Balancement idle (desktop) / scroll parallax (mobile) ──
       if (medallions) {
         if (mobile) {
@@ -196,6 +228,15 @@ export default function ActivitiesSection() {
             />
           </svg>
           <div className="w-full h-[80px] md:h-[100px]" style={{ backgroundColor: "#B2C5A8" }} />
+        </div>
+
+        {/* Dandelions — overlay on the green area, separate from hills */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-[100px] z-[1] pointer-events-none">
+          {desktopFlowers.map((f, i) => (
+            <div key={i} data-flower className="absolute" style={{ left: f.left, bottom: f.bottom }}>
+              <DandelionHead size={f.size} rotate={f.rotate} />
+            </div>
+          ))}
         </div>
 
         {/* Wire SVG */}
@@ -292,7 +333,13 @@ export default function ActivitiesSection() {
               strokeWidth="1.5"
             />
           </svg>
-          <div className="w-full h-[50px]" style={{ backgroundColor: "#B2C5A8" }} />
+          <div className="relative w-full h-[90px] overflow-visible" style={{ backgroundColor: "#B2C5A8" }}>
+            {mobileFlowers.map((f, i) => (
+              <div key={i} className="absolute pointer-events-none" style={{ left: f.left, bottom: f.bottom }}>
+                <DandelionHead size={f.size} rotate={f.rotate} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
