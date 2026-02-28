@@ -193,7 +193,7 @@ export default function ActivitiesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-24 md:pt-32 pb-0 overflow-hidden"
+      className="relative z-10 pt-24 md:pt-32 pb-0 overflow-hidden"
     >
       <ActivitiesBackground />
 
