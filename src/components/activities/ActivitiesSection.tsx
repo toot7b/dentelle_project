@@ -78,6 +78,24 @@ export default function ActivitiesSection() {
         ease: "power3.out",
       }, mobile ? 0.1 : 0.2);
 
+      // ── 0. Sol et Galerie : montent en même temps ──────────────────
+      const hills = sectionRef.current?.querySelectorAll("[data-hills]");
+      const galerie = document.getElementById("galerie-section");
+
+      const groundElements: Element[] = [];
+      if (hills) hills.forEach(h => groundElements.push(h));
+      if (galerie) groundElements.push(galerie);
+
+      if (groundElements.length > 0) {
+        gsap.set(groundElements, { y: mobile ? 30 : 60, opacity: 0 });
+        tl.to(groundElements, {
+          y: 0,
+          opacity: 1,
+          duration: mobile ? 0.8 : 1.2,
+          ease: "power2.out",
+        }, 0);
+      }
+
       // ── Nuages : apparaissent dans le ciel ───────────────────
       const clouds = sectionRef.current?.querySelectorAll("[data-cloud]");
       if (clouds) {
@@ -304,7 +322,7 @@ export default function ActivitiesSection() {
           </div>
         ))}
         {/* Mobile green footer — 4 wider waves */}
-        <div className="w-screen relative mt-[120px]" style={{ marginLeft: "calc(-50vw + 50%)" }}>
+        <div data-hills className="w-screen relative mt-[120px]" style={{ marginLeft: "calc(-50vw + 50%)" }}>
           <svg
             viewBox="0 0 400 60"
             className="block w-full h-[40px]"

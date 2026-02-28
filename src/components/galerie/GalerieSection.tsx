@@ -40,6 +40,7 @@ const mobileFlowers: { left: string; top: string; size: number; rotate: number }
 export default function GalerieSection() {
   return (
     <section
+      id="galerie-section"
       className="relative w-full min-h-[70vh] overflow-hidden
                  md:-mt-[180px] md:pt-[200px]"
       style={{ backgroundColor: "#B2C5A8" }}
