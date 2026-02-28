@@ -87,10 +87,9 @@ export default function ActivitiesSection() {
       if (galerie) groundElements.push(galerie);
 
       if (groundElements.length > 0) {
-        gsap.set(groundElements, { y: mobile ? 30 : 60, opacity: 0 });
+        gsap.set(groundElements, { y: mobile ? 30 : 60 });
         tl.to(groundElements, {
           y: 0,
-          opacity: 1,
           duration: mobile ? 0.8 : 1.2,
           ease: "power2.out",
         }, 0);
@@ -199,7 +198,7 @@ export default function ActivitiesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 pt-24 md:pt-32 pb-0 overflow-hidden"
+      className="relative z-10 pt-24 md:pt-32 pb-0"
     >
       <ActivitiesBackground />
 
@@ -216,7 +215,7 @@ export default function ActivitiesSection() {
       {/* Desktop: The Clothesline System */}
       <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14 hidden md:block">
         {/* Green hills */}
-        <div data-hills className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none">
+        <div data-hills className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none pb-[10px] -mb-[10px]">
           <svg
             viewBox="0 0 1440 120"
             className="block w-full h-[60px] md:h-[80px]"
@@ -322,10 +321,12 @@ export default function ActivitiesSection() {
           </div>
         ))}
         {/* Mobile green footer — 4 wider waves */}
-        <div data-hills className="w-screen relative mt-[120px]" style={{ marginLeft: "calc(-50vw + 50%)" }}>
+        <div data-hills className="w-screen relative mt-[120px] pt-[40px] pb-[10px] -mb-[10px]" style={{ marginLeft: "calc(-50vw + 50%)", backgroundColor: "#B2C5A8" }}>
+          {/* SVG is now absolutely positioned at the top of this green container to bleed upward */}
           <svg
             viewBox="0 0 400 60"
-            className="block w-full h-[40px]"
+            className="absolute left-0 w-full h-[40px]"
+            style={{ top: "-39px" }} /* Overlaps by 1px into the container */
             preserveAspectRatio="none"
             fill="none"
           >
@@ -339,7 +340,7 @@ export default function ActivitiesSection() {
               strokeWidth="1.5"
             />
           </svg>
-          <div className="relative w-full h-[91px] overflow-visible -mt-[1px]" style={{ backgroundColor: "#B2C5A8" }}>
+          <div className="relative w-full h-[52px] overflow-visible">
             {mobileFlowers.map((f, i) => (
               <div key={i} className="absolute pointer-events-none" style={{ left: f.left, bottom: f.bottom }}>
                 <DandelionHead size={f.size} rotate={f.rotate} />
