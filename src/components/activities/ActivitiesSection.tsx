@@ -9,19 +9,19 @@ import ActivitiesMedallion from "./ActivitiesMedallion";
 import DandelionHead from "./DandelionHead";
 
 const desktopFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
-  { left: "7%",  bottom: 12, size: 48, rotate: 12 },
+  { left: "7%", bottom: 12, size: 48, rotate: 12 },
   { left: "11%", bottom: 28, size: 38, rotate: -5 },
-  { left: "34%", bottom: 8,  size: 52, rotate: 7 },
+  { left: "34%", bottom: 8, size: 52, rotate: 7 },
   { left: "58%", bottom: 22, size: 44, rotate: -14 },
-  { left: "62%", bottom: 6,  size: 36, rotate: 20 },
+  { left: "62%", bottom: 6, size: 36, rotate: 20 },
   { left: "85%", bottom: 16, size: 50, rotate: -8 },
 ];
 
 const mobileFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
-  { left: "8%",  bottom: 24, size: 30, rotate: 10 },
-  { left: "26%", bottom: 8,  size: 26, rotate: -12 },
+  { left: "8%", bottom: 24, size: 30, rotate: 10 },
+  { left: "26%", bottom: 8, size: 26, rotate: -12 },
   { left: "44%", bottom: 38, size: 28, rotate: -8 },
-  { left: "62%", bottom: 6,  size: 32, rotate: 15 },
+  { left: "62%", bottom: 6, size: 32, rotate: 15 },
   { left: "78%", bottom: 28, size: 30, rotate: 18 },
 ];
 
@@ -77,18 +77,6 @@ export default function ActivitiesSection() {
         duration: mobile ? 0.6 : 1,
         ease: "power3.out",
       }, mobile ? 0.1 : 0.2);
-
-      // ── 0. Sol : monte en même temps ──────────────────────────────
-      const hills = sectionRef.current?.querySelector("[data-hills]");
-      if (hills) {
-        gsap.set(hills, { y: mobile ? 30 : 60, opacity: 0 });
-        tl.to(hills, {
-          y: 0,
-          opacity: 1,
-          duration: mobile ? 0.8 : 1.2,
-          ease: "power2.out",
-        }, 0);
-      }
 
       // ── Nuages : apparaissent dans le ciel ───────────────────
       const clouds = sectionRef.current?.querySelectorAll("[data-cloud]");
@@ -227,7 +215,7 @@ export default function ActivitiesSection() {
               strokeWidth="2"
             />
           </svg>
-          <div className="w-full h-[80px] md:h-[100px]" style={{ backgroundColor: "#B2C5A8" }} />
+          <div className="w-full h-[81px] md:h-[101px] -mt-[1px]" style={{ backgroundColor: "#B2C5A8" }} />
         </div>
 
         {/* Dandelions — overlay on the green area, separate from hills */}
@@ -333,7 +321,7 @@ export default function ActivitiesSection() {
               strokeWidth="1.5"
             />
           </svg>
-          <div className="relative w-full h-[90px] overflow-visible" style={{ backgroundColor: "#B2C5A8" }}>
+          <div className="relative w-full h-[91px] overflow-visible -mt-[1px]" style={{ backgroundColor: "#B2C5A8" }}>
             {mobileFlowers.map((f, i) => (
               <div key={i} className="absolute pointer-events-none" style={{ left: f.left, bottom: f.bottom }}>
                 <DandelionHead size={f.size} rotate={f.rotate} />

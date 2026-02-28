@@ -5,11 +5,11 @@ import DandelionHead from "../activities/DandelionHead";
 // Perspective field : flowers get bigger toward the bottom (closer to viewer)
 const flowers: { left: string; top: string; size: number; rotate: number }[] = [
   // Far background — small
-  { left: "3%",  top: "4%",  size: 20, rotate: 5 },
-  { left: "22%", top: "7%",  size: 16, rotate: -18 },
-  { left: "47%", top: "3%",  size: 22, rotate: 30 },
-  { left: "70%", top: "6%",  size: 18, rotate: -8 },
-  { left: "90%", top: "4%",  size: 20, rotate: 22 },
+  { left: "3%", top: "4%", size: 20, rotate: 5 },
+  { left: "22%", top: "7%", size: 16, rotate: -18 },
+  { left: "47%", top: "3%", size: 22, rotate: 30 },
+  { left: "70%", top: "6%", size: 18, rotate: -8 },
+  { left: "90%", top: "4%", size: 20, rotate: 22 },
 
   // Mid distance — medium
   { left: "11%", top: "32%", size: 34, rotate: -10 },
@@ -18,7 +18,7 @@ const flowers: { left: string; top: string; size: number; rotate: number }[] = [
   { left: "83%", top: "30%", size: 32, rotate: 12 },
 
   // Foreground — large
-  { left: "1%",  top: "65%", size: 56, rotate: 8 },
+  { left: "1%", top: "65%", size: 56, rotate: 8 },
   { left: "19%", top: "70%", size: 48, rotate: -14 },
   { left: "40%", top: "62%", size: 62, rotate: 20 },
   { left: "62%", top: "68%", size: 52, rotate: -6 },
@@ -27,10 +27,10 @@ const flowers: { left: string; top: string; size: number; rotate: number }[] = [
 ];
 
 const mobileFlowers: { left: string; top: string; size: number; rotate: number }[] = [
-  { left: "5%",  top: "5%",  size: 14, rotate: 10 },
-  { left: "75%", top: "3%",  size: 12, rotate: -15 },
+  { left: "5%", top: "5%", size: 14, rotate: 10 },
+  { left: "75%", top: "3%", size: 12, rotate: -15 },
   { left: "40%", top: "18%", size: 18, rotate: 25 },
-  { left: "8%",  top: "50%", size: 28, rotate: -8 },
+  { left: "8%", top: "50%", size: 28, rotate: -8 },
   { left: "60%", top: "55%", size: 24, rotate: 12 },
   { left: "85%", top: "48%", size: 22, rotate: -20 },
   { left: "25%", top: "72%", size: 32, rotate: 6 },
@@ -70,9 +70,16 @@ export default function GalerieSection() {
         ))}
       </div>
 
-      {/* Content placeholder */}
-      <div className="relative z-10 flex items-center justify-center min-h-[50vh]">
-        <p className="font-neulis text-2xl text-[#2C1A0E] opacity-30">— contenu à venir —</p>
+      {/* Text Content */}
+      <div className="relative z-10 container mx-auto px-6 md:px-16 pt-16 md:pt-24 text-center max-w-4xl">
+        <h2 className="font-neulis text-4xl md:text-6xl font-semibold text-white mb-6 md:mb-8">
+          Héritage et Création
+        </h2>
+        <p className="font-satoshi text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
       </div>
     </section>
   );
