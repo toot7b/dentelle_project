@@ -140,7 +140,7 @@ export default function ActivitiesSection() {
       if (!mobile) {
         const flowers = sectionRef.current?.querySelectorAll("[data-flower]");
         if (flowers) {
-          gsap.set(flowers, { scale: 0, transformOrigin: "50% 100%" });
+          gsap.set(flowers, { scale: 0, transformOrigin: "50% 50%" });
           tl.to(flowers, {
             scale: 1,
             duration: 0.25,
