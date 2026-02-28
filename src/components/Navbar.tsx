@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const leftLinks = [
   { label: "L'Atelier", href: "#atelier" },
@@ -14,19 +15,57 @@ const leftLinks = [
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial load animation
     gsap.fromTo(navRef.current,
       { y: -30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
     );
+
+    // Color adaptation based on scroll
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      ScrollTrigger.create({
+        trigger: "#galerie-section",
+        start: "top+=70 60px", // Trigger earlier than 130
+        end: "bottom 60px",
+        onEnter: () => setIsLightMode(true),
+        onLeave: () => setIsLightMode(false),
+        onEnterBack: () => setIsLightMode(true),
+        onLeaveBack: () => setIsLightMode(false),
+      });
+    });
+
+    mm.add("(max-width: 767px)", () => {
+      ScrollTrigger.create({
+        trigger: "#galerie-section",
+        start: "top-=100 60px", // Trigger earlier because green hills actually start in the previous section on mobile
+        end: "bottom 60px",
+        onEnter: () => setIsLightMode(true),
+        onLeave: () => setIsLightMode(false),
+        onEnterBack: () => setIsLightMode(true),
+        onLeaveBack: () => setIsLightMode(false),
+      });
+    });
+
+    return () => mm.revert();
   });
 
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-background opacity-0"
-      style={{ borderBottom: "1px solid rgba(194, 174, 76, 0.5)" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 opacity-0 ${isLightMode ? "bg-[#B2C5A8]" : "bg-background"
+        }`}
+      style={{
+        borderBottom: isLightMode
+          ? "1px solid rgba(255, 255, 255, 0.25)"
+          : "1px solid rgba(194, 174, 76, 0.5)",
+      }}
     >
       {/* Desktop layout */}
       <div className="hidden lg:grid px-8 py-4 grid-cols-3 items-center">
@@ -36,7 +75,10 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-satoshi text-sm font-medium text-text-body relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-accent-gold after:transition-all after:duration-300 hover:text-text-primary hover:after:w-full transition-colors duration-200"
+                className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
+                  ? "text-white after:bg-white hover:text-white"
+                  : "text-text-body after:bg-accent-gold hover:text-text-primary"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -46,16 +88,23 @@ export default function Navbar() {
 
         {/* Center — Logo */}
         <div className="group flex items-center justify-center gap-3">
-          <span className="text-accent-gold text-xs transition-transform duration-300 group-hover:rotate-90">
+          <span
+            className={`text-xs transition-colors duration-300 group-hover:rotate-90 ${isLightMode ? "text-white" : "text-accent-gold"
+              }`}
+          >
             ✦
           </span>
           <Link
             href="/"
-            className="font-neulis text-2xl font-semibold text-text-primary tracking-wide"
+            className={`font-neulis text-2xl font-semibold tracking-wide transition-colors duration-300 ${isLightMode ? "text-white" : "text-text-primary"
+              }`}
           >
             Les Fuseaux Asseventois
           </Link>
-          <span className="text-accent-gold text-xs transition-transform duration-300 group-hover:-rotate-90">
+          <span
+            className={`text-xs transition-colors duration-300 group-hover:-rotate-90 ${isLightMode ? "text-white" : "text-accent-gold"
+              }`}
+          >
             ✦
           </span>
         </div>
@@ -65,7 +114,10 @@ export default function Navbar() {
           <li>
             <Link
               href="#contact"
-              className="font-satoshi text-sm font-medium text-text-body relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-accent-gold after:transition-all after:duration-300 hover:text-text-primary hover:after:w-full transition-colors duration-200"
+              className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
+                ? "text-white after:bg-white hover:text-white"
+                : "text-text-body after:bg-accent-gold hover:text-text-primary"
+                }`}
             >
               Contact
             </Link>
@@ -73,7 +125,10 @@ export default function Navbar() {
           <li>
             <Link
               href="#rejoindre"
-              className="font-satoshi text-sm font-medium px-5 py-2 bg-text-primary text-background rounded-full hover:bg-text-body transition-colors duration-200"
+              className={`font-satoshi text-sm font-medium px-5 py-2 rounded-full transition-colors duration-300 ${isLightMode
+                ? "bg-white text-[#B2C5A8] hover:bg-white/90"
+                : "bg-text-primary text-background hover:bg-text-body"
+                }`}
             >
               Nous rejoindre
             </Link>
@@ -85,7 +140,8 @@ export default function Navbar() {
       <div className="lg:hidden flex items-center justify-between px-5 py-3">
         <Link
           href="/"
-          className="font-neulis text-lg font-semibold text-text-primary tracking-wide"
+          className={`font-neulis text-lg font-semibold tracking-wide transition-colors duration-300 ${isLightMode ? "text-white" : "text-text-primary"
+            }`}
         >
           Les Fuseaux Asseventois
         </Link>
@@ -94,22 +150,39 @@ export default function Navbar() {
           className="flex flex-col gap-[5px] p-3 -mr-1"
           aria-label="Menu"
         >
-          <span className={`block w-5 h-[2px] bg-text-primary transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`block w-5 h-[2px] bg-text-primary transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-[2px] bg-text-primary transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          <span
+            className={`block w-5 h-[2px] transition-all duration-300 ${isLightMode ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`}
+          />
+          <span
+            className={`block w-5 h-[2px] transition-all duration-300 ${isLightMode ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block w-5 h-[2px] transition-all duration-300 ${isLightMode ? "bg-white" : "bg-text-primary"
+              } ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+          />
         </button>
       </div>
 
       {/* Mobile menu dropdown */}
       {menuOpen && (
-        <div className="lg:hidden border-t border-accent-gold/30 bg-background px-5 pb-5 pt-3">
+        <div
+          className={`lg:hidden border-t px-5 pb-5 pt-3 transition-colors duration-300 ${isLightMode
+            ? "bg-[#B2C5A8] border-white/20"
+            : "bg-background border-accent-gold/30"
+            }`}
+        >
           <ul className="flex flex-col gap-4">
             {leftLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-satoshi text-base font-medium text-text-body hover:text-text-primary transition-colors"
+                  className={`font-satoshi text-base font-medium transition-colors ${isLightMode
+                    ? "text-white hover:text-white"
+                    : "text-text-body hover:text-text-primary"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -119,7 +192,10 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="font-satoshi text-base font-medium text-text-body hover:text-text-primary transition-colors"
+                className={`font-satoshi text-base font-medium transition-colors ${isLightMode
+                  ? "text-white hover:text-white"
+                  : "text-text-body hover:text-text-primary"
+                  }`}
               >
                 Contact
               </Link>
@@ -128,7 +204,10 @@ export default function Navbar() {
               <Link
                 href="#rejoindre"
                 onClick={() => setMenuOpen(false)}
-                className="font-satoshi text-sm font-medium px-5 py-2.5 bg-text-primary text-background rounded-full hover:bg-text-body transition-colors inline-block"
+                className={`font-satoshi text-sm font-medium px-5 py-2.5 rounded-full inline-block transition-colors ${isLightMode
+                  ? "bg-white text-[#B2C5A8] hover:bg-white/90"
+                  : "bg-text-primary text-background hover:bg-text-body"
+                  }`}
               >
                 Nous rejoindre
               </Link>

@@ -95,7 +95,7 @@ export default function GalerieSection() {
         <h2 className="font-neulis text-4xl md:text-6xl font-semibold text-white mb-6 md:mb-8">
           Héritage et Création
         </h2>
-        <p className="font-satoshi text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
+        <p className="font-satoshi text-lg md:text-xl text-white leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
           ad minim veniam, quis nostrud exercitation ullamco laboris.
