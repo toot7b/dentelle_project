@@ -60,8 +60,7 @@ export default function GalerieSection() {
   return (
     <section
       id="galerie-section"
-      className="relative w-full min-h-[150vh] overflow-hidden
-                 -mt-1 pt-1 md:-mt-[180px] md:pt-[200px]"
+      className="relative w-full min-h-[150vh] overflow-hidden -mt-1 pt-1 md:-mt-[180px] md:pt-[200px]"
       style={{ backgroundColor: "#B2C5A8" }}
     >
       {/* Flowers — desktop */}

@@ -9,12 +9,12 @@ import ActivitiesMedallion from "./ActivitiesMedallion";
 import DandelionHead from "./DandelionHead";
 
 const desktopFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
-  { left: "7%", bottom: 12, size: 48, rotate: 12 },
-  { left: "11%", bottom: 28, size: 38, rotate: -5 },
-  { left: "34%", bottom: 8, size: 52, rotate: 7 },
-  { left: "58%", bottom: 22, size: 44, rotate: -14 },
-  { left: "62%", bottom: 6, size: 36, rotate: 20 },
-  { left: "85%", bottom: 16, size: 50, rotate: -8 },
+  { left: "7%", bottom: 27, size: 48, rotate: 12 },
+  { left: "11%", bottom: 43, size: 38, rotate: -5 },
+  { left: "34%", bottom: 23, size: 52, rotate: 7 },
+  { left: "58%", bottom: 37, size: 44, rotate: -14 },
+  { left: "62%", bottom: 21, size: 36, rotate: 20 },
+  { left: "85%", bottom: 31, size: 50, rotate: -8 },
 ];
 
 const mobileFlowers: { left: string; bottom: number; size: number; rotate: number }[] = [
@@ -213,7 +213,7 @@ export default function ActivitiesSection() {
       </div>
 
       {/* Desktop: The Clothesline System */}
-      <div className="relative w-full h-[520px] md:h-[620px] -mt-10 md:-mt-14 hidden md:block">
+      <div className="relative w-full h-[520px] md:h-[650px] -mt-10 md:-mt-14 hidden md:block">
         {/* Green hills */}
         <div data-hills className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen z-0 pointer-events-none pb-[10px] -mb-[10px]">
           <svg
