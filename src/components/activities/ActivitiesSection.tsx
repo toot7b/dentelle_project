@@ -78,17 +78,12 @@ export default function ActivitiesSection() {
         ease: "power3.out",
       }, mobile ? 0.1 : 0.2);
 
-      // ── 0. Sol et Galerie : montent en même temps ──────────────────
+      // ── 0. Sol : monte avec le reste ──────────────────
       const hills = sectionRef.current?.querySelectorAll("[data-hills]");
-      const galerie = document.getElementById("galerie-section");
 
-      const groundElements: Element[] = [];
-      if (hills) hills.forEach(h => groundElements.push(h));
-      if (galerie) groundElements.push(galerie);
-
-      if (groundElements.length > 0) {
-        gsap.set(groundElements, { y: mobile ? 30 : 60 });
-        tl.to(groundElements, {
+      if (hills && hills.length > 0) {
+        gsap.set(hills, { y: mobile ? 30 : 60 });
+        tl.to(hills, {
           y: 0,
           duration: mobile ? 0.8 : 1.2,
           ease: "power2.out",

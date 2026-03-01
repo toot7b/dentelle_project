@@ -1,5 +1,9 @@
 "use client";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DandelionHead from "../activities/DandelionHead";
 import FlyingPhoto from "./FlyingPhoto";
 
@@ -81,8 +85,42 @@ const mobileFlowers: { left: string; top: string; size: number; rotate: number }
 ];
 
 export default function GalerieSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const photos = sectionRef.current?.querySelectorAll("[data-photo]");
+      if (!photos) return;
+
+      photos.forEach((photo, i) => {
+        const randomRot = (i % 2 === 0 ? -1 : 1) * (8 + Math.random() * 6);
+        gsap.set(photo, { y: -120, opacity: 0, scale: 0.7, rotation: randomRot });
+        gsap.to(photo, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 1,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: photo,
+            start: "top 50%",
+            once: true,
+          },
+          onComplete() {
+            gsap.set(photo, { clearProps: "all" });
+          },
+        });
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="galerie-section"
       className="relative w-full min-h-[150vh] overflow-hidden -mt-1 pt-1 md:-mt-[180px] md:pt-[200px]"
       style={{ backgroundColor: "#B2C5A8" }}
@@ -142,14 +180,15 @@ export default function GalerieSection() {
             { rotate: -5, caption: "journées d'été" },
             { rotate: 3, caption: "exposition 2026" },
           ].map((photo, i) => (
-            <FlyingPhoto
-              key={i}
-              src=""
-              alt={`Photo ${i + 1}`}
-              caption={photo.caption}
-              rotate={photo.rotate}
-              className="relative w-max"
-            />
+            <div key={i} data-photo className="w-full flex justify-center">
+              <FlyingPhoto
+                src=""
+                alt={`Photo ${i + 1}`}
+                caption={photo.caption}
+                rotate={photo.rotate}
+                className="relative w-max"
+              />
+            </div>
           ))}
         </div>
       </div>
