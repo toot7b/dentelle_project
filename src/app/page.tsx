@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { ActivitiesSection } from "@/components/activities";
 import GalerieSection from "@/components/galerie/GalerieSection";
-import CoursSection from "@/components/cours/CoursSection";
+import FaqSection from "@/components/faq/FaqSection";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <ActivitiesSection />
       <GalerieSection />
-      <CoursSection />
+      <FaqSection />
     </main>
   );
 }

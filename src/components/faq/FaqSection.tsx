@@ -1,7 +1,7 @@
-export default function CoursSection() {
+export default function FaqSection() {
   return (
     <section
-      id="cours-section"
+      id="faq-section"
       className="relative w-full min-h-screen"
       style={{ backgroundColor: "#FEF5EB" }}
     />

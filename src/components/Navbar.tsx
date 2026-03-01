@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const leftLinks = [
   { label: "L'Atelier", href: "#atelier" },
   { label: "Galerie", href: "#galerie" },
-  { label: "Cours", href: "#cours" },
+  { label: "FAQ", href: "#faq-section" },
 ];
 
 export default function Navbar() {
