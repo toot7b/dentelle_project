@@ -1,59 +1,83 @@
 "use client";
 
 import DandelionHead from "../activities/DandelionHead";
+import FlyingPhoto from "./FlyingPhoto";
 
 // Perspective field : flowers get bigger toward the bottom (closer to viewer)
 const flowers: { left: string; top: string; size: number; rotate: number }[] = [
-  // Far background — small (top of the section)
-  { left: "47%", top: "5%", size: 30, rotate: 30 },
-  { left: "70%", top: "10%", size: 26, rotate: -8 },
-  { left: "90%", top: "7%", size: 28, rotate: 22 },
+  // Top (Intro Text Area)
+  { left: "70%", top: "7%", size: 26, rotate: -8 },
+  { left: "90%", top: "4%", size: 28, rotate: 22 },
+  { left: "12%", top: "8%", size: 25, rotate: 12 },
+  { left: "25%", top: "9%", size: 32, rotate: -15 },
+  { left: "8%", top: "14%", size: 45, rotate: 8 },
+  { left: "85%", top: "12%", size: 38, rotate: 16 },
+  { left: "95%", top: "16%", size: 42, rotate: -22 },
 
-  // Mid-upper (around the text)
-  { left: "1%", top: "30%", size: 58, rotate: 8 },
-  { left: "19%", top: "35%", size: 52, rotate: -14 },
-  { left: "80%", top: "32%", size: 62, rotate: 16 },
-  { left: "97%", top: "36%", size: 48, rotate: -22 },
+  // Upper Grid Area
+  { left: "4%", top: "25%", size: 55, rotate: -5 },
+  { left: "22%", top: "22%", size: 48, rotate: 14 },
+  { left: "45%", top: "28%", size: 42, rotate: -18 },
+  { left: "68%", top: "24%", size: 50, rotate: 25 },
+  { left: "88%", top: "29%", size: 58, rotate: -12 },
+  { left: "98%", top: "32%", size: 46, rotate: 10 },
 
-  // Mid-lower area
-  { left: "12%", top: "55%", size: 45, rotate: 12 },
-  { left: "38%", top: "60%", size: 40, rotate: -8 },
-  { left: "65%", top: "50%", size: 50, rotate: 22 },
-  { left: "88%", top: "58%", size: 38, rotate: -15 },
+  // Mid Grid Area
+  { left: "8%", top: "42%", size: 62, rotate: 15 },
+  { left: "32%", top: "38%", size: 55, rotate: -20 },
+  { left: "55%", top: "45%", size: 48, rotate: 8 },
+  { left: "78%", top: "41%", size: 65, rotate: -15 },
+  { left: "92%", top: "48%", size: 52, rotate: 22 },
+  { left: "15%", top: "55%", size: 58, rotate: -8 },
 
-  // Bottom area
-  { left: "5%", top: "75%", size: 65, rotate: -5 },
-  { left: "28%", top: "85%", size: 70, rotate: 18 },
-  { left: "55%", top: "80%", size: 60, rotate: -20 },
-  { left: "78%", top: "90%", size: 75, rotate: 10 },
-  { left: "95%", top: "85%", size: 55, rotate: 25 },
+  // Lower Grid Area
+  { left: "2%", top: "62%", size: 70, rotate: 12 },
+  { left: "28%", top: "68%", size: 62, rotate: -25 },
+  { left: "48%", top: "65%", size: 58, rotate: 18 },
+  { left: "65%", top: "72%", size: 75, rotate: -10 },
+  { left: "85%", top: "66%", size: 60, rotate: 15 },
+  { left: "96%", top: "75%", size: 68, rotate: -22 },
+
+  // Bottom Area (End of Grid)
+  { left: "6%", top: "85%", size: 85, rotate: 5 },
+  { left: "22%", top: "92%", size: 78, rotate: -18 },
+  { left: "42%", top: "88%", size: 72, rotate: 12 },
+  { left: "58%", top: "95%", size: 80, rotate: -25 },
+  { left: "75%", top: "86%", size: 88, rotate: 20 },
+  { left: "92%", top: "94%", size: 82, rotate: -15 },
 ];
 
 const mobileFlowers: { left: string; top: string; size: number; rotate: number }[] = [
-  // Top (above and beside text)
-  { left: "5%", top: "10%", size: 26, rotate: 10 },
+  // Top
+  { left: "25%", top: "9%", size: 30, rotate: 22 },
+  { left: "70%", top: "12%", size: 25, rotate: -8 },
 
-  // Just below text
-  { left: "15%", top: "28%", size: 35, rotate: 12 },
-  { left: "85%", top: "32%", size: 40, rotate: -8 },
-  { left: "35%", top: "38%", size: 28, rotate: 25 },
+  // Upper Mid
+  { left: "12%", top: "22%", size: 38, rotate: 15 },
+  { left: "82%", top: "25%", size: 35, rotate: -12 },
+  { left: "45%", top: "18%", size: 42, rotate: 8 },
+  { left: "5%", top: "32%", size: 40, rotate: -20 },
+  { left: "92%", top: "35%", size: 38, rotate: 18 },
 
   // Mid
-  { left: "25%", top: "45%", size: 48, rotate: 6 },
-  { left: "72%", top: "50%", size: 44, rotate: -14 },
-  { left: "10%", top: "55%", size: 30, rotate: 20 },
+  { left: "68%", top: "42%", size: 45, rotate: 14 },
+  { left: "8%", top: "52%", size: 52, rotate: 25 },
+  { left: "88%", top: "55%", size: 50, rotate: -15 },
+  { left: "45%", top: "50%", size: 55, rotate: 12 },
 
-  // Mid-low
-  { left: "15%", top: "65%", size: 35, rotate: 15 },
-  { left: "85%", top: "70%", size: 32, rotate: -20 },
-  { left: "45%", top: "75%", size: 28, rotate: -5 },
+  // Lower Mid
+  { left: "15%", top: "65%", size: 58, rotate: -22 },
+  { left: "75%", top: "68%", size: 52, rotate: 18 },
+  { left: "5%", top: "75%", size: 62, rotate: 10 },
+  { left: "90%", top: "78%", size: 58, rotate: -12 },
+  { left: "40%", top: "72%", size: 60, rotate: -5 },
 
   // Bottom
-  { left: "45%", top: "85%", size: 40, rotate: 8 },
-  { left: "10%", top: "90%", size: 45, rotate: -12 },
-  { left: "75%", top: "95%", size: 48, rotate: 22 },
-  { left: "30%", top: "97%", size: 38, rotate: -18 },
-  { left: "85%", top: "88%", size: 25, rotate: 12 },
+  { left: "25%", top: "85%", size: 68, rotate: 15 },
+  { left: "65%", top: "88%", size: 65, rotate: -20 },
+  { left: "8%", top: "95%", size: 75, rotate: -8 },
+  { left: "85%", top: "94%", size: 72, rotate: 22 },
+  { left: "48%", top: "92%", size: 70, rotate: 12 },
 ];
 
 export default function GalerieSection() {
@@ -99,6 +123,35 @@ export default function GalerieSection() {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
           ad minim veniam, quis nostrud exercitation ullamco laboris.
         </p>
+      </div>
+
+      {/* Grid of Scattered Photos */}
+      <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 md:gap-y-32 gap-x-8 md:gap-x-12 place-items-center">
+          {[
+            { rotate: -4, caption: "croquis initial" },
+            { rotate: 3, caption: "fils de lin" },
+            { rotate: -2, caption: "fuseaux en bois" },
+            { rotate: 5, caption: "détail du point" },
+            { rotate: -3 },
+            { rotate: 2, caption: "finition dentelle" },
+            { rotate: -6, caption: "la patience" },
+            { rotate: 4 },
+            { rotate: -3, caption: "travail en cours" },
+            { rotate: 1 },
+            { rotate: -5, caption: "journées d'été" },
+            { rotate: 3, caption: "exposition 2026" },
+          ].map((photo, i) => (
+            <FlyingPhoto
+              key={i}
+              src=""
+              alt={`Photo ${i + 1}`}
+              caption={photo.caption}
+              rotate={photo.rotate}
+              className="relative w-max"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
