@@ -199,7 +199,7 @@ export default function ActivitiesSection() {
 
       {/* Section Header */}
       <div className="relative z-20 container mx-auto px-6 md:px-16 mb-10 md:mb-14 max-w-4xl text-center">
-        <h2 className="font-neulis text-3xl md:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6 activities-title">
+        <h2 className="font-neulis text-3xl md:text-4xl lg:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6 activities-title">
           Nos Ateliers
         </h2>
         <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto activities-subtitle">

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { ActivitiesSection } from "@/components/activities";
 import GalerieSection from "@/components/galerie/GalerieSection";
+import AboutSection from "@/components/about/AboutSection";
 import FaqSection from "@/components/faq/FaqSection";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <ActivitiesSection />
       <GalerieSection />
+      <AboutSection />
       <FaqSection />
     </main>
   );
