@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 type FrameVariant = "baroque" | "classic" | "ornate";
 
 interface PhotoFrameProps {
-  src: string;
+  src?: string;
   alt: string;
   width: number;
   height: number;
@@ -12,14 +12,17 @@ interface PhotoFrameProps {
   frameColor?: string;
   variant?: FrameVariant;
   disableHover?: boolean;
+  wireLength?: number;
+  wireSpread?: number;
 }
 
-function Nail({ frameWidth }: { frameWidth: number }) {
+function Nail({ frameWidth, wireLength = 34 }: { frameWidth: number, wireLength?: number }) {
   const cx = frameWidth / 2;
+  const topOffset = -(wireLength - 2);
   return (
     <svg
       className="absolute pointer-events-none left-0 z-10"
-      style={{ top: -32 }}
+      style={{ top: topOffset }}
       width={frameWidth}
       height={20}
       viewBox={`0 0 ${frameWidth} 20`}
@@ -33,20 +36,20 @@ function Nail({ frameWidth }: { frameWidth: number }) {
   );
 }
 
-function Wire({ frameWidth }: { frameWidth: number }) {
+function Wire({ frameWidth, wireLength = 34, wireSpread = 28 }: { frameWidth: number, wireLength?: number, wireSpread?: number }) {
   const cx = frameWidth / 2;
-  const wireHeight = 34;
+  const topOffset = -(wireLength - 2);
   return (
     <svg
       className="absolute pointer-events-none left-0"
-      style={{ top: -32 }}
+      style={{ top: topOffset }}
       width={frameWidth}
-      height={wireHeight}
-      viewBox={`0 0 ${frameWidth} ${wireHeight}`}
+      height={wireLength}
+      viewBox={`0 0 ${frameWidth} ${wireLength}`}
       fill="none"
     >
-      <path d={`M ${cx},17 L ${cx - 28},${wireHeight}`} stroke="#5C3D26" strokeWidth="1.5" />
-      <path d={`M ${cx},17 L ${cx + 28},${wireHeight}`} stroke="#5C3D26" strokeWidth="1.5" />
+      <path d={`M ${cx},8 L ${cx - wireSpread},${wireLength}`} stroke="#5C3D26" strokeWidth="1.5" />
+      <path d={`M ${cx},8 L ${cx + wireSpread},${wireLength}`} stroke="#5C3D26" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -175,6 +178,8 @@ export default function PhotoFrame({
   frameColor = "#C2AE4C",
   variant = "baroque",
   disableHover = false,
+  wireLength = 34,
+  wireSpread = 28,
 }: PhotoFrameProps) {
   const FrameComponent = frameComponents[variant];
   const pad = paddings[variant];
@@ -187,7 +192,7 @@ export default function PhotoFrame({
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       {/* Nail — stays fixed on the wall */}
-      <Nail frameWidth={totalWidth} />
+      <Nail frameWidth={totalWidth} wireLength={wireLength} />
 
       {/* Wire + Frame — swings from nail point */}
       <motion.div
@@ -195,7 +200,7 @@ export default function PhotoFrame({
         {...(!disableHover && { whileHover: { rotate: 3 } })}
         transition={{ type: "spring", stiffness: 200, damping: 12 }}
       >
-        <Wire frameWidth={totalWidth} />
+        <Wire frameWidth={totalWidth} wireLength={wireLength} wireSpread={wireSpread} />
 
         <div
           className="relative"
@@ -210,13 +215,20 @@ export default function PhotoFrame({
             className="absolute"
             style={{ top: pad, left: pad, width, height }}
           >
-            <Image
-              src={src}
-              alt={alt}
-              width={width}
-              height={height}
-              className="block object-cover w-full h-full"
-            />
+            {src ? (
+              <Image
+                src={src}
+                alt={alt}
+                width={width}
+                height={height}
+                className="block object-cover w-full h-full"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-[#E5D3B3]/20 border border-[#D4BA7B]/30 font-satoshi text-[#8B7355]/60 text-sm md:text-base">
+                <span>[ Espace Image ]</span>
+                <span className="text-xs opacity-50 mt-1">{width} x {height}</span>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
