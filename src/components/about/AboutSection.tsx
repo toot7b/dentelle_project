@@ -16,7 +16,7 @@ export default function AboutSection() {
             scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top center+=10%",
-                toggleActions: "play none none reverse",
+                once: true,
             },
         });
 

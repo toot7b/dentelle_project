@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
+import FaqIllustration from "./FaqIllustration";
 
 const faqItems = [
   {
@@ -162,13 +163,9 @@ export default function FaqSection() {
 
             <div className="hidden lg:block lg:mt-16" />
 
-            {/* TODO: Remplacer par l'illustration SVG custom */}
-            <div className="hidden lg:flex w-full aspect-square max-w-[260px] rounded-tr-[48px] border-2 border-dashed border-[#E9BA85]/30 items-center justify-center pointer-events-none">
-              <span className="font-satoshi text-sm text-text-muted text-center px-4">
-                Illustration SVG
-                <br />
-                (placeholder)
-              </span>
+            {/* Illustration SVG avec fuseaux */}
+            <div className="hidden lg:flex w-full mt-8 max-w-[260px] items-center justify-center pointer-events-none relative z-10">
+              <FaqIllustration />
             </div>
           </div>
 
