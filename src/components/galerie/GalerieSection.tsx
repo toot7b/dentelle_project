@@ -46,9 +46,6 @@ const flowers: { left: string; top: string; size: number; rotate: number }[] = [
   { left: "6%", top: "85%", size: 85, rotate: 5 },
   { left: "22%", top: "92%", size: 78, rotate: -18 },
   { left: "42%", top: "88%", size: 72, rotate: 12 },
-  { left: "58%", top: "95%", size: 80, rotate: -25 },
-  { left: "75%", top: "86%", size: 88, rotate: 20 },
-  { left: "92%", top: "94%", size: 82, rotate: -15 },
 ];
 
 const mobileFlowers: { left: string; top: string; size: number; rotate: number }[] = [
@@ -164,7 +161,7 @@ export default function GalerieSection() {
       </div>
 
       {/* Grid of Scattered Photos */}
-      <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-32">
+      <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-48 md:pb-64">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 md:gap-y-32 gap-x-8 md:gap-x-12 place-items-center">
           {[
             { rotate: -4, caption: "croquis initial" },
@@ -190,6 +187,48 @@ export default function GalerieSection() {
               />
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Inverted hills — transition vers la section suivante */}
+      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-10">
+        {/* Desktop */}
+        <div className="hidden md:block">
+          <svg
+            viewBox="0 0 1440 120"
+            className="block w-full h-[80px]"
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path
+              d="M0,0.1 C 40,36.1 80,36.1 120,0.1 C 160,36.1 200,36.1 240,0.1 C 280,36.1 320,36.1 360,0.1 C 400,36.1 440,36.1 480,0.1 C 520,36.1 560,36.1 600,0.1 C 640,36.1 680,36.1 720,0.1 C 760,36.1 800,36.1 840,0.1 C 880,36.1 920,36.1 960,0.1 C 1000,36.1 1040,36.1 1080,0.1 C 1120,36.1 1160,36.1 1200,0.1 C 1240,36.1 1280,36.1 1320,0.1 C 1360,36.1 1400,36.1 1440,0.1 L1440,120 L0,120 Z"
+              fill="#FEF5EB"
+            />
+            <path
+              d="M0,0.1 C 40,36.1 80,36.1 120,0.1 C 160,36.1 200,36.1 240,0.1 C 280,36.1 320,36.1 360,0.1 C 400,36.1 440,36.1 480,0.1 C 520,36.1 560,36.1 600,0.1 C 640,36.1 680,36.1 720,0.1 C 760,36.1 800,36.1 840,0.1 C 880,36.1 920,36.1 960,0.1 C 1000,36.1 1040,36.1 1080,0.1 C 1120,36.1 1160,36.1 1200,0.1 C 1240,36.1 1280,36.1 1320,0.1 C 1360,36.1 1400,36.1 1440,0.1"
+              stroke="#C2AE4C"
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
+        {/* Mobile */}
+        <div className="md:hidden">
+          <svg
+            viewBox="0 0 400 60"
+            className="block w-full h-[40px]"
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path
+              d="M0,0.1 C 25,25.1 75,25.1 100,0.1 C 125,25.1 175,25.1 200,0.1 C 225,25.1 275,25.1 300,0.1 C 325,25.1 375,25.1 400,0.1 L400,60 L0,60 Z"
+              fill="#FEF5EB"
+            />
+            <path
+              d="M0,0.1 C 25,25.1 75,25.1 100,0.1 C 125,25.1 175,25.1 200,0.1 C 225,25.1 275,25.1 300,0.1 C 325,25.1 375,25.1 400,0.1"
+              stroke="#C2AE4C"
+              strokeWidth="1.5"
+            />
+          </svg>
         </div>
       </div>
     </section>
