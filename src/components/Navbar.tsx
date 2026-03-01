@@ -32,8 +32,8 @@ export default function Navbar() {
     mm.add("(min-width: 768px)", () => {
       ScrollTrigger.create({
         trigger: "#galerie-section",
-        start: "top+=70 60px",
-        end: "bottom-=120 60px",
+        start: "top 100px",
+        end: "bottom-=10 100px",
         onEnter: () => setIsLightMode(true),
         onLeave: () => setIsLightMode(false),
         onEnterBack: () => setIsLightMode(true),
@@ -44,8 +44,8 @@ export default function Navbar() {
     mm.add("(max-width: 767px)", () => {
       ScrollTrigger.create({
         trigger: "#galerie-section",
-        start: "top-=100 60px", // Trigger earlier because green hills actually start in the previous section on mobile
-        end: "bottom 80px",
+        start: "top-=120 60px",
+        end: "bottom 60px",
         onEnter: () => setIsLightMode(true),
         onLeave: () => setIsLightMode(false),
         onEnterBack: () => setIsLightMode(true),

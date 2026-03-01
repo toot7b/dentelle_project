@@ -119,7 +119,7 @@ export default function GalerieSection() {
     <section
       ref={sectionRef}
       id="galerie-section"
-      className="relative w-full min-h-[150vh] overflow-hidden -mt-1 pt-1 md:-mt-[180px] md:pt-[200px]"
+      className="relative w-full min-h-screen overflow-hidden -mt-1 pt-1 md:-mt-[180px] md:pt-[200px]"
       style={{ backgroundColor: "#B2C5A8" }}
     >
       {/* Flowers — desktop */}
@@ -161,7 +161,7 @@ export default function GalerieSection() {
       </div>
 
       {/* Grid of Scattered Photos */}
-      <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-48 md:pb-64">
+      <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-24 md:pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 md:gap-y-32 gap-x-8 md:gap-x-12 place-items-center">
           {[
             { rotate: -4, caption: "croquis initial" },
