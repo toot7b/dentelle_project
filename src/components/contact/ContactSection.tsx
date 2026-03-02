@@ -139,13 +139,13 @@ export default function ContactSection() {
                         href="#nous-contacter"
                         className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 rounded-full inline-flex justify-center items-center transition-colors duration-200 bg-text-primary text-background hover:bg-text-body w-full sm:w-auto"
                     >
-                        Nous contacter
+                        Nous rejoindre
                     </Link>
                     <Link
                         href="#envoyer-un-mot"
                         className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 rounded-full inline-flex justify-center items-center transition-colors duration-200 border border-text-muted text-text-primary hover:border-text-primary w-full sm:w-auto"
                     >
-                        Nous envoyer un mot
+                        Nous contacter
                     </Link>
                 </div>
             </div>

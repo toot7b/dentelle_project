@@ -120,7 +120,7 @@ export default function Navbar() {
                 : "text-text-body after:bg-accent-gold hover:text-text-primary"
                 }`}
             >
-              Coordonnées
+              Contact
             </Link>
           </li>
           <li>
