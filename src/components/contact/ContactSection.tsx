@@ -76,7 +76,7 @@ export default function ContactSection() {
         <section
             ref={sectionRef}
             id="contact-section"
-            className="w-full pt-24 pb-32 bg-[#FEF5EB] flex justify-center items-center z-20 relative"
+            className="w-full pt-24 pb-32 md:pt-36 md:pb-72 bg-[#FEF5EB] flex justify-center items-center z-20 relative"
         >
             {/* Séparateur décoratif gold */}
             <div data-contact-sep className="absolute top-0 left-0 right-0 flex items-center justify-center px-6 md:px-16 opacity-0">
@@ -122,6 +122,7 @@ export default function ContactSection() {
                 <div data-contact-cloud-right className="hidden md:block absolute opacity-0" style={{ top: "72%", right: "14%" }}>
                     <div className="cloud-drift-a" style={{ transform: "scale(0.36)", transformOrigin: "top right" }}><ActivitiesCloud variant="wisp" /></div>
                 </div>
+
             </div>
 
             <div data-cta-content className="container mx-auto px-6 max-w-3xl text-center flex flex-col items-center">
