@@ -193,6 +193,7 @@ export default function ActivitiesSection() {
   return (
     <section
       ref={sectionRef}
+      id="atelier-section"
       className="relative z-10 pt-24 md:pt-32 pb-0"
     >
       <ActivitiesBackground />

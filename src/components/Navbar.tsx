@@ -7,8 +7,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const leftLinks = [
-  { label: "L'Atelier", href: "#atelier" },
-  { label: "Galerie", href: "#galerie" },
+  { label: "Nos ateliers", href: "#atelier-section" },
+  { label: "Nos créations", href: "#galerie-section" },
+  { label: "Qui sommes-nous ?", href: "#about-section" },
   { label: "FAQ", href: "#faq-section" },
 ];
 
@@ -32,7 +33,7 @@ export default function Navbar() {
     mm.add("(min-width: 768px)", () => {
       ScrollTrigger.create({
         trigger: "#galerie-section",
-        start: "top 100px",
+        start: "top 0px",
         end: "bottom-=10 100px",
         onEnter: () => setIsLightMode(true),
         onLeave: () => setIsLightMode(false),
@@ -44,8 +45,8 @@ export default function Navbar() {
     mm.add("(max-width: 767px)", () => {
       ScrollTrigger.create({
         trigger: "#galerie-section",
-        start: "top-=120 60px",
-        end: "bottom 60px",
+        start: "top 160px",  // Passe en vert BEAUCOUP plus tôt
+        end: "bottom 2px", // Repasse en blanc PLUS TARD (quand le bas de la section a dépassé le bas de l'écran)
         onEnter: () => setIsLightMode(true),
         onLeave: () => setIsLightMode(false),
         onEnterBack: () => setIsLightMode(true),
@@ -109,22 +110,22 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Right — Contact + CTA */}
+        {/* Right — Coordonnées + CTA */}
         <ul className="flex items-center justify-end gap-6">
           <li>
             <Link
-              href="#contact"
+              href="#"
               className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
                 ? "text-white after:bg-white hover:text-white"
                 : "text-text-body after:bg-accent-gold hover:text-text-primary"
                 }`}
             >
-              Contact
+              Coordonnées
             </Link>
           </li>
           <li>
             <Link
-              href="#rejoindre"
+              href="#"
               className={`font-satoshi text-sm font-medium px-5 py-2 rounded-full transition-colors duration-300 ${isLightMode
                 ? "bg-white text-[#B2C5A8] hover:bg-white/90"
                 : "bg-text-primary text-background hover:bg-text-body"
@@ -190,19 +191,19 @@ export default function Navbar() {
             ))}
             <li>
               <Link
-                href="#contact"
+                href="#contact-section"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-base font-medium transition-colors ${isLightMode
                   ? "text-white hover:text-white"
                   : "text-text-body hover:text-text-primary"
                   }`}
               >
-                Contact
+                Coordonnées
               </Link>
             </li>
             <li className="pt-2">
               <Link
-                href="#rejoindre"
+                href="#"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-sm font-medium px-5 py-2.5 rounded-full inline-block transition-colors ${isLightMode
                   ? "bg-white text-[#B2C5A8] hover:bg-white/90"
