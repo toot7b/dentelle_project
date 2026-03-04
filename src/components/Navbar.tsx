@@ -30,29 +30,31 @@ export default function Navbar() {
     // Color adaptation based on scroll
     let mm = gsap.matchMedia();
 
-    mm.add("(min-width: 768px)", () => {
-      ScrollTrigger.create({
-        trigger: "#galerie-section",
-        start: "top 0px",
-        end: "bottom-=10 100px",
-        onEnter: () => setIsLightMode(true),
-        onLeave: () => setIsLightMode(false),
-        onEnterBack: () => setIsLightMode(true),
-        onLeaveBack: () => setIsLightMode(false),
+    if (document.querySelector("#galerie-section")) {
+      mm.add("(min-width: 768px)", () => {
+        ScrollTrigger.create({
+          trigger: "#galerie-section",
+          start: "top 0px",
+          end: "bottom-=10 100px",
+          onEnter: () => setIsLightMode(true),
+          onLeave: () => setIsLightMode(false),
+          onEnterBack: () => setIsLightMode(true),
+          onLeaveBack: () => setIsLightMode(false),
+        });
       });
-    });
 
-    mm.add("(max-width: 767px)", () => {
-      ScrollTrigger.create({
-        trigger: "#galerie-section",
-        start: "top 160px",  // Passe en vert BEAUCOUP plus tôt
-        end: "bottom 2px", // Repasse en blanc PLUS TARD (quand le bas de la section a dépassé le bas de l'écran)
-        onEnter: () => setIsLightMode(true),
-        onLeave: () => setIsLightMode(false),
-        onEnterBack: () => setIsLightMode(true),
-        onLeaveBack: () => setIsLightMode(false),
+      mm.add("(max-width: 767px)", () => {
+        ScrollTrigger.create({
+          trigger: "#galerie-section",
+          start: "top 160px",
+          end: "bottom 2px",
+          onEnter: () => setIsLightMode(true),
+          onLeave: () => setIsLightMode(false),
+          onEnterBack: () => setIsLightMode(true),
+          onLeaveBack: () => setIsLightMode(false),
+        });
       });
-    });
+    }
 
     return () => mm.revert();
   });
@@ -114,7 +116,7 @@ export default function Navbar() {
         <ul className="flex items-center justify-end gap-6">
           <li>
             <Link
-              href="#"
+              href="#contact-section"
               className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
                 ? "text-white after:bg-white hover:text-white"
                 : "text-text-body after:bg-accent-gold hover:text-text-primary"
@@ -125,7 +127,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="#"
+              href="/adhesion"
               className={`font-satoshi text-sm font-medium px-5 py-2 rounded-full transition-colors duration-300 ${isLightMode
                 ? "bg-white text-[#B2C5A8] hover:bg-white/90"
                 : "bg-text-primary text-background hover:bg-text-body"
@@ -203,7 +205,7 @@ export default function Navbar() {
             </li>
             <li className="pt-2">
               <Link
-                href="#"
+                href="/adhesion"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-sm font-medium px-5 py-2.5 rounded-full inline-block transition-colors ${isLightMode
                   ? "bg-white text-[#B2C5A8] hover:bg-white/90"

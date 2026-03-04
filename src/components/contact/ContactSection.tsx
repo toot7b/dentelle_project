@@ -16,7 +16,7 @@ export default function ContactSection() {
 
             const st = {
                 trigger: sectionRef.current,
-                start: "top 75%",
+                start: "top 45%",
                 once: true,
             };
 
@@ -136,7 +136,7 @@ export default function ContactSection() {
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto opacity-0">
                     <Link
-                        href="#nous-contacter"
+                        href="/adhesion"
                         className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 rounded-full inline-flex justify-center items-center transition-colors duration-200 bg-text-primary text-background hover:bg-text-body w-full sm:w-auto"
                     >
                         Nous rejoindre

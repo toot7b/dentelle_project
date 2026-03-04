@@ -11,13 +11,12 @@ const navLinks = [
     { label: "Contact", href: "#contact-section" },
 ];
 
-export default function Footer() {
+export default function Footer({ hideSeparator = false }: { hideSeparator?: boolean }) {
     const year = new Date().getFullYear();
 
     return (
         <footer className="w-full bg-[#B2C5A8] relative z-20">
-            {/* Séparateur top doré */}
-            <div className="w-full h-px bg-[#C2AE4C]" style={{ opacity: 0.85 }} />
+            {!hideSeparator && <div className="w-full h-px bg-[#C2AE4C]" style={{ opacity: 0.85 }} />}
 
             {/* Contenu principal */}
             <div className="container mx-auto px-6 md:px-16 py-14 md:py-20">

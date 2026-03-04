@@ -125,7 +125,7 @@ export default function Hero() {
           </p>
           <div data-animate="buttons" className="flex items-center gap-3 lg:gap-4 mt-2 opacity-0">
             <a
-              href="#rejoindre"
+              href="/adhesion"
               className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 bg-text-primary text-background rounded-full hover:bg-text-body transition-colors duration-200"
             >
               Nous rejoindre
