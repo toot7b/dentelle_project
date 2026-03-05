@@ -37,22 +37,22 @@ export default function PhotoWall() {
       // Initial states — vis cachée (scale 0), cadre caché au-dessus
       // PAS de rotation sur el : la vis ne doit jamais bouger
       if (nail) gsap.set(nail, { scale: 0, transformOrigin: "50% 50%" });
-      if (wireFrame) gsap.set(wireFrame, { y: -80, opacity: 0, rotation: -8 });
+      if (wireFrame) gsap.set(wireFrame, { y: -60, opacity: 0, rotation: -5 });
 
-      const tl = gsap.timeline({ delay: 1.1 + i * 0.18 });
+      const tl = gsap.timeline({ delay: 1.1 + i * 0.22 });
 
       // 1. Vis pop en place (aucun parent ne tourne)
-      if (nail) tl.to(nail, { scale: 1, duration: 0.3, ease: "back.out(3)" });
+      if (nail) tl.to(nail, { scale: 1, duration: 0.45, ease: "back.out(2)" });
 
       // 2. Cadre tombe + sa rotation se stabilise (sur wireFrame, pas sur el)
-      if (wireFrame) tl.to(wireFrame, { y: 0, opacity: 1, rotation: 0, duration: 0.45, ease: "power2.in" }, "-=0.05");
+      if (wireFrame) tl.to(wireFrame, { y: 0, opacity: 1, rotation: 0, duration: 0.65, ease: "power1.in" }, "-=0.1");
 
       // 3. Impact : fil s'étire + cadre dépasse vers le bas, puis rebond elastic
       if (wire && wireFrame) {
-        tl.to(wire, { scaleX: 1.3, transformOrigin: "50% 0%", duration: 0.1, ease: "power2.out" });
-        tl.to(wireFrame, { y: 14, duration: 0.1, ease: "power2.out" }, "<");
-        tl.to(wire, { scaleX: 1, duration: 0.55, ease: "elastic.out(1.2, 0.35)" });
-        tl.to(wireFrame, { y: 0, duration: 0.55, ease: "elastic.out(1.2, 0.35)" }, "<");
+        tl.to(wire, { scaleX: 1.2, transformOrigin: "50% 0%", duration: 0.15, ease: "power2.out" });
+        tl.to(wireFrame, { y: 10, duration: 0.15, ease: "power2.out" }, "<");
+        tl.to(wire, { scaleX: 1, duration: 0.7, ease: "elastic.out(1, 0.4)" });
+        tl.to(wireFrame, { y: 0, duration: 0.7, ease: "elastic.out(1, 0.4)" }, "<");
       }
     });
   }, { scope: wallRef });

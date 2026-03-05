@@ -131,7 +131,7 @@ export default function ActivitiesSection() {
             opacity: 1,
             rotation: 0,
             duration: mobile ? 0.6 : 0.9,
-            ease: "back.out(1.2)",
+            ease: "power3.out",
           }, mobile ? 0.5 + i * 0.22 : 3.0 + i * 0.3);
         });
       }
@@ -269,6 +269,7 @@ export default function ActivitiesSection() {
             return (
               <div
                 key={activity.title}
+                data-medallion
                 className={`absolute pointer-events-auto origin-top ${i === 0 ? '-mt-9.5' : i === 1 ? '-mt-11' : '-mt-10'}`}
                 style={{
                   left: `${t * 100}%`,
