@@ -24,9 +24,9 @@ const faqItems = [
       "Nous nous retrouvons au Pôle Culturel d'Assevent. N'hésitez pas à nous contacter via la page d'adhésion pour organiser votre première venue !",
   },
   {
-    question: "Quel est le tarif d'une séance ?",
+    question: "Quels sont nos tarifs ?",
     answer:
-      "La participation est de 5 euros par séance. Ce tarif nous permet de faire vivre l'association tout au long de l'année.",
+      "La participation est de 5 euros par mois. Ce tarif nous permet de faire vivre l'association tout au long de l'année.",
   },
 ];
 
