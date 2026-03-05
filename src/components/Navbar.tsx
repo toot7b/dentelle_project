@@ -1,22 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const leftLinks = [
-  { label: "Nos ateliers", href: "#atelier-section" },
-  { label: "Nos créations", href: "#galerie-section" },
-  { label: "Qui sommes-nous ?", href: "#about-section" },
-  { label: "FAQ", href: "#faq-section" },
+  { label: "Nos ateliers", href: "/#atelier-section" },
+  { label: "Nos créations", href: "/#galerie-section" },
+  { label: "Qui sommes-nous ?", href: "/#about-section" },
+  { label: "FAQ", href: "/#faq-section" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
+
+  // Reset light mode on path change
+  useEffect(() => {
+    setIsLightMode(false);
+    setMenuOpen(false);
+  }, [pathname]);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
