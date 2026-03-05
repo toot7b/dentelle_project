@@ -1,15 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Geist_Mono } from "next/font/google";
 
 const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"] });
 
+const ContactMap = dynamic(() => import("@/components/contact/ContactMap"), { ssr: false });
+
 const navLinks = [
-    { label: "L'Atelier", href: "#atelier" },
-    { label: "Galerie", href: "#galerie-section" },
-    { label: "À propos", href: "#about-section" },
-    { label: "FAQ", href: "#faq-section" },
-    { label: "Contact", href: "#contact-section" },
+    { label: "L'Atelier", href: "/#atelier-section" },
+    { label: "Galerie", href: "/#galerie-section" },
+    { label: "À propos", href: "/#about-section" },
+    { label: "FAQ", href: "/#faq-section" },
+    { label: "Contact", href: "/contact" },
 ];
+
+const GOOGLE_MAPS_URL =
+    "https://www.google.com/maps/dir/?api=1&destination=16+rue+Georges+Guynemer,+59600+Assevent,+France";
 
 export default function Footer({ hideSeparator = false }: { hideSeparator?: boolean }) {
     const year = new Date().getFullYear();
@@ -28,13 +36,29 @@ export default function Footer({ hideSeparator = false }: { hideSeparator?: bool
                             Les Fuseaux Asseventois
                         </h3>
                         <p className="font-satoshi text-base text-white leading-relaxed mb-6">
-                            Lorem ipsum dolor sit amet,<br />
-                            consectetur adipiscing elit sed do<br className="hidden md:block" /> eiusmod tempor.
+                            Depuis Assevent, nous faisons vivre l&apos;art délicat de la dentelle aux fuseaux
+                            à travers des ateliers conviviaux, la transmission des gestes, et le plaisir de
+                            créer ensemble, fil après fil.
                         </p>
-                        <address className="not-italic font-satoshi text-base text-white/90 leading-relaxed">
-                            Lorem ipsum dolor<br />
-                            Nord, France
+                        <address className="not-italic font-satoshi text-base text-white/90 leading-relaxed mb-5">
+                            16 rue Georges Guynemer<br />
+                            59600 Assevent, France
                         </address>
+
+                        <div
+                            className="rounded-2xl overflow-hidden border border-[#C2AE4C] h-[220px] md:h-[260px] lg:h-[280px] mb-3 bg-white"
+                        >
+                            <ContactMap />
+                        </div>
+
+                        <a
+                            href={GOOGLE_MAPS_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-satoshi text-sm text-white underline underline-offset-2 hover:text-white/80 transition-colors duration-200"
+                        >
+                            Obtenir l&apos;itinéraire →
+                        </a>
                     </div>
 
                     {/* Col 2 — Navigation */}
