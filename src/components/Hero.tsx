@@ -131,7 +131,7 @@ export default function Hero() {
               Nous rejoindre
             </a>
             <a
-              href="#galerie"
+              href="#galerie-section"
               className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 border border-text-muted text-text-primary rounded-full hover:border-text-primary transition-colors duration-200"
             >
               Voir la galerie
