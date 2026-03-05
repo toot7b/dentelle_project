@@ -151,12 +151,10 @@ export default function GalerieSection() {
       {/* Text Content */}
       <div className="relative z-10 container mx-auto px-6 md:px-16 pt-16 md:pt-24 text-center max-w-4xl">
         <h2 className="font-neulis text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 md:mb-8">
-          Héritage et Création
+          Au bout des fuseaux
         </h2>
         <p className="font-satoshi text-lg md:text-xl text-white leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris.
+          Un aperçu des créations nées de nos ateliers. Chaque réalisation est le fruit d'heures de patience, de minutie et d'une passion partagée pour la dentelle.
         </p>
       </div>
 

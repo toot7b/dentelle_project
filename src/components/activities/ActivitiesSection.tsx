@@ -28,15 +28,15 @@ const mobileFlowers: { left: string; bottom: number; size: number; rotate: numbe
 const activities = [
   {
     title: "Apprendre",
-    subtitle: "Initiations à la dentelle aux fuseaux, de débutant à perfectionnement",
+    subtitle: "Un encadrement bienveillant pour découvrir les fuseaux et les premiers points, pas à pas.",
   },
   {
     title: "Créer",
-    subtitle: "Ateliers libres pour concrétiser vos motifs et vos rêves en fil",
+    subtitle: "Chacun avance à son rythme, sur ses propres ouvrages.",
   },
   {
     title: "Partager",
-    subtitle: "Rencontres, expositions et transmission entre dentellières",
+    subtitle: "Des expositions et des salons pour faire connaître ce beau savoir-faire.",
   },
 ];
 
@@ -201,10 +201,10 @@ export default function ActivitiesSection() {
       {/* Section Header */}
       <div className="relative z-20 container mx-auto px-6 md:px-16 mb-10 md:mb-14 max-w-4xl text-center">
         <h2 className="font-neulis text-3xl md:text-4xl lg:text-5xl font-semibold text-[#4A3B2C] mb-4 md:mb-6 activities-title">
-          Nos Ateliers
+          Nos ateliers
         </h2>
         <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto activities-subtitle">
-          Découvrez l&apos;art délicat de la dentelle aux fuseaux. Rejoignez-nous pour apprendre, créer et partager autour de fils entrelacés, du niveau débutant au perfectionnement.
+          Chaque semaine, nous nous retrouvons à Assevent autour de la dentelle aux fuseaux. Tout le monde peut nous rejoindre, quel que soit son niveau.
         </p>
       </div>
 

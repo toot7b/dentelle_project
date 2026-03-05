@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const LNG = 4.02022;
-const LAT = 50.286917;
+const LNG = 4.019361; // 4°01'09.7"E
+const LAT = 50.287472; // 50°17'14.9"N
 
 export default function ContactMap() {
     const containerRef = useRef<HTMLDivElement>(null);

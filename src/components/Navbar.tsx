@@ -55,7 +55,7 @@ export default function Navbar() {
         ScrollTrigger.create({
           trigger: "#galerie-section",
           start: "top 160px",
-          end: "bottom 2px",
+          end: "bottom 60px", // triggers the change earlier
           onEnter: () => setIsLightMode(true),
           onLeave: () => setIsLightMode(false),
           onEnterBack: () => setIsLightMode(true),

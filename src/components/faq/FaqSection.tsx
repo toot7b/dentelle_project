@@ -9,24 +9,24 @@ import FaqIllustration from "./FaqIllustration";
 
 const faqItems = [
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    question: "Je n'ai jamais fait de dentelle, puis-je venir ?",
     answer:
-      "Mauris ultrices eros in cursus turpis massa tincidunt dui. Id leo in vitae turpis massa sed elementum tempus. At urna condimentum mattis pellentesque. Aliquam id diam maecenas ultricies mi eget mauris.",
+      "Bien sûr ! L'atelier est ouvert aux personnes de tous niveaux. Les membres plus expérimentés seront ravis de vous guider pour vos premiers croisements et pour apprendre à monter votre carreau.",
   },
   {
-    question: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+    question: "Faut-il apporter son propre matériel ?",
     answer:
-      "Consectetur purus ut faucibus pulvinar elementum integer. Diam quam nulla porttitor massa id. Velit ut tortor pretium viverra suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada.",
+      "Si vous débutez, l'association peut vous prêter le matériel de base (carreau et fuseaux) pour faire vos premiers essais. Vous pourrez ensuite vous équiper progressivement selon vos envies.",
   },
   {
-    question: "Ut enim ad minim veniam, quis nostrud exercitation ullamco?",
+    question: "Où et quand se déroulent les ateliers ?",
     answer:
-      "Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Adipiscing elit pellentesque habitant morbi tristique senectus et. Ut etiam sit amet nisl.",
+      "Nous nous retrouvons au Pôle Culturel d'Assevent. N'hésitez pas à nous contacter via la page d'adhésion pour organiser votre première venue !",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum?",
+    question: "Quel est le tarif d'une séance ?",
     answer:
-      "Feugiat pretium nibh ipsum consequat nisl vel. Eget nullam non nisi est sit. Facilisis sed odio morbi quis commodo odio aenean. Tincidunt augue interdum velit euismod in pellentesque. Turpis tincidunt id aliquet risus feugiat.",
+      "La participation est de 5 euros par séance. Ce tarif nous permet de faire vivre l'association tout au long de l'année.",
   },
 ];
 
@@ -109,7 +109,7 @@ export default function FaqSection() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: "top 85%",
           once: true,
         },
       });
@@ -123,7 +123,7 @@ export default function FaqSection() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: "[data-faq-right]",
-          start: "top 70%",
+          start: "top 85%",
           once: true,
         },
       });

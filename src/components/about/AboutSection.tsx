@@ -82,7 +82,7 @@ export default function AboutSection() {
         <section
             ref={sectionRef}
             id="about-section"
-            className="relative w-full pt-24 md:pt-32 pb-[20px] md:pb-[120px] z-20"
+            className="relative w-full pt-28 md:pt-16 pb-[80px] md:pb-[120px] z-20"
             style={{ backgroundColor: "#FEF5EB" }}
         >
             <div className="container mx-auto px-6 md:px-16 text-center max-w-4xl relative z-20">
@@ -90,14 +90,14 @@ export default function AboutSection() {
                     data-about-title
                     className="font-neulis text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C1A0E] mb-6 md:mb-8 leading-tight opacity-0 will-change-transform will-change-opacity"
                 >
-                    Lorem Ipsum Dolor
+                    Qui sommes-nous ?
                 </h2>
 
                 <p
                     data-about-subtitle
                     className="font-satoshi text-lg md:text-xl text-[#5C3D26] leading-relaxed max-w-2xl mx-auto mb-16 md:mb-20 opacity-0 will-change-transform will-change-opacity"
                 >
-                    Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Depuis plus de 15 ans, notre association transmet l'art de la dentelle aux fuseaux. Un groupe de passionnés où la bonne humeur compte autant que la précision du geste.
                 </p>
             </div>
 

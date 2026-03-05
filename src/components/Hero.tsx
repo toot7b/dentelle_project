@@ -119,9 +119,9 @@ export default function Hero() {
             data-animate="paragraph"
             className="font-satoshi text-base lg:text-lg leading-relaxed text-text-body max-w-md opacity-0"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris.
+            À Assevent, on se retrouve chaque semaine pour le plaisir de créer,
+            apprendre et partager autour de la dentelle aux fuseaux. Une technique
+            ancienne, une ambiance chaleureuse, et des créations dont on est fiers.
           </p>
           <div data-animate="buttons" className="flex items-center gap-3 lg:gap-4 mt-2 opacity-0">
             <a
