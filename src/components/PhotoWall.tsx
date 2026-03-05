@@ -30,7 +30,6 @@ export default function PhotoWall() {
 
     frames.forEach((frame, i) => {
       const el = frame as HTMLElement;
-      const finalRotation = parseFloat(el.dataset.rotation || "0");
       const nail = el.querySelector("[data-nail]") as SVGElement | null;
       const wireFrame = el.querySelector("[data-wire-frame]") as HTMLElement | null;
       const wire = el.querySelector("[data-wire]") as SVGElement | null;

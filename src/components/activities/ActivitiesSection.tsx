@@ -269,7 +269,7 @@ export default function ActivitiesSection() {
             return (
               <div
                 key={activity.title}
-                className={`absolute pointer-events-auto origin-top ${i === 0 ? '-mt-11' : i === 1 ? '-mt-12' : '-mt-11'}`}
+                className={`absolute pointer-events-auto origin-top ${i === 0 ? '-mt-9.5' : i === 1 ? '-mt-11' : '-mt-10'}`}
                 style={{
                   left: `${t * 100}%`,
                   top: `${topPercentage}%`,

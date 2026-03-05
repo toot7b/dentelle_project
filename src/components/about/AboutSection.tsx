@@ -51,16 +51,31 @@ export default function AboutSection() {
             ease: "power2.inOut",
         }, 0.4);
 
-        // ── Photo ───────────────────────────
-        tl.fromTo("[data-about-photo]", {
-            y: 40,
-            opacity: 0,
-        }, {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-        }, 0.7);
+        // ── Photo : vis pop + cadre tombe + impact ───────────────────
+        const photoWrap = sectionRef.current?.querySelector("[data-about-photo]") as HTMLElement | null;
+        if (photoWrap) {
+            const nail = photoWrap.querySelector("[data-nail]") as SVGElement | null;
+            const wireFrame = photoWrap.querySelector("[data-wire-frame]") as HTMLElement | null;
+            const wire = photoWrap.querySelector("[data-wire]") as SVGElement | null;
+
+            gsap.set(photoWrap, { opacity: 1 });
+            if (nail) gsap.set(nail, { scale: 0, transformOrigin: "50% 50%" });
+            if (wireFrame) gsap.set(wireFrame, { y: -80, opacity: 0, rotation: -8 });
+
+            // 1. Vis pop
+            if (nail) tl.to(nail, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.7);
+
+            // 2. Cadre tombe
+            if (wireFrame) tl.to(wireFrame, { y: 0, opacity: 1, rotation: 0, duration: 0.45, ease: "power2.in" }, 0.9);
+
+            // 3. Impact
+            if (wire && wireFrame) {
+                tl.to(wire, { scaleX: 1.3, transformOrigin: "50% 0%", duration: 0.1, ease: "power2.out" });
+                tl.to(wireFrame, { y: 14, duration: 0.1, ease: "power2.out" }, "<");
+                tl.to(wire, { scaleX: 1, duration: 0.55, ease: "elastic.out(1.2, 0.35)" });
+                tl.to(wireFrame, { y: 0, duration: 0.55, ease: "elastic.out(1.2, 0.35)" }, "<");
+            }
+        }
     }, { scope: sectionRef });
 
     return (
