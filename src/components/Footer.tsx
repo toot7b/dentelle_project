@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"] });
 const ContactMap = dynamic(() => import("@/components/contact/ContactMap"), { ssr: false });
 
 const navLinks = [
-    { label: "L'Atelier", href: "/#atelier-section" },
+    { label: "L'atelier", href: "/#atelier-section" },
     { label: "Galerie", href: "/#galerie-section" },
     { label: "À propos", href: "/#about-section" },
     { label: "FAQ", href: "/#faq-section" },
