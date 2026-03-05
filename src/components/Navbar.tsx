@@ -116,7 +116,7 @@ export default function Navbar() {
         <ul className="flex items-center justify-end gap-6">
           <li>
             <Link
-              href="#contact-section"
+              href="/contact"
               className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
                 ? "text-white after:bg-white hover:text-white"
                 : "text-text-body after:bg-accent-gold hover:text-text-primary"
@@ -193,7 +193,7 @@ export default function Navbar() {
             ))}
             <li>
               <Link
-                href="#contact-section"
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-base font-medium transition-colors ${isLightMode
                   ? "text-white hover:text-white"
