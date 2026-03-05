@@ -7,6 +7,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ActivitiesBackground from "@/components/activities/ActivitiesBackground";
+import ActivitiesCloud from "@/components/activities/ActivitiesCloud";
 import DandelionHead from "@/components/activities/DandelionHead";
 
 const flowers = [
@@ -21,7 +22,7 @@ const flowers = [
 const mobileFlowers = [
   { left: "10%", bottom: 20, size: 28, rotate: 8 },
   { left: "30%", bottom: 10, size: 24, rotate: -10 },
-  { left: "50%", bottom: 32, size: 30, rotate: 15 },
+  { left: "50%", bottom: 24, size: 30, rotate: 15 },
   { left: "70%", bottom: 8, size: 26, rotate: -6 },
   { left: "85%", bottom: 24, size: 28, rotate: 12 },
 ];
@@ -106,7 +107,38 @@ export default function NotFound() {
     <>
       <Navbar />
       <div ref={sectionRef} className="relative min-h-screen flex flex-col">
-        <ActivitiesBackground />
+        {/* Desktop background clouds */}
+        <div className="hidden md:block">
+          <ActivitiesBackground />
+        </div>
+
+        {/* Mobile background clouds (custom 404 composition) */}
+        <div className="md:hidden absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Top: keep only one cloud */}
+          <div
+            data-cloud
+            className="absolute cloud-drift-c"
+            style={{ top: "6%", left: "-8%", transform: "scale(0.52)", transformOrigin: "top left" }}
+          >
+            <ActivitiesCloud variant="cumulus" />
+          </div>
+
+          {/* Bottom clouds: restored */}
+          <div
+            data-cloud
+            className="absolute cloud-drift-d"
+            style={{ bottom: "20%", left: "-8%", transform: "scale(0.42)", transformOrigin: "bottom left" }}
+          >
+            <ActivitiesCloud variant="wisp" />
+          </div>
+          <div
+            data-cloud
+            className="absolute cloud-drift-a"
+            style={{ bottom: "10%", right: "-6%", transform: "scale(0.48)", transformOrigin: "bottom right" }}
+          >
+            <ActivitiesCloud variant="cumulus" />
+          </div>
+        </div>
 
         {/* Contenu centré */}
         <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-6 pt-24 pb-40 md:pb-48">
