@@ -21,6 +21,7 @@ function Nail({ frameWidth, wireLength = 34 }: { frameWidth: number, wireLength?
   const topOffset = -(wireLength - 2);
   return (
     <svg
+      data-nail
       className="absolute pointer-events-none left-0 z-10"
       style={{ top: topOffset }}
       width={frameWidth}
@@ -41,6 +42,7 @@ function Wire({ frameWidth, wireLength = 34, wireSpread = 28 }: { frameWidth: nu
   const topOffset = -(wireLength - 2);
   return (
     <svg
+      data-wire
       className="absolute pointer-events-none left-0"
       style={{ top: topOffset }}
       width={frameWidth}
@@ -194,44 +196,46 @@ export default function PhotoFrame({
       {/* Nail — stays fixed on the wall */}
       <Nail frameWidth={totalWidth} wireLength={wireLength} />
 
-      {/* Wire + Frame — swings from nail point */}
-      <motion.div
-        style={{ transformOrigin: "top center" }}
-        {...(!disableHover && { whileHover: { rotate: 3 } })}
-        transition={{ type: "spring", stiffness: 200, damping: 12 }}
-      >
-        <Wire frameWidth={totalWidth} wireLength={wireLength} wireSpread={wireSpread} />
-
-        <div
-          className="relative"
-          style={{
-            width: totalWidth,
-            height: totalHeight,
-            filter: "drop-shadow(0px 4px 10px rgba(44, 26, 14, 0.2)) drop-shadow(0px 1px 3px rgba(44, 26, 14, 0.1))",
-          }}
+      {/* Wire + Frame — GSAP drop target, Framer Motion hover */}
+      <div data-wire-frame>
+        <motion.div
+          style={{ transformOrigin: "top center" }}
+          {...(!disableHover && { whileHover: { rotate: 3 } })}
+          transition={{ type: "spring", stiffness: 200, damping: 12 }}
         >
-          <FrameComponent width={width} height={height} color={frameColor} />
+          <Wire frameWidth={totalWidth} wireLength={wireLength} wireSpread={wireSpread} />
+
           <div
-            className="absolute"
-            style={{ top: pad, left: pad, width, height }}
+            className="relative"
+            style={{
+              width: totalWidth,
+              height: totalHeight,
+              filter: "drop-shadow(0px 4px 10px rgba(44, 26, 14, 0.2)) drop-shadow(0px 1px 3px rgba(44, 26, 14, 0.1))",
+            }}
           >
-            {src ? (
-              <Image
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                className="block object-cover w-full h-full"
-              />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-[#E5D3B3]/20 border border-[#D4BA7B]/30 font-satoshi text-[#8B7355]/60 text-sm md:text-base">
-                <span>[ Espace Image ]</span>
-                <span className="text-xs opacity-50 mt-1">{width} x {height}</span>
-              </div>
-            )}
+            <FrameComponent width={width} height={height} color={frameColor} />
+            <div
+              className="absolute"
+              style={{ top: pad, left: pad, width, height }}
+            >
+              {src ? (
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={width}
+                  height={height}
+                  className="block object-cover w-full h-full"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-[#E5D3B3]/20 border border-[#D4BA7B]/30 font-satoshi text-[#8B7355]/60 text-sm md:text-base">
+                  <span>[ Espace Image ]</span>
+                  <span className="text-xs opacity-50 mt-1">{width} x {height}</span>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

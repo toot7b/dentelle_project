@@ -31,17 +31,30 @@ export default function PhotoWall() {
     frames.forEach((frame, i) => {
       const el = frame as HTMLElement;
       const finalRotation = parseFloat(el.dataset.rotation || "0");
+      const nail = el.querySelector("[data-nail]") as SVGElement | null;
+      const wireFrame = el.querySelector("[data-wire-frame]") as HTMLElement | null;
+      const wire = el.querySelector("[data-wire]") as SVGElement | null;
 
-      gsap.set(el, { opacity: 0, y: -80, rotation: finalRotation - 8 });
+      // Initial states — vis cachée (scale 0), cadre caché au-dessus
+      // PAS de rotation sur el : la vis ne doit jamais bouger
+      if (nail) gsap.set(nail, { scale: 0, transformOrigin: "50% 50%" });
+      if (wireFrame) gsap.set(wireFrame, { y: -80, opacity: 0, rotation: -8 });
 
-      gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        rotation: finalRotation,
-        duration: 0.7,
-        delay: 1.1 + i * 0.18,
-        ease: "back.out(1.4)",
-      });
+      const tl = gsap.timeline({ delay: 1.1 + i * 0.18 });
+
+      // 1. Vis pop en place (aucun parent ne tourne)
+      if (nail) tl.to(nail, { scale: 1, duration: 0.3, ease: "back.out(3)" });
+
+      // 2. Cadre tombe + sa rotation se stabilise (sur wireFrame, pas sur el)
+      if (wireFrame) tl.to(wireFrame, { y: 0, opacity: 1, rotation: 0, duration: 0.45, ease: "power2.in" }, "-=0.05");
+
+      // 3. Impact : fil s'étire + cadre dépasse vers le bas, puis rebond elastic
+      if (wire && wireFrame) {
+        tl.to(wire, { scaleX: 1.3, transformOrigin: "50% 0%", duration: 0.1, ease: "power2.out" });
+        tl.to(wireFrame, { y: 14, duration: 0.1, ease: "power2.out" }, "<");
+        tl.to(wire, { scaleX: 1, duration: 0.55, ease: "elastic.out(1.2, 0.35)" });
+        tl.to(wireFrame, { y: 0, duration: 0.55, ease: "elastic.out(1.2, 0.35)" }, "<");
+      }
     });
   }, { scope: wallRef });
 
