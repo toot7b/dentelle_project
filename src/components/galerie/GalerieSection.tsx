@@ -91,6 +91,9 @@ export default function GalerieSection() {
       const photos = sectionRef.current?.querySelectorAll("[data-photo]");
       if (!photos) return;
 
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+      if (mobile) return;
+
       photos.forEach((photo, i) => {
         const randomRot = (i % 2 === 0 ? -1 : 1) * (8 + Math.random() * 6);
         gsap.set(photo, { y: -120, opacity: 0, scale: 0.7, rotation: randomRot });
