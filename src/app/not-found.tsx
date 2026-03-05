@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transitions";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ActivitiesBackground from "@/components/activities/ActivitiesBackground";
@@ -155,13 +155,13 @@ export default function NotFound() {
             Ce fil s&apos;est perdu en chemin&hellip;<br />
             La page que vous cherchez n&apos;existe pas.
           </p>
-          <Link
+          <TransitionLink
             href="/"
             data-404-cta
             className="font-satoshi text-sm font-medium px-8 py-3 rounded-full bg-[#2C1A0E] text-[#FEF5EB] hover:bg-[#5C3D26] transition-colors duration-300"
           >
             Retour à l&apos;accueil
-          </Link>
+          </TransitionLink>
         </div>
 
         {/* Collines desktop */}

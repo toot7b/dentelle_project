@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { TransitionLink } from "@/components/transitions";
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -84,7 +84,7 @@ export default function Navbar() {
         <ul className="flex items-center gap-8">
           {leftLinks.map((link) => (
             <li key={link.href}>
-              <Link
+              <TransitionLink
                 href={link.href}
                 className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
                   ? "text-white after:bg-white hover:text-white"
@@ -92,7 +92,7 @@ export default function Navbar() {
                   }`}
               >
                 {link.label}
-              </Link>
+              </TransitionLink>
             </li>
           ))}
         </ul>
@@ -105,13 +105,13 @@ export default function Navbar() {
           >
             ✦
           </span>
-          <Link
+          <TransitionLink
             href="/"
             className={`font-neulis text-2xl font-semibold tracking-wide transition-colors duration-300 ${isLightMode ? "text-white" : "text-text-primary"
               }`}
           >
             Les Fuseaux Asseventois
-          </Link>
+          </TransitionLink>
           <span
             className={`text-xs transition-colors duration-300 group-hover:-rotate-90 ${isLightMode ? "text-white" : "text-accent-gold"
               }`}
@@ -123,7 +123,7 @@ export default function Navbar() {
         {/* Right — Coordonnées + CTA */}
         <ul className="flex items-center justify-end gap-6">
           <li>
-            <Link
+            <TransitionLink
               href="/contact"
               className={`font-satoshi text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:transition-all after:duration-300 hover:after:w-full transition-colors duration-200 ${isLightMode
                 ? "text-white after:bg-white hover:text-white"
@@ -131,10 +131,10 @@ export default function Navbar() {
                 }`}
             >
               Coordonnées
-            </Link>
+            </TransitionLink>
           </li>
           <li>
-            <Link
+            <TransitionLink
               href="/adhesion"
               className={`font-satoshi text-sm font-medium px-5 py-2 rounded-full transition-colors duration-300 ${isLightMode
                 ? "bg-white text-[#B2C5A8] hover:bg-white/90"
@@ -142,20 +142,20 @@ export default function Navbar() {
                 }`}
             >
               Nous rejoindre
-            </Link>
+            </TransitionLink>
           </li>
         </ul>
       </div>
 
       {/* Mobile layout */}
       <div className="lg:hidden flex items-center justify-between px-5 py-3">
-        <Link
+        <TransitionLink
           href="/"
           className={`font-neulis text-lg font-semibold tracking-wide transition-colors duration-300 ${isLightMode ? "text-white" : "text-text-primary"
             }`}
         >
           Les Fuseaux Asseventois
-        </Link>
+        </TransitionLink>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="flex flex-col gap-[5px] p-3 -mr-1"
@@ -187,7 +187,7 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4">
             {leftLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <TransitionLink
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={`font-satoshi text-base font-medium transition-colors ${isLightMode
@@ -196,11 +196,11 @@ export default function Navbar() {
                     }`}
                 >
                   {link.label}
-                </Link>
+                </TransitionLink>
               </li>
             ))}
             <li>
-              <Link
+              <TransitionLink
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-base font-medium transition-colors ${isLightMode
@@ -209,10 +209,10 @@ export default function Navbar() {
                   }`}
               >
                 Coordonnées
-              </Link>
+              </TransitionLink>
             </li>
             <li className="pt-2">
-              <Link
+              <TransitionLink
                 href="/adhesion"
                 onClick={() => setMenuOpen(false)}
                 className={`font-satoshi text-sm font-medium px-5 py-2.5 rounded-full inline-block transition-colors ${isLightMode
@@ -221,7 +221,7 @@ export default function Navbar() {
                   }`}
               >
                 Nous rejoindre
-              </Link>
+              </TransitionLink>
             </li>
           </ul>
         </div>

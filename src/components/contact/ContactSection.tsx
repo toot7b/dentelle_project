@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transitions";
 import ActivitiesCloud from "@/components/activities/ActivitiesCloud";
 
 export default function ContactSection() {
@@ -135,18 +135,18 @@ export default function ContactSection() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto opacity-0">
-                    <Link
+                    <TransitionLink
                         href="/adhesion"
                         className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 rounded-full inline-flex justify-center items-center transition-colors duration-200 bg-text-primary text-background hover:bg-text-body w-full sm:w-auto"
                     >
                         Nous rejoindre
-                    </Link>
-                    <Link
+                    </TransitionLink>
+                    <TransitionLink
                         href="/contact"
                         className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 rounded-full inline-flex justify-center items-center border border-text-muted text-text-primary hover:border-text-primary hover:bg-[#2C1A0E]/15 transition-colors duration-200 w-full sm:w-auto"
                     >
                         Nos coordonnées
-                    </Link>
+                    </TransitionLink>
                 </div>
             </div>
         </section>

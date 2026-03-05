@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TransitionLink } from "@/components/transitions";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -18,7 +18,7 @@ export default function MentionsLegales() {
         <main className="min-h-screen bg-[#FEF5EB]">
             <Navbar />
 
-            <div className="container mx-auto px-6 md:px-16 pt-48 pb-32 max-w-4xl">
+            <div className="container mx-auto px-6 md:px-16 pt-32 md:pt-48 pb-32 max-w-4xl">
                 <header className="mb-20">
                     <h1 className="font-neulis text-4xl md:text-5xl lg:text-6xl font-semibold text-[#2C1A0E] mb-4 tracking-tight">
                         Mentions Légales
@@ -206,12 +206,12 @@ export default function MentionsLegales() {
                     </div>
 
                     <div className="flex justify-center">
-                        <Link
+                        <TransitionLink
                             href="/"
                             className="font-satoshi text-sm font-medium px-8 py-3 rounded-full bg-[#2C1A0E] text-[#FEF5EB] hover:bg-[#5C3D26] transition-colors duration-300"
                         >
                             Retour à l&apos;accueil
-                        </Link>
+                        </TransitionLink>
                     </div>
                 </div>
             </div>

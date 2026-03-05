@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AgentationWrapper from "@/components/AgentationWrapper";
+import TransitionWrapper from "@/components/transitions/TransitionWrapper";
 
 export const metadata: Metadata = {
   title: "Club de Dentelle",
@@ -21,7 +22,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        {children}
+        <TransitionWrapper>
+          {children}
+        </TransitionWrapper>
         <AgentationWrapper />
       </body>
     </html>

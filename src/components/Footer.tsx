@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { TransitionLink } from "@/components/transitions";
 import dynamic from "next/dynamic";
 import { Geist_Mono } from "next/font/google";
 
@@ -69,12 +69,12 @@ export default function Footer({ hideSeparator = false }: { hideSeparator?: bool
                         <ul className="space-y-3">
                             {navLinks.map(({ label, href }) => (
                                 <li key={href}>
-                                    <Link
+                                    <TransitionLink
                                         href={href}
                                         className="font-satoshi text-base text-white hover:text-white/80 transition-colors duration-200"
                                     >
                                         {label}
-                                    </Link>
+                                    </TransitionLink>
                                 </li>
                             ))}
                         </ul>
@@ -98,12 +98,12 @@ export default function Footer({ hideSeparator = false }: { hideSeparator?: bool
                                 Association loi 1901
                             </li>
                         </ul>
-                        <Link
+                        <TransitionLink
                             href="/mentions-legales"
                             className="font-satoshi text-sm text-white hover:text-white/80 transition-colors duration-200 underline underline-offset-2"
                         >
                             Mentions légales & Confidentialité
-                        </Link>
+                        </TransitionLink>
                     </div>
                 </div>
             </div>
