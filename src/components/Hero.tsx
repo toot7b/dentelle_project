@@ -132,7 +132,7 @@ export default function Hero() {
             </a>
             <a
               href="#galerie-section"
-              className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 border border-text-muted text-text-primary rounded-full hover:border-text-primary transition-colors duration-200"
+              className="font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 border border-text-muted text-text-primary rounded-full hover:border-text-primary hover:bg-[#2C1A0E]/15 transition-colors duration-200"
             >
               Voir la galerie
             </a>

@@ -146,17 +146,19 @@ export default function ActivitiesMedallion({
               height: 290,
             }}
           >
-            {/* Fuseau icon */}
-            <div className="mb-4 -mt-8 opacity-80">
-              <svg width="42" height="70" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 12,2 Q 15,10 12,15 Q 9,10 12,2 Z" fill="#D4BA7B" />
-                <circle cx="12" cy="1" r="1.5" fill="#8B7355" />
-                <rect x="11" y="15" width="2" height="6" fill="#8B7355" />
-                <line x1="10" y1="16" x2="14" y2="17" stroke="#FEF5EB" strokeWidth="1" />
-                <line x1="10" y1="18" x2="14" y2="19" stroke="#FEF5EB" strokeWidth="1" />
-                <line x1="10" y1="20" x2="14" y2="21" stroke="#FEF5EB" strokeWidth="1" />
-                <path d="M 11,21 C 18,21 16,36 12,38 C 8,36 6,21 11,21 Z" fill="#D4BA7B" />
-              </svg>
+            {/* Deux fuseaux */}
+            <div className="mb-7 -mt-3 opacity-80 flex justify-center items-start">
+              {[0, 1].map((i) => (
+                <svg key={i} width="38" height="63" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={i === 1 ? { marginLeft: "-10px" } : {}}>
+                  <path d="M 12,2 Q 15,10 12,15 Q 9,10 12,2 Z" fill="#D4BA7B" />
+                  <circle cx="12" cy="1" r="1.5" fill="#8B7355" />
+                  <rect x="11" y="15" width="2" height="6" fill="#8B7355" />
+                  <line x1="10" y1="16" x2="14" y2="17" stroke="#FEF5EB" strokeWidth="1" />
+                  <line x1="10" y1="18" x2="14" y2="19" stroke="#FEF5EB" strokeWidth="1" />
+                  <line x1="10" y1="20" x2="14" y2="21" stroke="#FEF5EB" strokeWidth="1" />
+                  <path d="M 11,21 C 18,21 16,36 12,38 C 8,36 6,21 11,21 Z" fill="#D4BA7B" />
+                </svg>
+              ))}
             </div>
 
             <h3 className="font-neulis text-2xl font-medium text-[#4A3B2C] mb-3">

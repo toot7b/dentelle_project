@@ -155,10 +155,10 @@ export default function FaqSection() {
               nos séances de dentelle aux fuseaux.
             </p>
             <a
-              href="#contact-section"
-              className="inline-block w-fit font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 border border-text-muted text-text-primary rounded-full hover:border-text-primary transition-colors duration-200"
+              href="/contact"
+              className="inline-block w-fit font-satoshi text-sm font-medium px-5 lg:px-6 py-2.5 lg:py-3 border border-text-muted text-text-primary rounded-full hover:border-text-primary hover:bg-[#2C1A0E]/15 transition-colors duration-200"
             >
-              Nous contacter
+              Nos coordonnées
             </a>
 
             <div className="hidden lg:block lg:mt-16" />

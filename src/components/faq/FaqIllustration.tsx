@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 function generatePicots(
     cx: number,
@@ -62,8 +62,17 @@ export default function FaqIllustration() {
                     <ellipse cx={cx} cy={cy} rx={rx - 8} ry={ry - 12} stroke="#C2AE4C" strokeWidth={0.8} strokeDasharray="4 4" fill="none" opacity={0.6} />
                     <ellipse cx={cx} cy={cy} rx={rx - 13} ry={ry - 18} stroke="#E5D3B3" strokeWidth={1} fill="none" />
 
-                    {/* Centered Large Fuseau Icon */}
-                    <g transform={`translate(${cx - 48}, ${cy - 78}) scale(4.0)`} opacity="0.9">
+                    {/* Deux fuseaux côte à côte */}
+                    <g transform={`translate(${cx - 58}, ${cy - 58}) scale(3.0)`} opacity="0.9">
+                        <path d="M 12,2 Q 15,10 12,15 Q 9,10 12,2 Z" fill="#D4BA7B" />
+                        <circle cx="12" cy="1" r="1.5" fill="#8B7355" />
+                        <rect x="11" y="15" width="2" height="6" fill="#8B7355" />
+                        <line x1="10" y1="16" x2="14" y2="17" stroke="#FEF5EB" strokeWidth="1" />
+                        <line x1="10" y1="18" x2="14" y2="19" stroke="#FEF5EB" strokeWidth="1" />
+                        <line x1="10" y1="20" x2="14" y2="21" stroke="#FEF5EB" strokeWidth="1" />
+                        <path d="M 11,21 C 18,21 16,36 12,38 C 8,36 6,21 11,21 Z" fill="#D4BA7B" />
+                    </g>
+                    <g transform={`translate(${cx - 14}, ${cy - 58}) scale(3.0)`} opacity="0.9">
                         <path d="M 12,2 Q 15,10 12,15 Q 9,10 12,2 Z" fill="#D4BA7B" />
                         <circle cx="12" cy="1" r="1.5" fill="#8B7355" />
                         <rect x="11" y="15" width="2" height="6" fill="#8B7355" />
