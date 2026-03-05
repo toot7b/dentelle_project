@@ -131,7 +131,7 @@ export default function ContactSection() {
                 </h2>
 
                 <p className="font-satoshi text-lg md:text-xl text-text-body leading-relaxed mb-8 md:mb-10 max-w-2xl opacity-0">
-                    Que ce soit pour échanger sur notre passion, rejoindre nos ateliers au Château de Fillières, ou simplement nous poser une question, nous sommes à votre écoute.
+                    Que ce soit pour échanger sur notre passion, rejoindre nos ateliers, ou simplement nous poser une question, nous sommes à votre écoute.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto opacity-0">

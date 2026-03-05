@@ -130,6 +130,7 @@ export default function PhotoWall() {
             key={photo.src}
             data-frame
             data-rotation={photo.rotation}
+            style={{ opacity: 0 }}
           >
             <div data-parallax>
               <PhotoFrame
