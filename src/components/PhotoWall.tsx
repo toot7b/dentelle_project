@@ -41,6 +41,9 @@ export default function PhotoWall() {
 
       const tl = gsap.timeline({ delay: 1.1 + i * 0.22 });
 
+      // 0. Révèle l'enveloppe avant que l'anim commence
+      tl.set(el, { opacity: 1 });
+
       // 1. Vis pop en place (aucun parent ne tourne)
       if (nail) tl.to(nail, { scale: 1, duration: 0.45, ease: "back.out(2)" });
 
@@ -108,6 +111,7 @@ export default function PhotoWall() {
             style={{
               top: photo.top,
               left: photo.left,
+              opacity: 0,
             }}
           >
             <PhotoFrame
