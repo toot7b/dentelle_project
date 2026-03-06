@@ -36,6 +36,7 @@ export default function FlyingPhoto({ src, alt, caption, rotate = 0, className =
                             fill
                             className="object-cover"
                             sizes="(max-width: 768px) 220px, 280px"
+                            style={{ filter: "sepia(20%) saturate(90%) brightness(97%)" }}
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-[#8B7355]/50 font-satoshi text-sm">

@@ -14,6 +14,7 @@ interface PhotoFrameProps {
   disableHover?: boolean;
   wireLength?: number;
   wireSpread?: number;
+  children?: React.ReactNode;
 }
 
 function Nail({ frameWidth, wireLength = 34 }: { frameWidth: number, wireLength?: number }) {
@@ -182,6 +183,7 @@ export default function PhotoFrame({
   disableHover = false,
   wireLength = 34,
   wireSpread = 28,
+  children,
 }: PhotoFrameProps) {
   const FrameComponent = frameComponents[variant];
   const pad = paddings[variant];
@@ -225,11 +227,24 @@ export default function PhotoFrame({
                   width={width}
                   height={height}
                   className="block object-cover w-full h-full"
+                  style={{ filter: "sepia(20%) saturate(90%) brightness(97%)" }}
                 />
+              ) : children ? (
+                <div className="w-full h-full relative">{children}</div>
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center bg-[#E5D3B3]/20 border border-[#D4BA7B]/30 font-satoshi text-[#8B7355]/60 text-sm md:text-base">
-                  <span>[ Espace Image ]</span>
-                  <span className="text-xs opacity-50 mt-1">{width} x {height}</span>
+                <div className="w-full h-full relative" style={{ backgroundColor: "#FEF5EB" }}>
+                  <div className="absolute inset-3">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+                      <defs>
+                        <pattern id="weave" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                          <line x1="0" y1="10" x2="20" y2="10" stroke="#C2AE4C" strokeWidth="0.7" opacity="0.3"/>
+                          <line x1="10" y1="0" x2="10" y2="20" stroke="#C2AE4C" strokeWidth="0.7" opacity="0.3"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#weave)"/>
+                    </svg>
+                    <div className="absolute inset-0 pointer-events-none" style={{ border: "2px solid rgba(194, 174, 76, 0.6)" }}/>
+                  </div>
                 </div>
               )}
             </div>

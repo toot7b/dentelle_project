@@ -165,22 +165,22 @@ export default function GalerieSection() {
       <div className="relative z-10 container mx-auto px-6 md:px-16 mt-16 md:mt-32 pb-24 md:pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 md:gap-y-32 gap-x-8 md:gap-x-12 place-items-center">
           {[
-            { rotate: -4, caption: "croquis initial" },
-            { rotate: 3, caption: "fils de lin" },
-            { rotate: -2, caption: "fuseaux en bois" },
-            { rotate: 5, caption: "détail du point" },
-            { rotate: -3 },
-            { rotate: 2, caption: "finition dentelle" },
-            { rotate: -6, caption: "la patience" },
-            { rotate: 4 },
-            { rotate: -3, caption: "travail en cours" },
-            { rotate: 1 },
-            { rotate: -5, caption: "journées d'été" },
-            { rotate: 3, caption: "exposition 2026" },
+            { src: "/photos/arbre.webp",     rotate: -4, caption: "un arbre de fil" },
+            { src: "/photos/bande.webp",     rotate: 3,  caption: "une bande pour les fêtes" },
+            { src: "/photos/bougie.webp",    rotate: -2, caption: "une bougie de dentelle" },
+            { src: "/photos/col.webp",       rotate: 5,  caption: "un col tout en dentelle" },
+            { src: "/photos/compo.webp",     rotate: -3, caption: "un beau médaillon" },
+            { src: "/photos/coussin.webp",   rotate: 2,  caption: "le coussin pas comme les autres" },
+            { src: "/photos/hiboux.webp",    rotate: -6, caption: "notre petits hibou d'atelier" },
+            { src: "/photos/noel.webp",      rotate: 4,  caption: "l'esprit de noël" },
+            { src: "/photos/oiseau2.webp",   rotate: -3, caption: "un oiseau, de près" },
+            { src: "/photos/painpiece.webp", rotate: 1,  caption: "le copain d'épices" },
+            { src: "/photos/palm.webp",      rotate: -5, caption: "un palmier de fil" },
+            { src: "/photos/renard.webp",    rotate: 3,  caption: "un renard pas comme les autres" },
           ].map((photo, i) => (
             <div key={i} data-photo className="w-full flex justify-center">
               <FlyingPhoto
-                src=""
+                src={photo.src}
                 alt={`Photo ${i + 1}`}
                 caption={photo.caption}
                 rotate={photo.rotate}

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import PhotoFrame from '../PhotoFrame';
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
@@ -133,14 +134,29 @@ export default function AboutSection() {
                 <div data-about-photo className="relative max-w-5xl mx-auto w-full z-10 px-6 md:px-16 flex justify-center opacity-0 will-change-transform will-change-opacity">
                     <div className="scale-[0.4] sm:scale-[0.6] md:scale-100 origin-top">
                         <PhotoFrame
-                            alt="Placeholder About"
+                            alt="Tableau association"
                             width={800}
                             height={450}
                             variant="classic"
                             wireLength={120}
                             wireSpread={240}
                             disableHover
-                        />
+                        >
+                            
+
+                            {/* Photo unique recouvrant le tableau */}
+                            <div className="absolute inset-0 p-3 md:p-4 lg:p-5 z-10">
+                                <div className="relative w-full h-full rounded-[2px] overflow-hidden" style={{ boxShadow: "0 4px 12px rgba(44,26,14,0.15)" }}>
+                                    <Image
+                                        src="/photos/fuseaux/fuseaux.webp"
+                                        alt="Travail de la dentelle"
+                                        fill
+                                        className="block object-cover"
+                                        style={{ filter: "sepia(20%) saturate(90%) brightness(97%)" }}
+                                    />
+                                </div>
+                            </div>
+                        </PhotoFrame>
                     </div>
                 </div>
             </div>

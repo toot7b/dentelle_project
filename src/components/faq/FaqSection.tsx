@@ -138,7 +138,7 @@ export default function FaqSection() {
       className="relative w-full"
       style={{ backgroundColor: "#FEF5EB" }}
     >
-      <div className="w-full px-6 md:px-16 lg:px-24 pt-12 md:pt-16 lg:pt-20 pb-24 md:pb-32 lg:pb-40">
+      <div className="w-full px-6 md:px-16 lg:px-24 pt-12 md:pt-16 lg:pt-20 pb-24 md:pb-32 lg:pb-16">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 xl:gap-24">
           {/* Left column — title + CTA + illustration pushed to bottom */}
           <div
