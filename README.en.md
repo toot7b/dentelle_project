@@ -18,7 +18,7 @@ Showcase website for **Les Fuseaux Asseventois**, a bobbin lace club based in As
 | [Framer Motion](https://www.framer.com/motion/) | 12 | Mount/unmount animations, hover, lightbox |
 | [SplitType](https://github.com/lukePeavey/SplitType) | 0.3 | Letter-by-letter text animation |
 | [MapLibre GL](https://maplibre.org/) | 5 | Interactive map (contact page) |
-| [Resend](https://resend.com/) | 6 | Email sending (membership form) |
+
 
 ## Getting Started
 
