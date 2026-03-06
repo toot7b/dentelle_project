@@ -185,7 +185,7 @@ export default function GalerieSection() {
             <div key={i} data-photo className="w-full flex justify-center">
               <FlyingPhoto
                 src={photo.src}
-                alt={`Photo ${i + 1}`}
+                alt={`Dentelle aux fuseaux — ${photo.caption}`}
                 caption={photo.caption}
                 rotate={photo.rotate}
                 className="relative w-max"
