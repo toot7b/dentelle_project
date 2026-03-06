@@ -5,17 +5,19 @@ interface FlyingPhotoProps {
     alt: string;
     caption?: string;
     rotate?: number;
-    className?: string; // For positioning
+    className?: string;
+    onClick?: () => void;
 }
 
-export default function FlyingPhoto({ src, alt, caption, rotate = 0, className = "" }: FlyingPhotoProps) {
+export default function FlyingPhoto({ src, alt, caption, rotate = 0, className = "", onClick }: FlyingPhotoProps) {
     return (
         <div
-            className={className}
+            className={`${className} ${onClick ? "cursor-pointer" : ""}`}
             style={{
                 transform: `rotate(${rotate}deg)`,
                 transformOrigin: "center center",
             }}
+            onClick={onClick}
         >
             {/* The Photo Frame */}
             <div

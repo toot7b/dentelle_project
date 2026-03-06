@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimatePresence } from "framer-motion";
 import DandelionHead from "../activities/DandelionHead";
 import FlyingPhoto from "./FlyingPhoto";
+import Lightbox from "./Lightbox";
 
 // Perspective field : flowers get bigger toward the bottom (closer to viewer)
 const flowers: { left: string; top: string; size: number; rotate: number }[] = [
@@ -83,6 +85,7 @@ const mobileFlowers: { left: string; top: string; size: number; rotate: number }
 
 export default function GalerieSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [openPhoto, setOpenPhoto] = useState<{ src: string; caption?: string } | null>(null);
 
   useGSAP(
     () => {
@@ -119,6 +122,7 @@ export default function GalerieSection() {
   );
 
   return (
+    <>
     <section
       ref={sectionRef}
       id="galerie-section"
@@ -170,13 +174,13 @@ export default function GalerieSection() {
             { src: "/photos/bougie.webp",    rotate: -2, caption: "une bougie de dentelle" },
             { src: "/photos/col.webp",       rotate: 5,  caption: "un col tout en dentelle" },
             { src: "/photos/compo.webp",     rotate: -3, caption: "un beau médaillon" },
-            { src: "/photos/coussin.webp",   rotate: 2,  caption: "le coussin pas comme les autres" },
+            { src: "/photos/coussin.webp",   rotate: 2,  caption: "le super coussin" },
             { src: "/photos/hiboux.webp",    rotate: -6, caption: "notre petits hibou d'atelier" },
             { src: "/photos/noel.webp",      rotate: 4,  caption: "l'esprit de noël" },
             { src: "/photos/oiseau2.webp",   rotate: -3, caption: "un oiseau, de près" },
             { src: "/photos/painpiece.webp", rotate: 1,  caption: "le copain d'épices" },
             { src: "/photos/palm.webp",      rotate: -5, caption: "un palmier de fil" },
-            { src: "/photos/renard.webp",    rotate: 3,  caption: "un renard pas comme les autres" },
+            { src: "/photos/renard.webp",    rotate: 3,  caption: "un beau renard" },
           ].map((photo, i) => (
             <div key={i} data-photo className="w-full flex justify-center">
               <FlyingPhoto
@@ -185,6 +189,7 @@ export default function GalerieSection() {
                 caption={photo.caption}
                 rotate={photo.rotate}
                 className="relative w-max"
+                onClick={() => setOpenPhoto({ src: photo.src, caption: photo.caption })}
               />
             </div>
           ))}
@@ -233,5 +238,17 @@ export default function GalerieSection() {
         </div>
       </div>
     </section>
+
+      <AnimatePresence>
+        {openPhoto && (
+          <Lightbox
+            src={openPhoto.src}
+            alt={openPhoto.caption ?? "Photo"}
+            caption={openPhoto.caption}
+            onClose={() => setOpenPhoto(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }

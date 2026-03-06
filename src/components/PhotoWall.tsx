@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimatePresence } from "framer-motion";
 import PhotoFrame from "./PhotoFrame";
+import Lightbox from "./galerie/Lightbox";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +24,7 @@ const photos = [
 export default function PhotoWall() {
   const wallRef = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
+  const [openPhoto, setOpenPhoto] = useState<{ src: string } | null>(null);
 
   // Desktop animation
   useGSAP(() => {
@@ -122,6 +125,7 @@ export default function PhotoWall() {
               rotation={photo.rotation}
               frameColor={photo.frameColor}
               variant={photo.variant}
+              onClick={() => setOpenPhoto({ src: photo.src })}
             />
           </div>
         ))}
@@ -146,11 +150,22 @@ export default function PhotoWall() {
                 frameColor={photo.frameColor}
                 variant={photo.variant}
                 disableHover
+                onClick={() => setOpenPhoto({ src: photo.src })}
               />
             </div>
           </div>
         ))}
       </div>
+
+      <AnimatePresence>
+        {openPhoto && (
+          <Lightbox
+            src={openPhoto.src}
+            alt="Photo dentelle"
+            onClose={() => setOpenPhoto(null)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

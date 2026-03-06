@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import AgentationWrapper from "@/components/AgentationWrapper";
 import TransitionWrapper from "@/components/transitions/TransitionWrapper";
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default function RootLayout({
         <TransitionWrapper>
           {children}
         </TransitionWrapper>
-        <AgentationWrapper />
       </body>
     </html>
   );

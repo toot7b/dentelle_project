@@ -16,7 +16,7 @@ export default function ContactSection() {
 
             const st = {
                 trigger: sectionRef.current,
-                start: "top 45%",
+                start: "top 85%",
                 once: true,
             };
 
@@ -89,9 +89,7 @@ export default function ContactSection() {
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Gauche — outer: position + GSAP cible / inner: scale + drift */}
                 <div data-contact-cloud-left className="absolute opacity-0" style={{ top: "4%", left: "-2%" }}>
-                    <div className="scale-[0.55] md:scale-100 origin-top-left">
-                        <div className="cloud-drift-c" style={{ transform: "scale(0.75)", transformOrigin: "top left" }}><ActivitiesCloud variant="cumulus" /></div>
-                    </div>
+                    <div className="cloud-drift-c scale-[0.41] md:scale-[0.75] origin-top-left"><ActivitiesCloud variant="cumulus" /></div>
                 </div>
                 <div data-contact-cloud-left className="hidden md:block absolute opacity-0" style={{ top: "38%", left: "14%" }}>
                     <div className="cloud-drift-a" style={{ transform: "scale(0.48)", transformOrigin: "top left" }}><ActivitiesCloud variant="wisp" /></div>
@@ -105,9 +103,7 @@ export default function ContactSection() {
                 {/* Droite — outer: position + GSAP cible / inner: scale + drift */}
                 {/* Droite mobile uniquement — cumulus bas-droite */}
                 <div data-contact-cloud-right className="md:hidden absolute opacity-0" style={{ top: "85%", right: "-2%" }}>
-                    <div className="scale-[0.55] origin-top-right">
-                        <div className="cloud-drift-b" style={{ transform: "scale(0.65)", transformOrigin: "top right" }}><ActivitiesCloud variant="cumulus" /></div>
-                    </div>
+                    <div className="cloud-drift-b scale-[0.36] origin-top-right"><ActivitiesCloud variant="cumulus" /></div>
                 </div>
                 {/* Droite desktop uniquement — cirrus haut-droite */}
                 <div data-contact-cloud-right className="hidden md:block absolute opacity-0" style={{ top: "6%", right: "-1%" }}>

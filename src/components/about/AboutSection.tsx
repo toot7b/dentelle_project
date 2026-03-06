@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import PhotoFrame from '../PhotoFrame';
-import { useRef } from 'react';
+import Lightbox from '../galerie/Lightbox';
+import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AnimatePresence } from 'framer-motion';
 
 export default function AboutSection() {
     const sectionRef = useRef<HTMLElement>(null);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -80,6 +83,7 @@ export default function AboutSection() {
     }, { scope: sectionRef });
 
     return (
+        <>
         <section
             ref={sectionRef}
             id="about-section"
@@ -141,6 +145,7 @@ export default function AboutSection() {
                             wireLength={120}
                             wireSpread={240}
                             disableHover
+                            onClick={() => setLightboxOpen(true)}
                         >
                             
 
@@ -161,5 +166,16 @@ export default function AboutSection() {
                 </div>
             </div>
         </section>
+
+        <AnimatePresence>
+            {lightboxOpen && (
+                <Lightbox
+                    src="/photos/fuseaux/fuseaux.webp"
+                    alt="Travail de la dentelle"
+                    onClose={() => setLightboxOpen(false)}
+                />
+            )}
+        </AnimatePresence>
+    </>
     );
 }

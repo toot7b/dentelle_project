@@ -15,6 +15,7 @@ interface PhotoFrameProps {
   wireLength?: number;
   wireSpread?: number;
   children?: React.ReactNode;
+  onClick?: () => void;
 }
 
 function Nail({ frameWidth, wireLength = 34 }: { frameWidth: number, wireLength?: number }) {
@@ -184,6 +185,7 @@ export default function PhotoFrame({
   wireLength = 34,
   wireSpread = 28,
   children,
+  onClick,
 }: PhotoFrameProps) {
   const FrameComponent = frameComponents[variant];
   const pad = paddings[variant];
@@ -192,8 +194,9 @@ export default function PhotoFrame({
 
   return (
     <div
-      className="inline-block relative"
+      className={`inline-block relative${onClick ? " cursor-pointer" : ""}`}
       style={{ transform: `rotate(${rotation}deg)` }}
+      onClick={onClick}
     >
       {/* Nail — stays fixed on the wall */}
       <Nail frameWidth={totalWidth} wireLength={wireLength} />
