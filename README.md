@@ -134,9 +134,11 @@ Le site utilise un système d'animations en deux couches pour éviter les confli
 
 - Métadonnées complètes : titre, description, keywords, OpenGraph, Twitter Cards, canonical URL
 - JSON-LD Schema.org : `Organization` avec adresse, région, `areaServed` (Assevent + Maubeuge), `sameAs` (Facebook)
+- JSON-LD Schema.org : `FAQPage` avec les 4 questions/réponses structurées (rich snippets Google)
 - `robots.ts` et `sitemap.ts` auto-générés par Next.js App Router
 - Alt descriptifs sur toutes les images (`"Dentelle aux fuseaux -- un arbre de fil"`)
-- Métadonnées spécifiques par sous-page (adhésion, contact, mentions légales)
+- Métadonnées spécifiques par sous-page (adhésion, contact, mentions légales) avec canonical et OpenGraph dédiés
+- Preconnect + DNS prefetch pour FontShare (chargement Satoshi optimisé)
 - Géolocalisation : Assevent, Maubeuge, Hauts-de-France
 
 ## Responsive
@@ -184,8 +186,13 @@ Les assets statiques sont marqués `immutable` : le CDN les sert indéfiniment s
 ## Variables d'environnement
 
 ```bash
-# Sweego (envoi d'emails)
-SWEEGO_API_KEY=sw_...
+# Sweego (envoi d'emails transactionnels)
+SWEEGO_API_KEY=...
+
+# Emails adhésion
+ADHESION_TO_EMAIL=contact@example.fr      # Réception des demandes
+ADHESION_FROM_EMAIL=contact@example.fr    # Adresse d'expédition
+ADHESION_FROM_NAME=Les Fuseaux Asseventois # Nom d'expédition
 ```
 
 ## Scripts
