@@ -175,7 +175,7 @@ export default function GalerieSection() {
             { src: "/photos/col.webp",       rotate: 5,  caption: "un col tout en dentelle" },
             { src: "/photos/compo.webp",     rotate: -3, caption: "un beau médaillon" },
             { src: "/photos/coussin.webp",   rotate: 2,  caption: "le super coussin" },
-            { src: "/photos/hiboux.webp",    rotate: -6, caption: "notre petits hibou d'atelier" },
+            { src: "/photos/hiboux.webp",    rotate: -6, caption: "notre petit hibou d'atelier" },
             { src: "/photos/noel.webp",      rotate: 4,  caption: "l'esprit de noël" },
             { src: "/photos/oiseau2.webp",   rotate: -3, caption: "un oiseau, de près" },
             { src: "/photos/painpiece.webp", rotate: 1,  caption: "le copain d'épices" },
