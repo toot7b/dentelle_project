@@ -79,6 +79,11 @@ export default function AdhesionForm() {
             const json = await res.json();
             if (res.ok) {
                 setStatus("success");
+                if (window.matchMedia("(max-width: 767px)").matches && formRef.current) {
+                    setTimeout(() => {
+                        formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 100);
+                }
             } else {
                 setStatus("error");
                 setErrorMessage(json.error || "Une erreur est survenue.");
@@ -97,7 +102,14 @@ export default function AdhesionForm() {
 
     if (status === "success") {
         return (
-            <div ref={formRef} className="bg-[#F0DBD8] rounded-2xl p-8 md:p-12 max-w-xl w-full text-center">
+            <div
+                ref={formRef}
+                className="relative bg-white rounded-2xl p-8 md:p-12 max-w-xl w-full text-center border border-[#C2AE4C]"
+                style={{ filter: "drop-shadow(0px 4px 10px rgba(44, 26, 14, 0.15))" }}
+            >
+                {/* Fil doré décoratif */}
+                <div className="absolute inset-3 rounded-xl border border-dashed border-[#C2AE4C]/40 pointer-events-none" />
+
                 <p className="text-2xl mb-4 text-[#C2AE4C]">✦</p>
                 <h3 className="font-neulis text-xl font-semibold text-[#2C1A0E] mb-3">
                     Demande envoyée !
@@ -105,6 +117,15 @@ export default function AdhesionForm() {
                 <p className="font-satoshi text-[#5C3D26] leading-relaxed">
                     Merci pour votre intérêt. Nous reviendrons vers vous très prochainement.
                 </p>
+                <p className="font-satoshi text-sm text-[#9A7558] mt-4">
+                    Un email de confirmation vous a été envoyé.
+                </p>
+                <a
+                    href="/"
+                    className="inline-block font-satoshi text-sm font-medium px-8 py-3 mt-6 bg-[#2C1A0E] text-[#FEF5EB] rounded-full hover:bg-[#5C3D26] transition-colors duration-200"
+                >
+                    Retour à l'accueil
+                </a>
             </div>
         );
     }
