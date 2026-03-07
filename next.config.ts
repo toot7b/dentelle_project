@@ -5,15 +5,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-cache, no-store, s-maxage=0, must-revalidate",
-          },
-        ],
-      },
-      {
         source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|gif)",
         headers: [
           {

@@ -1,8 +1,24 @@
-# Les Fuseaux Asseventois
+<p align="center">
+  <img src="docs/hero.png" alt="Les Fuseaux Asseventois" width="800" />
+</p>
 
-Site vitrine de l'association **Les Fuseaux Asseventois**, un club de dentelle aux fuseaux basé à Assevent (Nord, Hauts-de-France).
+<h1 align="center">Les Fuseaux Asseventois</h1>
 
-**[fuseaux-asseventois.fr](https://fuseaux-asseventois.fr)**
+<p align="center">
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" /></a>
+  <a href="https://gsap.com/"><img src="https://img.shields.io/badge/GSAP-3.14-88CE02?logo=greensock&logoColor=white" alt="GSAP" /></a>
+  <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-12-E600FF?logo=framer&logoColor=white" alt="Framer Motion" /></a>
+  <br />
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-C2AE4C" alt="License MIT" /></a>
+  <a href="https://fuseaux-asseventois.fr"><img src="https://img.shields.io/badge/Live-fuseaux--asseventois.fr-FEF5EB?labelColor=2C1A0E" alt="Live" /></a>
+</p>
+
+<p align="center">
+  Site vitrine de l'association <strong>Les Fuseaux Asseventois</strong>, un club de dentelle aux fuseaux basé à Assevent (Nord, Hauts-de-France).
+</p>
 
 ---
 
@@ -163,16 +179,15 @@ Ce projet est hébergé et opéré avec une infrastructure **intégralement euro
 |---|---|---|
 | **VPS** | [Contabo](https://contabo.com/) | Allemagne |
 | **Déploiement** | [Dokploy](https://dokploy.com/) | Self-hosted (open-source) |
-| **CDN** | [Gcore](https://gcore.com/) | Luxembourg |
 | **Emails transactionnels** | [Sweego](https://www.sweego.io/) | France |
 | **Nom de domaine** | [Infomaniak](https://www.infomaniak.com/) | Suisse |
 | **DNS** | [Infomaniak](https://www.infomaniak.com/) | Suisse |
 
 **Pourquoi ?** Souveraineté numérique, conformité RGPD native, pas de transfert de données hors UE, et soutien à l'écosystème tech européen.
 
-### Headers de cache (CDN-friendly)
+### Headers de cache
 
-Les headers de cache sont configurés dans `next.config.ts` pour maximiser l'efficacité du CDN :
+Les headers de cache sont configurés dans `next.config.ts` pour les assets statiques :
 
 | Ressource | Cache-Control | Durée |
 |---|---|---|
@@ -181,7 +196,7 @@ Les headers de cache sont configurés dans `next.config.ts` pour maximiser l'eff
 | Patterns SVG | `public, max-age=31536000, immutable` | 1 an |
 | Build output (`/_next/static/`) | Géré automatiquement par Next.js | Long-term |
 
-Les assets statiques sont marqués `immutable` : le CDN les sert indéfiniment sans revalider avec le serveur origin. Next.js gère déjà le cache-busting via les hashes dans les noms de fichiers du build (`/_next/static/`).
+Les assets statiques sont marqués `immutable` : le navigateur les sert depuis son cache sans revalider. Next.js gère le cache-busting via les hashes dans les noms de fichiers du build (`/_next/static/`).
 
 ## Variables d'environnement
 
@@ -234,7 +249,7 @@ L'Europe a déjà produit les fondations de la tech mondiale : Linux (Linus Torv
 
 Nualt s'inscrit dans cette continuité. L'axe central du studio est de faire de la tech avec des valeurs européennes -- souveraineté des données, transparence, respect de la vie privée, conformité RGPD native. Pas comme argument marketing. Comme posture de fond qui se traduit dans chaque décision technique, chaque choix d'infrastructure, et chaque relation client.
 
-Ce projet en est un exemple concret : **zéro dépendance US** sur toute la chaîne (hébergement, CDN, emails, DNS, nom de domaine). Chaque brique est européenne, chaque donnée reste en Europe, et chaque prestataire partage les mêmes valeurs de transparence et de souveraineté.
+Ce projet en est un exemple concret : **zéro dépendance US** sur toute la chaîne (hébergement, emails, DNS, nom de domaine). Chaque brique est européenne, chaque donnée reste en Europe, et chaque prestataire partage les mêmes valeurs de transparence et de souveraineté.
 
 Un petit easter egg trahit cette posture dans le footer du site : un Space Invaders en pixel art, clin d'oeil aux cloud providers américains qui envahissent le web européen.
 
@@ -248,4 +263,4 @@ Les contenus (textes, photos) restent la propriété exclusive de l'association 
 
 ---
 
-Design & Développement : **Thomas Sarazin** -- [BigxBang Studio](https://bigxbang.studio)
+Design & Développement : **Thomas Sarazin** -- [Nualt Studio](https://nualt.studio)

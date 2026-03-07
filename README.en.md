@@ -1,8 +1,24 @@
-# Les Fuseaux Asseventois
+<p align="center">
+  <img src="docs/hero.png" alt="Les Fuseaux Asseventois" width="800" />
+</p>
 
-Showcase website for **Les Fuseaux Asseventois**, a bobbin lace club based in Assevent (Nord, Hauts-de-France, northern France).
+<h1 align="center">Les Fuseaux Asseventois</h1>
 
-**[fuseaux-asseventois.fr](https://fuseaux-asseventois.fr)**
+<p align="center">
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" /></a>
+  <a href="https://gsap.com/"><img src="https://img.shields.io/badge/GSAP-3.14-88CE02?logo=greensock&logoColor=white" alt="GSAP" /></a>
+  <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-12-E600FF?logo=framer&logoColor=white" alt="Framer Motion" /></a>
+  <br />
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-C2AE4C" alt="License MIT" /></a>
+  <a href="https://fuseaux-asseventois.fr"><img src="https://img.shields.io/badge/Live-fuseaux--asseventois.fr-FEF5EB?labelColor=2C1A0E" alt="Live" /></a>
+</p>
+
+<p align="center">
+  Showcase website for <strong>Les Fuseaux Asseventois</strong>, a bobbin lace club based in Assevent (Nord, Hauts-de-France, northern France).
+</p>
 
 ---
 
@@ -163,16 +179,15 @@ This project is hosted and operated on an **entirely European infrastructure**, 
 |---|---|---|
 | **VPS** | [Contabo](https://contabo.com/) | Germany |
 | **Deployment** | [Dokploy](https://dokploy.com/) | Self-hosted (open-source) |
-| **CDN** | [Gcore](https://gcore.com/) | Luxembourg |
 | **Transactional emails** | [Sweego](https://www.sweego.io/) | France |
 | **Domain name** | [Infomaniak](https://www.infomaniak.com/) | Switzerland |
 | **DNS** | [Infomaniak](https://www.infomaniak.com/) | Switzerland |
 
 **Why?** Digital sovereignty, native GDPR compliance, no data transfer outside the EU, and support for the European tech ecosystem.
 
-### Cache Headers (CDN-friendly)
+### Cache Headers
 
-Cache headers are configured in `next.config.ts` to maximize CDN efficiency:
+Cache headers are configured in `next.config.ts` for static assets:
 
 | Resource | Cache-Control | Duration |
 |---|---|---|
@@ -181,7 +196,7 @@ Cache headers are configured in `next.config.ts` to maximize CDN efficiency:
 | SVG patterns | `public, max-age=31536000, immutable` | 1 year |
 | Build output (`/_next/static/`) | Handled automatically by Next.js | Long-term |
 
-Static assets are marked `immutable`: the CDN serves them indefinitely without revalidating with the origin server. Next.js already handles cache-busting via hashed filenames in the build output (`/_next/static/`).
+Static assets are marked `immutable`: the browser serves them from cache without revalidating. Next.js handles cache-busting via hashed filenames in the build output (`/_next/static/`).
 
 ## Environment Variables
 
@@ -234,7 +249,7 @@ Europe has already produced the foundations of global tech: Linux (Linus Torvald
 
 Nualt carries this legacy forward. The studio's central axis is building tech with European values -- data sovereignty, transparency, privacy, native GDPR compliance. Not as a marketing argument. As a core stance that translates into every technical decision, every infrastructure choice, and every client relationship.
 
-This project is a concrete example: **zero US dependency** across the entire chain (hosting, CDN, emails, DNS, domain name). Every building block is European, every piece of data stays in Europe, and every provider shares the same values of transparency and sovereignty.
+This project is a concrete example: **zero US dependency** across the entire chain (hosting, emails, DNS, domain name). Every building block is European, every piece of data stays in Europe, and every provider shares the same values of transparency and sovereignty.
 
 A small easter egg betrays this stance in the site's footer: a pixel art Space Invaders, a nod to the American cloud providers invading the European web.
 
