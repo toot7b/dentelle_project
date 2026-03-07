@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contactez les Fuseaux Asseventois. Posez vos questions sur nos ateliers de dentelle aux fuseaux à Assevent et Maubeuge. Nous vous répondons rapidement.",
+  alternates: {
+    canonical: "https://fuseaux-asseventois.fr/contact",
+  },
+  openGraph: {
+    title: "Contact — Les Fuseaux Asseventois",
+    description:
+      "Posez vos questions sur nos ateliers de dentelle aux fuseaux à Assevent et Maubeuge.",
+    url: "https://fuseaux-asseventois.fr/contact",
+  },
 };
 
 export default function ContactPage() {

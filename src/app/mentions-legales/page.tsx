@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Mentions Légales",
     description: "Informations légales, politique de confidentialité et RGPD de l'association Les Fuseaux Asseventois, dentelle aux fuseaux à Assevent.",
+    alternates: {
+        canonical: "https://fuseaux-asseventois.fr/mentions-legales",
+    },
 };
 
 export default function MentionsLegales() {

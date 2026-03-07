@@ -88,6 +88,8 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://api.fontshare.com" />
         <link
           href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
           rel="stylesheet"
@@ -115,6 +117,49 @@ export default function RootLayout({
               ],
               sameAs: [
                 "https://www.facebook.com/p/Les-Fuseaux-Asseventois-100070777254573/",
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Je n'ai jamais fait de dentelle, puis-je venir ?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Bien sûr ! L'atelier est ouvert aux personnes de tous niveaux. Les membres plus expérimentés seront ravis de vous guider pour vos premiers croisements et pour apprendre à monter votre carreau.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Faut-il apporter son propre matériel ?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Si vous débutez, l'association peut vous prêter le matériel de base (carreau et fuseaux) pour faire vos premiers essais. Vous pourrez ensuite vous équiper progressivement selon vos envies.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Où et quand se déroulent les ateliers ?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Nous nous retrouvons au Pôle Culturel d'Assevent. N'hésitez pas à nous contacter via la page d'adhésion pour organiser votre première venue !",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Quels sont nos tarifs ?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "La participation est de 5 euros par mois. Ce tarif nous permet de faire vivre l'association tout au long de l'année.",
+                  },
+                },
               ],
             }),
           }}
