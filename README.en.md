@@ -223,15 +223,15 @@ pnpm lint      # ESLint
 
 ## The Studio
 
-This project was designed and developed by **Nualt Studio**, a web and application development studio founded by Thomas Sarazin, based in northern France.
+This project was designed and developed by **BigxBang Studio**, a web and application development studio founded by Thomas Sarazin, based in northern France.
 
-Nualt (a portmanteau of "nuage" -- French for "cloud" -- and "alt") was born from a simple conviction: European tech has nothing to envy from anyone, and it's time to prove it in practice. The studio has gone through several lives -- first as BigXBang Studio, then Les Amants Terribles, before finding its definitive identity. Its logo, a pixel art cloud in the rain, visually anchors the brand in northern France -- where it rains, and where we code.
+BigxBang was born from a simple conviction: European tech has nothing to envy from anyone, and it's time to prove it in practice. Its logo, a pixel art cloud in the rain, visually anchors the brand in northern France -- where it rains, and where we code.
 
-### What Nualt Does
+### What BigxBang Does
 
-Nualt builds websites, applications, and custom tools, from the first pixel to the last byte deployed in production. The studio doesn't just deliver code: it supports clients across the entire chain, from development to hosting, including system architecture and scaling.
+BigxBang builds websites, applications, and custom tools, from the first pixel to the last byte deployed in production. The studio doesn't just deliver code: it supports clients across the entire chain, from development to hosting, including system architecture and scaling.
 
-Hosting is a central pillar. Nualt deploys exclusively on European infrastructure (Scaleway, Hetzner, Contabo) and gives clients direct access to their own servers. No black box, no vendor lock-in, no surprises. The client owns their code, accesses their hosting, and keeps the keys to their entire technical ecosystem.
+Hosting is a central pillar. BigxBang deploys exclusively on European infrastructure (Scaleway, Hetzner, Contabo) and gives clients direct access to their own servers. No black box, no vendor lock-in, no surprises. The client owns their code, accesses their hosting, and keeps the keys to their entire technical ecosystem.
 
 The studio also actively promotes open-source and self-hosting, both internally and for clients. Every building block is chosen for its longevity, transparency, and independence from major cloud players.
 
@@ -241,13 +241,13 @@ The studio also actively promotes open-source and self-hosting, both internally 
 - **The client has direct access to their hosting.** They can connect to their servers, check their logs, manage their data. The studio guides, but does not control.
 - **No vendor lock-in.** Every technical decision is made to maximize the client's independence. If the client wants to switch providers tomorrow, they can do so without friction.
 - **Open-source preferred.** Open-source solutions are systematically preferred over proprietary alternatives, unless there is a major technical counter-indication.
-- **Partnership mindset.** Nualt is not a contractor that disappears after delivery. It's a technical partner that remains available, follows the project's evolution, and shares knowledge.
+- **Partnership mindset.** BigxBang is not a contractor that disappears after delivery. It's a technical partner that remains available, follows the project's evolution, and shares knowledge.
 
 ### The Ideology -- Tech with European Values
 
 Europe has already produced the foundations of global tech: Linux (Linus Torvalds, Finland), Docker (Solomon Hykes, France), GitLab (Sytse Sijbrandij, Netherlands). The talent is there. The tools are there. The proof that world-class tech can be built without depending on Silicon Valley already exists.
 
-Nualt carries this legacy forward. The studio's central axis is building tech with European values -- data sovereignty, transparency, privacy, native GDPR compliance. Not as a marketing argument. As a core stance that translates into every technical decision, every infrastructure choice, and every client relationship.
+BigxBang carries this legacy forward. The studio's central axis is building tech with European values -- data sovereignty, transparency, privacy, native GDPR compliance. Not as a marketing argument. As a core stance that translates into every technical decision, every infrastructure choice, and every client relationship.
 
 This project is a concrete example: **zero US dependency** across the entire chain (hosting, emails, DNS, domain name). Every building block is European, every piece of data stays in Europe, and every provider shares the same values of transparency and sovereignty.
 
@@ -263,4 +263,4 @@ Content (text, photos) remains the exclusive property of the Les Fuseaux Asseven
 
 ---
 
-Design & Development: **Thomas Sarazin** -- [Nualt Studio](https://nualt.studio) (formerly BigXBang Studio)
+Design & Development: **Thomas Sarazin** -- [BigxBang Studio](https://www.bigxbang.studio/)

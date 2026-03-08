@@ -2,9 +2,6 @@
 
 import { TransitionLink } from "@/components/transitions";
 import dynamic from "next/dynamic";
-import { Geist_Mono } from "next/font/google";
-
-const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"] });
 
 const ContactMap = dynamic(() => import("@/components/contact/ContactMap"), { ssr: false });
 
@@ -115,7 +112,10 @@ export default function Footer({ hideSeparator = false }: { hideSeparator?: bool
                         © {year} Les Fuseaux Asseventois. Tous droits réservés.
                     </p>
                     <p className="font-satoshi text-sm text-white/75">
-                        Fait avec amour par <span className={`${geistMono.className} font-semibold [word-spacing:-0.2em]`}>nualt studio</span>
+                        Fait avec amour par{" "}
+                        <a href="https://www.bigxbang.studio/" target="_blank" rel="noopener noreferrer" className="font-['Clash_Display'] font-medium tracking-normal hover:text-white transition-colors">
+                            Big<span className="text-[0.75em]">x</span>Bang Studio
+                        </a>
                     </p>
                 </div>
             </div>
