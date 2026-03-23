@@ -9,7 +9,7 @@ import FaqIllustration from "./FaqIllustration";
 
 const faqItems = [
   {
-    question: "Je n'ai jamais fait de dentelle, puis-je venir ?",
+    question: "Je n'ai jamais fait de dentelle aux fuseaux ni de broderie hardanger, puis-je venir ?",
     answer:
       "Bien sûr ! L'atelier est ouvert aux personnes de tous niveaux. Les membres plus expérimentés seront ravis de vous guider pour vos premiers croisements et pour apprendre à monter votre carreau.",
   },
@@ -152,7 +152,7 @@ export default function FaqSection() {
             </h2>
             <p className="font-satoshi text-base md:text-lg text-text-body leading-relaxed mb-8">
               Tout ce qu'il faut savoir avant de rejoindre
-              nos séances de dentelle aux fuseaux.
+              nos séances de dentelle aux fuseaux et de broderie hardanger.
             </p>
             <a
               href="/contact"

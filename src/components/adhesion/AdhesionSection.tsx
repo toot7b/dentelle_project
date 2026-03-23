@@ -98,7 +98,7 @@ export default function AdhesionSection() {
                     data-adhesion-subtitle
                     className="font-satoshi text-base md:text-lg text-[#5C3D26] leading-relaxed max-w-xl mb-10 md:mb-14 opacity-0"
                 >
-                    Passionné(e) par la dentelle aux fuseaux ? Rejoignez Les Fuseaux Asseventois et intégrez une association chaleureuse.
+                    Passionné(e) par la dentelle aux fuseaux et la broderie hardanger ? Rejoignez Les Fuseaux Asseventois et intégrez une association chaleureuse.
                 </p>
                 <AdhesionForm />
             </div>

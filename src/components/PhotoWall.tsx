@@ -119,7 +119,7 @@ export default function PhotoWall() {
           >
             <PhotoFrame
               src={photo.src}
-              alt={`Dentelle ${i + 1}`}
+              alt={`Dentelle et broderie hardanger ${i + 1}`}
               width={photo.width}
               height={photo.height}
               rotation={photo.rotation}
@@ -143,7 +143,7 @@ export default function PhotoWall() {
             <div data-parallax>
               <PhotoFrame
                 src={photo.src}
-                alt={`Dentelle ${i + 1}`}
+                alt={`Dentelle et broderie hardanger ${i + 1}`}
                 width={photo.mobileWidth}
                 height={photo.mobileHeight}
                 rotation={photo.rotation}
@@ -161,7 +161,7 @@ export default function PhotoWall() {
         {openPhoto && (
           <Lightbox
             src={openPhoto.src}
-            alt="Photo dentelle"
+            alt="Photo dentelle et broderie hardanger"
             onClose={() => setOpenPhoto(null)}
           />
         )}

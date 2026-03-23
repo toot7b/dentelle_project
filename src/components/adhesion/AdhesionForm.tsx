@@ -188,7 +188,7 @@ export default function AdhesionForm() {
                     <textarea
                         value={data.message}
                         onChange={(e) => setData((d) => ({ ...d, message: e.target.value }))}
-                        placeholder="Présentez-vous et dites-nous ce qui vous attire dans la dentelle aux fuseaux…"
+                        placeholder="Présentez-vous et dites-nous ce qui vous attire dans la dentelle aux fuseaux et la broderie hardanger…"
                         className={`${inputClass("message")} min-h-[140px] resize-none`}
                     />
                     {errors.message && (

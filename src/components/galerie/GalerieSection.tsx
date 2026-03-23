@@ -161,7 +161,7 @@ export default function GalerieSection() {
           Au bout des fuseaux
         </h2>
         <p className="font-satoshi text-lg md:text-xl text-white leading-relaxed max-w-2xl mx-auto mb-16 md:mb-24">
-          Un aperçu des créations nées de nos ateliers. Chaque réalisation est le fruit d'heures de patience, de minutie et d'une passion partagée pour la dentelle.
+          Un aperçu des créations nées de nos ateliers. Chaque réalisation est le fruit d'heures de patience, de minutie et d'une passion partagée pour la dentelle aux fuseaux et la broderie hardanger.
         </p>
       </div>
 
@@ -174,7 +174,7 @@ export default function GalerieSection() {
             { src: "/photos/bougie.webp",    rotate: -2, caption: "une bougie de dentelle" },
             { src: "/photos/col.webp",       rotate: 5,  caption: "un col tout en dentelle" },
             { src: "/photos/compo.webp",     rotate: -3, caption: "un beau médaillon" },
-            { src: "/photos/coussin.webp",   rotate: 2,  caption: "le super coussin" },
+            { src: "/photos/coussin.webp",   rotate: 2,  caption: "un coussin brodé à l'aiguille hardanger" },
             { src: "/photos/hiboux.webp",    rotate: -6, caption: "notre petit hibou d'atelier" },
             { src: "/photos/noel.webp",      rotate: 4,  caption: "l'esprit de noël" },
             { src: "/photos/oiseau2.webp",   rotate: -3, caption: "un oiseau, de près" },
@@ -185,7 +185,7 @@ export default function GalerieSection() {
             <div key={i} data-photo className="w-full flex justify-center">
               <FlyingPhoto
                 src={photo.src}
-                alt={`Dentelle aux fuseaux — ${photo.caption}`}
+                alt={`Dentelle aux fuseaux et broderie hardanger — ${photo.caption}`}
                 caption={photo.caption}
                 rotate={photo.rotate}
                 className="relative w-max"

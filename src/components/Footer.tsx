@@ -33,7 +33,7 @@ export default function Footer({ hideSeparator = false }: { hideSeparator?: bool
                             Les Fuseaux Asseventois
                         </h3>
                         <p className="font-satoshi text-base text-white leading-relaxed mb-6">
-                            Depuis Assevent, nous faisons vivre l&apos;art délicat de la dentelle aux fuseaux
+                            Depuis Assevent, nous faisons vivre l&apos;art délicat de la dentelle aux fuseaux et de la broderie hardanger
                             à travers des ateliers conviviaux, la transmission des gestes, et le plaisir de
                             créer ensemble, fil après fil.
                         </p>

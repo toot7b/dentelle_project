@@ -120,7 +120,7 @@ export default function Hero() {
             className="font-satoshi text-base lg:text-lg leading-relaxed text-text-body max-w-md opacity-0"
           >
             À Assevent, on se retrouve chaque semaine pour le plaisir de créer,
-            apprendre et partager autour de la dentelle aux fuseaux. Une technique
+            apprendre et partager autour de la dentelle aux fuseaux et de la broderie hardanger. Une technique
             ancienne, une ambiance chaleureuse, et des créations dont on est fiers.
           </p>
           <div data-animate="buttons" className="flex items-center gap-3 lg:gap-4 mt-2 opacity-0">

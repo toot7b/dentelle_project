@@ -7,14 +7,16 @@ const SITE_URL = "https://fuseaux-asseventois.fr";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Les Fuseaux Asseventois — Dentelle aux fuseaux",
+    default: "Les Fuseaux Asseventois — Dentelle aux fuseaux et broderie hardanger",
     template: "%s — Les Fuseaux Asseventois",
   },
   description:
-    "Association de dentelle aux fuseaux à Assevent. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire. Rejoignez une communauté de passionnés.",
+    "Association de dentelle aux fuseaux et de broderie hardanger à Assevent. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire. Rejoignez une communauté de passionnés.",
   keywords: [
     "dentelle aux fuseaux",
     "dentelle",
+    "broderie hardanger",
+    "hardanger",
     "fuseaux",
     "association dentelle",
     "club dentelle",
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
     "artisanat",
     "dentelle artisanale",
     "cours dentelle",
+    "cours broderie hardanger",
     "fuseaux asseventois",
     "dentelle assevent",
     "association assevent",
@@ -37,23 +40,23 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: SITE_URL,
     siteName: "Les Fuseaux Asseventois",
-    title: "Les Fuseaux Asseventois — Dentelle aux fuseaux",
+    title: "Les Fuseaux Asseventois — Dentelle aux fuseaux et broderie hardanger",
     description:
-      "Association de dentelle aux fuseaux. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire.",
+      "Association de dentelle aux fuseaux et de broderie hardanger. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire.",
     images: [
       {
         url: "/photos/fuseaux/fuseaux.webp",
         width: 1200,
         height: 630,
-        alt: "Dentelle aux fuseaux — Les Fuseaux Asseventois",
+        alt: "Dentelle aux fuseaux et broderie hardanger — Les Fuseaux Asseventois",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Les Fuseaux Asseventois — Dentelle aux fuseaux",
+    title: "Les Fuseaux Asseventois — Dentelle aux fuseaux et broderie hardanger",
     description:
-      "Association de dentelle aux fuseaux. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire.",
+      "Association de dentelle aux fuseaux et de broderie hardanger. Ateliers hebdomadaires, initiation et transmission d'un art artisanal millénaire.",
     images: ["/photos/fuseaux/fuseaux.webp"],
   },
   alternates: {
@@ -71,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   category: "association",
-  classification: "Artisanat, Loisirs créatifs, Dentelle",
+  classification: "Artisanat, Loisirs créatifs, Dentelle, Broderie hardanger",
   other: {
     "geo.region": "FR",
     "geo.placename": "Assevent, Maubeuge",

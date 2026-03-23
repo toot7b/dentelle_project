@@ -204,7 +204,7 @@ export default function ActivitiesSection() {
           Nos ateliers
         </h2>
         <p className="font-satoshi text-base md:text-xl text-[#5C4D3C] leading-relaxed max-w-2xl mx-auto activities-subtitle">
-          Chaque semaine, nous nous retrouvons à Assevent autour de la dentelle aux fuseaux. Tout le monde peut nous rejoindre, quel que soit son niveau.
+          Chaque semaine, nous nous retrouvons à Assevent autour de la dentelle aux fuseaux et de la broderie hardanger. Tout le monde peut nous rejoindre, quel que soit son niveau.
         </p>
       </div>
 

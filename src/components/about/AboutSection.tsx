@@ -102,7 +102,7 @@ export default function AboutSection() {
                     data-about-subtitle
                     className="font-satoshi text-lg md:text-xl text-[#5C3D26] leading-relaxed max-w-2xl mx-auto mb-16 md:mb-20 opacity-0 will-change-transform will-change-opacity"
                 >
-                    Depuis plus de 15 ans, notre association transmet l'art de la dentelle aux fuseaux. Un groupe de passionnés où la bonne humeur compte autant que la précision du geste.
+                    Depuis plus de 15 ans, notre association transmet l'art de la dentelle aux fuseaux et de la broderie hardanger. Un groupe de passionnés où la bonne humeur compte autant que la précision du geste.
                 </p>
             </div>
 
@@ -154,7 +154,7 @@ export default function AboutSection() {
                                 <div className="relative w-full h-full rounded-[2px] overflow-hidden" style={{ boxShadow: "0 4px 12px rgba(44,26,14,0.15)" }}>
                                     <Image
                                         src="/photos/fuseaux/fuseaux.webp"
-                                        alt="Travail de la dentelle"
+                                        alt="Travail de la dentelle et de la broderie hardanger"
                                         fill
                                         className="block object-cover"
                                         style={{ filter: "sepia(20%) saturate(90%) brightness(97%)" }}
@@ -171,7 +171,7 @@ export default function AboutSection() {
             {lightboxOpen && (
                 <Lightbox
                     src="/photos/fuseaux/fuseaux.webp"
-                    alt="Travail de la dentelle"
+                    alt="Travail de la dentelle et de la broderie hardanger"
                     onClose={() => setLightboxOpen(false)}
                 />
             )}
